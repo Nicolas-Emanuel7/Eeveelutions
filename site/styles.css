@@ -19,7 +19,6 @@ body{
     height: 400px;
     display: flex;
     justify-content: center;
-    background: #fff;
     align-items: center;
     cursor: pointer;
 }
@@ -55,15 +54,15 @@ body{
 
 .menu li a:hover{
     color: rgb(0, 179, 255);
-    
-
+    transform: scale(1.2); /* TENTAR FAZER O BOTAO PARAR DE GIRAR */
+    transition: 0.5s; 
 }
 .toggle {
     
     
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     background: #DDB57d;
     display: flex;
     justify-content: center;
