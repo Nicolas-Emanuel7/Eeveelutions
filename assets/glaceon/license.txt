@@ -1,0 +1,11 @@
+Model Information:
+* title:	Glaceon
+* source:	https://sketchfab.com/3d-models/glaceon-66754b5b68d3493ab1a1083a89106ce3
+* author:	nguyenlouis32 (https://sketchfab.com/nguyenlouis32)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Glaceon" (https://sketchfab.com/3d-models/glaceon-66754b5b68d3493ab1a1083a89106ce3) by nguyenlouis32 (https://sketchfab.com/nguyenlouis32) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

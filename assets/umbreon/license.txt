@@ -1,0 +1,11 @@
+Model Information:
+* title:	Umbreon
+* source:	https://sketchfab.com/3d-models/umbreon-edd472b08b254e09b57ab46a7a06334b
+* author:	drewsdigitaldesigns (https://sketchfab.com/drewsdigitaldesigns)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Umbreon" (https://sketchfab.com/3d-models/umbreon-edd472b08b254e09b57ab46a7a06334b) by drewsdigitaldesigns (https://sketchfab.com/drewsdigitaldesigns) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

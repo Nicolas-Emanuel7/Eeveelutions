@@ -1,0 +1,11 @@
+Model Information:
+* title:	Espeon
+* source:	https://sketchfab.com/3d-models/espeon-b12f30cf97de4ac5b312312ae1c31b73
+* author:	nguyenlouis32 (https://sketchfab.com/nguyenlouis32)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Espeon" (https://sketchfab.com/3d-models/espeon-b12f30cf97de4ac5b312312ae1c31b73) by nguyenlouis32 (https://sketchfab.com/nguyenlouis32) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

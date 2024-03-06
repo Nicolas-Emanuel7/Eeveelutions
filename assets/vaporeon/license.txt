@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vaporeon 3D Render
+* source:	https://sketchfab.com/3d-models/vaporeon-3d-render-0c6d7de84fe64b79ad138d22039a4ae4
+* author:	hkgiao79 (https://sketchfab.com/hkgiao79)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vaporeon 3D Render" (https://sketchfab.com/3d-models/vaporeon-3d-render-0c6d7de84fe64b79ad138d22039a4ae4) by hkgiao79 (https://sketchfab.com/hkgiao79) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
