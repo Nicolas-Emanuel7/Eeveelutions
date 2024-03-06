@@ -25,7 +25,7 @@ body{
 
 .menu li {
     position: absolute;
-    left:-50;
+    left:-70px;
     list-style: none;
     transform-origin: 100px;
     transition: 0.5s;
@@ -73,5 +73,5 @@ body{
 }
 
 .menu.active .toggle{
-        transform:rotate(315deg);
+        transform:rotate(360deg);
 }
