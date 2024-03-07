@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pokemon FanArt - Poliwag
+* source:	https://sketchfab.com/3d-models/pokemon-fanart-poliwag-235b4f91bd304a4f9d62a8394b5680fb
+* author:	J. Beltran (https://sketchfab.com/ilchampo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pokemon FanArt - Poliwag" (https://sketchfab.com/3d-models/pokemon-fanart-poliwag-235b4f91bd304a4f9d62a8394b5680fb) by J. Beltran (https://sketchfab.com/ilchampo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

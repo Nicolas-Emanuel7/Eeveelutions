@@ -1,11 +1,11 @@
 Model Information:
-* title:	Flareon 3D Render
-* source:	https://sketchfab.com/3d-models/flareon-3d-render-21c06e70b38543e39c0de635e047a760
-* author:	31schrci (https://sketchfab.com/31schrci)
+* title:	3DS - Pokemon X Y - 136 Flareon
+* source:	https://sketchfab.com/3d-models/3ds-pokemon-x-y-136-flareon-ffbb791e456e4cde9f2477bbce5715e0
+* author:	metooanicet (https://sketchfab.com/metooanicet)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Flareon 3D Render" (https://sketchfab.com/3d-models/flareon-3d-render-21c06e70b38543e39c0de635e047a760) by 31schrci (https://sketchfab.com/31schrci) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "3DS - Pokemon X Y - 136 Flareon" (https://sketchfab.com/3d-models/3ds-pokemon-x-y-136-flareon-ffbb791e456e4cde9f2477bbce5715e0) by metooanicet (https://sketchfab.com/metooanicet) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

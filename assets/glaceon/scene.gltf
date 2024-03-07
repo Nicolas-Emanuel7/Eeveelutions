@@ -286,12 +286,12 @@
   ],
   "asset": {
     "extras": {
-      "author": "nguyenlouis32 (https://sketchfab.com/nguyenlouis32)",
+      "author": "metooanicet (https://sketchfab.com/metooanicet)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/glaceon-66754b5b68d3493ab1a1083a89106ce3",
-      "title": "Glaceon"
+      "source": "https://sketchfab.com/3d-models/3ds-pokemon-x-y-471-glaceon-462c403fab304d03a7b87d993cd5f3e9",
+      "title": "3DS - Pokemon X Y - 471 Glaceon"
     },
-    "generator": "Sketchfab-13.42.0",
+    "generator": "Sketchfab-15.36.0",
     "version": "2.0"
   },
   "bufferViews": [

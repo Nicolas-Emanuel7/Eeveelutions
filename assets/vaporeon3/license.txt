@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vaporeon
+* source:	https://sketchfab.com/3d-models/vaporeon-nLowayHlPdKq1eWyjdwHJmQ7cI6
+* author:	Ghazp (https://sketchfab.com/ghazp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vaporeon" (https://sketchfab.com/3d-models/vaporeon-nLowayHlPdKq1eWyjdwHJmQ7cI6) by Ghazp (https://sketchfab.com/ghazp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,11 +1,11 @@
 Model Information:
-* title:	Leafeon 3D Render
-* source:	https://sketchfab.com/3d-models/leafeon-3d-render-fdada6578c87476ab97f0b6189ecc597
-* author:	hkgiao79 (https://sketchfab.com/hkgiao79)
+* title:	3DS - Pokemon X Y - 470 Leafeon
+* source:	https://sketchfab.com/3d-models/3ds-pokemon-x-y-470-leafeon-6b220673cfd74b2f8f1ca7e8828bce9a
+* author:	metooanicet (https://sketchfab.com/metooanicet)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Leafeon 3D Render" (https://sketchfab.com/3d-models/leafeon-3d-render-fdada6578c87476ab97f0b6189ecc597) by hkgiao79 (https://sketchfab.com/hkgiao79) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "3DS - Pokemon X Y - 470 Leafeon" (https://sketchfab.com/3d-models/3ds-pokemon-x-y-470-leafeon-6b220673cfd74b2f8f1ca7e8828bce9a) by metooanicet (https://sketchfab.com/metooanicet) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

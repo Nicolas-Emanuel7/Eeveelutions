@@ -286,12 +286,12 @@
   ],
   "asset": {
     "extras": {
-      "author": "nguyenlouis32 (https://sketchfab.com/nguyenlouis32)",
+      "author": "metooanicet (https://sketchfab.com/metooanicet)",
       "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
-      "source": "https://sketchfab.com/3d-models/espeon-b12f30cf97de4ac5b312312ae1c31b73",
-      "title": "Espeon"
+      "source": "https://sketchfab.com/3d-models/3ds-pokemon-x-y-196-espeon-41a874027c564a4889671645e8e41cd2",
+      "title": "3DS - Pokemon X Y - 196 Espeon"
     },
-    "generator": "Sketchfab-13.31.0",
+    "generator": "Sketchfab-15.37.0",
     "version": "2.0"
   },
   "bufferViews": [

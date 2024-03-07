@@ -1,11 +1,11 @@
 Model Information:
-* title:	Sylveon
-* source:	https://sketchfab.com/3d-models/sylveon-5c9c50a38d584331b53525c879f6c637
-* author:	LunaEagle (https://sketchfab.com/LunaEagle)
+* title:	Sylveon from pokemon
+* source:	https://sketchfab.com/3d-models/sylveon-from-pokemon-e7f096854fda4ed2a348dc2f7be5c021
+* author:	potato🥔 (https://sketchfab.com/Frenchfriesyummy)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Sylveon" (https://sketchfab.com/3d-models/sylveon-5c9c50a38d584331b53525c879f6c637) by LunaEagle (https://sketchfab.com/LunaEagle) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Sylveon from pokemon" (https://sketchfab.com/3d-models/sylveon-from-pokemon-e7f096854fda4ed2a348dc2f7be5c021) by potato🥔 (https://sketchfab.com/Frenchfriesyummy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

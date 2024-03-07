@@ -1,11 +1,11 @@
 Model Information:
-* title:	Jolteon
-* source:	https://sketchfab.com/3d-models/jolteon-577b01ffaccf469790eb69effa449e27
-* author:	drewsdigitaldesigns (https://sketchfab.com/drewsdigitaldesigns)
+* title:	3DS - Pokemon X Y - 135 Jolteon
+* source:	https://sketchfab.com/3d-models/3ds-pokemon-x-y-135-jolteon-d4cebe2e58e44289bcaca63328279543
+* author:	metooanicet (https://sketchfab.com/metooanicet)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Jolteon" (https://sketchfab.com/3d-models/jolteon-577b01ffaccf469790eb69effa449e27) by drewsdigitaldesigns (https://sketchfab.com/drewsdigitaldesigns) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "3DS - Pokemon X Y - 135 Jolteon" (https://sketchfab.com/3d-models/3ds-pokemon-x-y-135-jolteon-d4cebe2e58e44289bcaca63328279543) by metooanicet (https://sketchfab.com/metooanicet) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
