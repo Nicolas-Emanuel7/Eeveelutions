@@ -44,29 +44,9 @@ function onMouseMove(event) {
   if (eeveeModel) {
       eeveeModel.rotation.y = rotationY;
   }
-  if (espeonModel) {
-      espeonModel.rotation.y = rotationY;
-  }
-  if (flareonModel) {
-      flareonModel.rotation.y = rotationY;
-  }
-  if (glaceonModel) {
-      glaceonModel.rotation.y = rotationY;
-  }
-  if (jolteonModel) {
-      jolteonModel.rotation.y = rotationY;
-  }
-  if (leafeonModel) {
-      leafeonModel.rotation.y = rotationY;
-  }
-  if (sylveonModel) {
-      sylveonModel.rotation.y = rotationY;
-  }
-  if (umbreonModel) {
-      umbreonModel.rotation.y = rotationY;
-  }
-  if (vaporeonModel) {
-      vaporeonModel.rotation.y = rotationY;
+  if(ground){
+    ground.rotation.y = rotationY;
+  
   }
 }
 
@@ -77,13 +57,14 @@ var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonMo
 function carregarModelos(){
   const Eevee = new GLTFLoader();
   Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-    eevee.scene.scale.set(10,10,10);
+    eevee.scene.scale.set(8,8,8);
     scene.add(eevee.scene);
-    eevee.scene.position.x = -25;
+    eevee.scene.position.x = 0;
     eevee.scene.castShadow = true
     eeveeModel = eevee.scene;
   });
 
+  /*
   const Espeon = new GLTFLoader();
   Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
     espeon.scene.scale.set(2,2,2);
@@ -155,6 +136,7 @@ function carregarModelos(){
     vaporeon.scene.castShadow = true
     vaporeonModel = vaporeon.scene;
   });
+  */
 }
 
 carregarModelos();
@@ -201,10 +183,11 @@ function criarFlocoDeNeve() {
 setInterval(criarFlocoDeNeve, 2000); // Gera um novo floco de neve a cada segundo
 */
 
-const ground = new THREE.Mesh( new THREE.BoxGeometry( 70, 1, 30 ), new THREE.MeshStandardMaterial( { color: 0x00ff00 } ) );
+const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,2,32) , new THREE.MeshStandardMaterial( { color: 0x00ffff, metalness:0.25 } ) );
 scene.add( ground );
 ground.position.y = -1;
 ground.receiveShadow = true
+ground.castShadow = true
 // Controles
 
 const controls = new OrbitControls( camera, renderer.domElement );
