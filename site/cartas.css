@@ -1,0 +1,72 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.nome {
+    background-color: blue;
+    display: flex;
+    height: 60px;
+    font-size: 40px;
+    color: aliceblue;
+}
+
+.nome div {
+    background-color: aqua;
+    margin-left: auto;
+    width: 14%;
+}
+
+main {
+    background-color: blueviolet;
+    height: 90%;
+}
+
+.esq{
+    background-color: rgb(162, 226, 43);
+    height: 90%;
+    width: 300px;
+}
+
+.esq {
+    margin-left: 20px;
+    float: left;
+}
+
+.dir {
+    background-color: rgb(162, 226, 43);
+    height: 90%;
+    width: 400px;
+}
+
+.dir {
+    margin-right: 20px;
+    float: right;
+}
+
+.descricao {
+    background-color: azure;
+    height: 60%;
+    width: 300px;
+}
+
+.habilidades{
+    text-align: center;
+    background-color: azure;
+    height: 60%;
+    width: 400px;
+
+}
+
+.habilidades li {
+    list-style: none;
+    display: inline-block;
+    background-color: #53d657; /* Cor dos botões */
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width: 100px; /* Largura dos botões */
+    margin: 10px; /* Espaçamento entre os botões */
+}

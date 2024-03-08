@@ -54,9 +54,11 @@ body{
 
 .menu li a:hover{
     color: rgb(0, 179, 255);
-    transform: scale(1.2); /* TENTAR FAZER O BOTAO PARAR DE GIRAR */
     transition: 0.5s; 
+    transform: scale(1.2); /* TENTAR FAZER O BOTAO PARAR DE GIRAR */
+    
 }
+
 .toggle {
     
     
