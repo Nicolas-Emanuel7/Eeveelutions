@@ -15,126 +15,196 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const luz = new THREE.AmbientLight(0xffffff, 5);
-scene.add(luz);
+const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.5)
+scene.add(luzAmbiente)
+
+const light = new THREE.DirectionalLight(0xffffff, 1.0)
+light.position.x = -2
+light.position.y = 3
+light.position.z = 1
+light.castShadow = true
+scene.add(light)
 
 // Variáveis
 
+// Adicione um evento de mousemove ao documento
+document.addEventListener('mousemove', onMouseMove, false);
 
+// Função para lidar com o movimento do mouse
+function onMouseMove(event) {
+  // Normalizar a posição do mouse entre -1 e 1
+  var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Calcular as rotações com base nas coordenadas do mouse
+  var rotationX = mouseY * Math.PI * 0.2; // Pode ajustar a sensibilidade multiplicando por um fator
+  var rotationY = mouseX * Math.PI * 0.2;
+
+  // Aplicar as rotações aos modelos
+  if (eeveeModel) {
+      eeveeModel.rotation.y = rotationY;
+  }
+  if (espeonModel) {
+      espeonModel.rotation.y = rotationY;
+  }
+  if (flareonModel) {
+      flareonModel.rotation.y = rotationY;
+  }
+  if (glaceonModel) {
+      glaceonModel.rotation.y = rotationY;
+  }
+  if (jolteonModel) {
+      jolteonModel.rotation.y = rotationY;
+  }
+  if (leafeonModel) {
+      leafeonModel.rotation.y = rotationY;
+  }
+  if (sylveonModel) {
+      sylveonModel.rotation.y = rotationY;
+  }
+  if (umbreonModel) {
+      umbreonModel.rotation.y = rotationY;
+  }
+  if (vaporeonModel) {
+      vaporeonModel.rotation.y = rotationY;
+  }
+}
 
 // Modelos
 
-const Sylveon = new GLTFLoader();
-Sylveon.load(
-    // resource URL
-    '/assets/SYLVEON/scene.gltf',
-    // called when the resource is loaded
-    function ( gltf ) {
-        // Adiciona o modelo à cena
-        scene.add( gltf.scene );
+var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 
-        // Ajusta a escala e a posição do modelo
-        gltf.scene.scale.set(5,5,5)
-        gltf.scene.position.x = 0;
-        gltf.scene.position.z = 3;
+function carregarModelos(){
+  const Eevee = new GLTFLoader();
+  Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
+    eevee.scene.scale.set(10,10,10);
+    scene.add(eevee.scene);
+    eevee.scene.position.x = -25;
+    eevee.scene.castShadow = true
+    eeveeModel = eevee.scene;
+  });
 
-        // Verifica se o modelo possui texturas
-        if (gltf.scene && gltf.scene.material) {
-            // Verifica se o material possui uma textura
-            if (gltf.scene.material.map) {
-                console.log('Modelo possui textura.');
-            } else {
-                console.log('Modelo não possui textura.');
-            }
+  const Espeon = new GLTFLoader();
+  Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
+    espeon.scene.scale.set(2,2,2);
+    scene.add(espeon.scene);
+    espeon.scene.position.x = -20;
+    espeon.scene.castShadow = true
+    espeonModel = espeon.scene;
+  });
 
-            // Lista as texturas utilizadas pelo modelo
-            console.log('Texturas utilizadas:');
-            gltf.scene.traverse(function(child) {
-                if (child instanceof THREE.Mesh) {
-                    if (child.material.map) {
-                        console.log(child.material.map);
-                    }
-                }
-            });
-        } else {
-            console.log('Erro ao carregar o modelo: nenhum material encontrado.');
-        }
+  const Flareon = new GLTFLoader();
+  Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
+    flareon.scene.scale.set(2,2,2);
+    scene.add(flareon.scene);
+    flareon.scene.position.x = -15;
+    flareon.scene.castShadow = true
+    flareonModel = flareon.scene;
+  });
 
-    },
-    // called while loading is progressing
-    function ( xhr ) {
-        // Log do progresso de carregamento
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% carregado' );
-    },
-    // called when loading has errors
-    function ( error ) {
-        // Log de erro ao carregar o modelo
-        console.error('Erro ao carregar modelo.');
-        console.error(error);
-    }
-);
+  const Glaceon = new GLTFLoader();
+  Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
+    glaceon.scene.scale.set(2,2,2);
+    scene.add(glaceon.scene);
+    glaceon.scene.position.x = 0;
+    glaceon.scene.castShadow = true
+    glaceonModel = glaceon.scene;
+  });
 
+  const Jolteon = new GLTFLoader();
+  Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
+    jolteon.scene.scale.set(2,2,2);
+    scene.add(jolteon.scene);
+    jolteon.scene.position.x = -5;
+    jolteon.scene.castShadow = true
+    jolteonModel = jolteon.scene;
+  });
 
-const Eevee = new GLTFLoader();
-Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-  eevee.scene.scale.set(10,10,10);
-  scene.add(eevee.scene);
-  eevee.scene.position.x = -25;
-});
+  const Leafeon = new GLTFLoader();
+  Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
+    leafeon.scene.scale.set(2,2,2);
+    scene.add(leafeon.scene);
+    leafeon.scene.position.x = -10;
+    leafeon.scene.castShadow = true
+    leafeonModel = leafeon.scene;
+  });
 
-const Espeon = new GLTFLoader();
-Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
-  espeon.scene.scale.set(2,2,2);
-  scene.add(espeon.scene);
-  espeon.scene.position.x = -20;
-});
+  const Sylveon = new GLTFLoader();
+  Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
+    sylveon.scene.scale.set(2,2,2);
+    scene.add(sylveon.scene);
+    sylveon.scene.position.x = 5;
+    sylveon.scene.castShadow = true
+    sylveonModel = sylveon.scene;
+  });
 
-const Flareon = new GLTFLoader();
-Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
-  flareon.scene.scale.set(2,2,2);
-  scene.add(flareon.scene);
-  flareon.scene.position.x = -15;
-});
+  const Umbreon = new GLTFLoader();
+  Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
+    umbreon.scene.scale.set(2,2,2);
+    scene.add(umbreon.scene);
+    umbreon.scene.position.x = 10;
+    umbreon.scene.castShadow = true
+    umbreonModel = umbreon.scene;
+  });
 
-const Glaceon = new GLTFLoader();
-Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
-  glaceon.scene.scale.set(2,2,2);
-  scene.add(glaceon.scene);
-  glaceon.scene.position.x = -10;
-});
+  const Vaporeon = new GLTFLoader();
+  Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
+    vaporeon.scene.scale.set(2,2,2);
+    scene.add(vaporeon.scene);
+    vaporeon.scene.position.x = 15;
+    vaporeon.scene.castShadow = true
+    vaporeonModel = vaporeon.scene;
+  });
+}
 
-const Jolteon = new GLTFLoader();
-Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
-  jolteon.scene.scale.set(2,2,2);
-  scene.add(jolteon.scene);
-  jolteon.scene.position.x = -5;
-});
+carregarModelos();
 
-const Leafeon = new GLTFLoader();
-Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
-  leafeon.scene.scale.set(2,2,2);
-  scene.add(leafeon.scene);
-  leafeon.scene.position.x = 0;
-});
+/*
+function criarFlocoDeNeve() {
+  const flocoDeNeve = new GLTFLoader();
+  flocoDeNeve.load('/assets/Neve/scene.gltf', (snowflake) => {
+      snowflake.scene.scale.set(0.01, 0.01, 0.01);
 
-const Umbreon = new GLTFLoader();
-Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
-  umbreon.scene.scale.set(2,2,2);
-  scene.add(umbreon.scene);
-  umbreon.scene.position.x = 10;
-});
+      // Define a posição inicial aleatória dentro da área específica
+      snowflake.scene.position.set(
+          Math.random() * 10 - 5, // valor entre -5 e 5
+          10, // altura inicial
+          Math.random() * 10 - 5 // valor entre -5 e 5
+      );
 
-const Vaporeon = new GLTFLoader();
-Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
-  vaporeon.scene.scale.set(2,2,2);
-  scene.add(vaporeon.scene);
-  vaporeon.scene.position.x = 15;
-});
+      scene.add(snowflake.scene);
 
+      // Função para atualizar a posição do floco de neve
+      function atualizarFlocoDeNeve() {
+          // Atualiza a posição do floco de neve para simular a queda
+          snowflake.scene.position.y -= 0.05; // velocidade de queda
 
-const ground = new THREE.Mesh( new THREE.BoxGeometry( 70, 1, 30 ), new THREE.MeshBasicMaterial( { color: 0x00ff00 } ) );
+          // Se o floco de neve cair abaixo de uma certa altura, reinicie sua posição
+          if (snowflake.scene.position.y < -5) {
+              snowflake.scene.position.set(
+                  Math.random() * 10 - 5, // valor entre -5 e 5
+                  10, // altura inicial
+                  Math.random() * 10 - 5 // valor entre -5 e 5
+              );
+          }
+
+          // Chama essa função novamente no próximo quadro
+          requestAnimationFrame(atualizarFlocoDeNeve);
+      }
+
+      // Inicia a atualização do floco de neve
+      atualizarFlocoDeNeve();
+  });
+}
+
+// Chama a função para criar flocos de neve periodicamente
+setInterval(criarFlocoDeNeve, 2000); // Gera um novo floco de neve a cada segundo
+*/
+
+const ground = new THREE.Mesh( new THREE.BoxGeometry( 70, 1, 30 ), new THREE.MeshStandardMaterial( { color: 0x00ff00 } ) );
 scene.add( ground );
 ground.position.y = -1;
+ground.receiveShadow = true
 // Controles
 
 const controls = new OrbitControls( camera, renderer.domElement );
