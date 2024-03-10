@@ -43,11 +43,10 @@ body{
     align-items: center;
     width: 80px;
     height: 80px;
-    background: #ffffff ;
+    background: #fff6de ;
     border-radius: 50%;  
     transform: rotate(calc(360deg/ -8* var(--i)));
-    box-shadow: 0 3px 4px rgb(0,0,0,0.15);
-    color: black;
+    box-shadow: 0 3px 4px rgba(216, 130, 16, 0.15);
     transition: 0.5s;
     
 }
@@ -65,9 +64,9 @@ body{
     position: absolute;
     width: 150px;
     height: 150px;
-    background: #DDB57d;
     display: flex;
     justify-content: center;
+    background-color: #DDB57d;
     align-items: center;
     z-index: 10000;
     border-radius: 50%;
@@ -79,4 +78,12 @@ body{
 
 .menu.active .toggle{
         transform:rotate(315deg);
+}
+
+.eevee{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin-left: 60%;
 }
