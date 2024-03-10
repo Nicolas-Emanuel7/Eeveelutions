@@ -2,28 +2,52 @@ import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-// import o objloader
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 // Cena
 
+// Canvas
+const canvas = document.querySelector('canvas.webgl')
+const bodyElement = document.querySelector('body')
+
+// Define o tamanho da janela do navegador
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight
+}
+
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 5);
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
+camera.position.set(0, 2.2, 7);
+scene.add(camera);
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+// Cria um renderizador WebGL com as configurações especificadas
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas, // Define o canvas onde a renderização será feita
+  antialias: true, // Ativa a opção de antialiasing para suavizar as bordas
+  alpha: true // Permite que o canvas tenha um canal alfa (transparência)
+})
+// Ativa o mapeamento de sombras no renderizador
+renderer.shadowMap.enabled = true
+// Define o tipo de mapeamento de sombras para PCFSoftShadowMap para sombras suaves
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+// Define o tamanho da área de renderização como o tamanho da janela
+renderer.setSize(sizes.width, sizes.height)
+// Define a proporção de pixels do renderizador para ser o mínimo entre o dispositivo e 2
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.5)
+const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(luzAmbiente)
 
-const light = new THREE.DirectionalLight(0xffffff, 1.0)
-light.position.x = -2
-light.position.y = 3
-light.position.z = 1
-light.castShadow = true
-scene.add(light)
+// Cria uma luz direcional com cor branca e intensidade 1
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+// Define a posição da luz direcional
+directionalLight.position.set(1, 2, 0)
+
+// Ativa a capacidade de emitir sombras para a luz direcional
+directionalLight.castShadow = true
+
+// Adiciona a luz direcional à cena
+scene.add(directionalLight)
 
 // Variáveis
 
@@ -57,6 +81,7 @@ var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonMo
 function carregarModelos(){
   const Eevee = new GLTFLoader();
   Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
+    console.log(eevee.scene);
     eevee.scene.scale.set(8,8,8);
     scene.add(eevee.scene);
     eevee.scene.position.x = 0;
