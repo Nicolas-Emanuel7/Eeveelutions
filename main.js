@@ -51,54 +51,82 @@ scene.add(directionalLight)
 
 // Variáveis
 
-// Adicione um evento de mousemove ao documento
-document.addEventListener('mousemove', onMouseMove, false);
-
-// Função para lidar com o movimento do mouse
-function onMouseMove(event) {
-  // Normalizar a posição do mouse entre -1 e 1
-  var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-  // Calcular as rotações com base nas coordenadas do mouse
-  var rotationX = mouseY * Math.PI * 0.2; // Pode ajustar a sensibilidade multiplicando por um fator
-  var rotationY = mouseX * Math.PI * 0.2;
-
-  // Aplicar as rotações aos modelos
-  if (eeveeModel) {
-      eeveeModel.rotation.y = rotationY;
-  }
-  if(ground){
-    ground.rotation.y = rotationY;
-  
-  }
-}
-
 // Modelos
+
+// Adicione um ouvinte de eventos para cada botão
+document.getElementById("botaoEevee").addEventListener("click", function() {
+  console.log('Carregando modelo Eevee')
+  carregarModelo('eevee');
+});
+
+document.getElementById("botaoEspeon").addEventListener("click", function() {
+  console.log('Carregando modelo Espeon')
+  carregarModelo('espeon');
+});
 
 var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 
-function carregarModelos(){
-  const Eevee = new GLTFLoader();
-  Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-    console.log(eevee.scene);
-    eevee.scene.scale.set(8,8,8);
-    scene.add(eevee.scene);
-    eevee.scene.position.x = 0;
-    eevee.scene.castShadow = true
-    eeveeModel = eevee.scene;
-  });
+function carregarModelos(modelo) {
+  // Remova o modelo existente, se houver
+  if (eeveeModel) {
+    scene.remove(eeveeModel);
+    eeveeModel = undefined;
+  }
+  if (espeonModel) {
+    scene.remove(espeonModel);
+    espeonModel = undefined;
+  }
+  if (flareonModel) {
+    scene.remove(flareonModel);
+    flareonModel = undefined;
+  }
+  if (glaceonModel) {
+    scene.remove(glaceonModel);
+    glaceonModel = undefined;
+  }
+  if (jolteonModel) {
+    scene.remove(jolteonModel);
+    jolteonModel = undefined;
+  }
+  if (leafeonModel) {
+    scene.remove(leafeonModel);
+    leafeonModel = undefined;
+  }
+  if (sylveonModel) {
+    scene.remove(sylveonModel);
+    sylveonModel = undefined;
+  }
+  if (umbreonModel) {
+    scene.remove(umbreonModel);
+    umbreonModel = undefined;
+  }
+  if (vaporeonModel) {
+    scene.remove(vaporeonModel);
+    vaporeonModel = undefined;
+  }
 
-  /*
-  const Espeon = new GLTFLoader();
-  Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
-    espeon.scene.scale.set(2,2,2);
-    scene.add(espeon.scene);
-    espeon.scene.position.x = -20;
-    espeon.scene.castShadow = true
-    espeonModel = espeon.scene;
-  });
-
+  // Carregue o modelo correspondente
+  if (modelo === 'eevee') {
+    console.log('Carregando modelo Eevee');
+    const Eevee = new GLTFLoader();
+    Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
+      eevee.scene.scale.set(8, 8, 8);
+      scene.add(eevee.scene);
+      eevee.scene.position.x = 0;
+      eevee.scene.castShadow = true;
+      eeveeModel = eevee.scene;
+    });
+  } else if (modelo === 'espeon') {
+    console.log('Carregando modelo Espeon');
+    const Espeon = new GLTFLoader();
+    Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
+      espeon.scene.scale.set(2, 2, 2);
+      scene.add(espeon.scene);
+      espeon.scene.position.x = -20;
+      espeon.scene.castShadow = true;
+      espeonModel = espeon.scene;
+    });
+  } else if (modelo === 'flareon') {
   const Flareon = new GLTFLoader();
   Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
     flareon.scene.scale.set(2,2,2);
@@ -107,7 +135,7 @@ function carregarModelos(){
     flareon.scene.castShadow = true
     flareonModel = flareon.scene;
   });
-
+  } else if (modelo === 'glaceon') {
   const Glaceon = new GLTFLoader();
   Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
     glaceon.scene.scale.set(2,2,2);
@@ -116,7 +144,7 @@ function carregarModelos(){
     glaceon.scene.castShadow = true
     glaceonModel = glaceon.scene;
   });
-
+  } else if (modelo === 'jolteon') {
   const Jolteon = new GLTFLoader();
   Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
     jolteon.scene.scale.set(2,2,2);
@@ -125,7 +153,7 @@ function carregarModelos(){
     jolteon.scene.castShadow = true
     jolteonModel = jolteon.scene;
   });
-
+  } else if (modelo === 'leafeon') {
   const Leafeon = new GLTFLoader();
   Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
     leafeon.scene.scale.set(2,2,2);
@@ -134,7 +162,7 @@ function carregarModelos(){
     leafeon.scene.castShadow = true
     leafeonModel = leafeon.scene;
   });
-
+  } else if (modelo === 'sylveon') {
   const Sylveon = new GLTFLoader();
   Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
     sylveon.scene.scale.set(2,2,2);
@@ -143,7 +171,7 @@ function carregarModelos(){
     sylveon.scene.castShadow = true
     sylveonModel = sylveon.scene;
   });
-
+  } else if (modelo === 'umbreon') {
   const Umbreon = new GLTFLoader();
   Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
     umbreon.scene.scale.set(2,2,2);
@@ -152,7 +180,7 @@ function carregarModelos(){
     umbreon.scene.castShadow = true
     umbreonModel = umbreon.scene;
   });
-
+  } else if (modelo === 'vaporeon') {
   const Vaporeon = new GLTFLoader();
   Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
     vaporeon.scene.scale.set(2,2,2);
@@ -161,9 +189,8 @@ function carregarModelos(){
     vaporeon.scene.castShadow = true
     vaporeonModel = vaporeon.scene;
   });
-  */
+  }
 }
-
 carregarModelos();
 
 /*
@@ -215,7 +242,30 @@ ground.receiveShadow = true
 ground.castShadow = true
 // Controles
 
-const controls = new OrbitControls( camera, renderer.domElement );
+// Adicione um evento de mousemove ao documento
+document.addEventListener('mousemove', onMouseMove, false);
+
+// Função para lidar com o movimento do mouse
+function onMouseMove(event) {
+  // Normalizar a posição do mouse entre -1 e 1
+  var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Calcular as rotações com base nas coordenadas do mouse
+  var rotationX = mouseY * Math.PI * 0.2; // Pode ajustar a sensibilidade multiplicando por um fator
+  var rotationY = mouseX * Math.PI * 0.2;
+
+  // Aplicar as rotações aos modelos
+  if (eeveeModel) {
+      eeveeModel.rotation.y = rotationY;
+  }
+  if(ground){
+    ground.rotation.y = rotationY;
+  
+  }
+}
+
+
 
 // ANIMAÇÃO
 
@@ -223,7 +273,6 @@ function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
-    controls.update();
 }
 
 animate();
