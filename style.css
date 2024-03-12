@@ -144,5 +144,6 @@ p {
 .custom-section header {
     height: 70px;
     font-size: 50px;
+    font-weight: bold;
     /* Adicione mais estilos conforme necessário */
   }
