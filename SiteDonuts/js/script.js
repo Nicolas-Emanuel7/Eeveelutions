@@ -191,6 +191,7 @@ const sizes = {
 // Inicializa a variável scrollY com o valor atual do scroll vertical da janela
 let scrollY = window.scrollY
 // Inicializa a variável currentSection com o valor 0, representando a seção atual da página
+let currentSection = 0
 
 // Define um array de transformações para o donut em diferentes seções
 const transformDonut = [{

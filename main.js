@@ -20,6 +20,188 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.set(0, 2.2, 7);
 scene.add(camera);
 
+// Inicializa a variável scrollY com o valor atual do scroll vertical da janela
+let scrollY = window.scrollY
+// Inicializa a variável currentSection com o valor 0, representando a seção atual da página
+let currentSection = 0
+
+// Acesse o elemento pelo ID
+const body = document.body;
+
+// Modifique uma propriedade CSS diretamente
+
+
+
+// Objeto que mapeia o número da seção para a função que será executada
+const sectionActions = {
+  0: () => {
+      // Ação para a seção 0
+      console.log('Executando ação para a seção 0');
+      // Adicione aqui o código que deseja executar para a seção 0
+      
+
+      moverModelo(eeveeModel, -25)
+
+      body.style.background = 'red';
+  },
+  1: () => {
+      // Ação para a seção 1
+      console.log('Executando ação para a seção 1');
+      // Adicione aqui o código que deseja executar para a seção 1
+      moverModelo(eeveeModel, 0)
+
+      moverModelo(vaporeonModel, 25);
+
+      body.style.background = 'blue';
+  },
+  2: () => {
+      // Ação para a seção 2
+      console.log('Executando ação para a seção 2');
+      // Adicione aqui o código que deseja executar para a seção 2
+      moverModelo(eeveeModel, -25)
+
+      moverModelo(vaporeonModel, 0);
+
+      moverModelo(jolteonModel, -25);
+
+      body.style.background = 'green';
+  },
+  3: () => {
+      // Ação para a seção 3
+      console.log('Executando ação para a seção 3');
+      // Adicione aqui o código que deseja executar para a seção 3
+      moverModelo(jolteonModel, 0);
+
+      moverModelo(vaporeonModel, 25);
+
+      moverModelo(flareonModel, 25);
+
+      body.style.background = 'yellow';
+  },
+  4: () => {
+      // Ação para a seção 4
+      console.log('Executando ação para a seção 4');
+      // Adicione aqui o código que deseja executar para a seção 4
+      moverModelo(jolteonModel, -25);
+
+      moverModelo(flareonModel, 0)
+
+      moverModelo(espeonModel, -25);
+
+      body.style.background = 'purple';
+  },
+  5: () => {
+      // Ação para a seção 5
+      console.log('Executando ação para a seção 5');
+      // Adicione aqui o código que deseja executar para a seção 5
+      moverModelo(flareonModel, 25)
+
+      moverModelo(espeonModel, 0)
+
+      moverModelo(umbreonModel, 25);
+
+      body.style.background = 'orange';
+  },
+  6: () => {
+      // Ação para a seção 6
+      console.log('Executando ação para a seção 6');
+      // Adicione aqui o código que deseja executar para a seção 6
+      moverModelo(espeonModel, -25)
+
+      moverModelo(umbreonModel, 0)
+
+      moverModelo(leafeonModel, -25);
+
+      body.style.background = 'pink';
+  },
+  7: () => {
+      // Ação para a seção 7
+      console.log('Executando ação para a seção 7');
+      // Adicione aqui o código que deseja executar para a seção 7
+      moverModelo(umbreonModel, 25)
+
+      moverModelo(leafeonModel, 0)
+
+      moverModelo(glaceonModel, 25);
+
+      body.style.background = 'brown';
+  },
+  8: () => {
+      // Ação para a seção 8
+      console.log('Executando ação para a seção 8');
+      // Adicione aqui o código que deseja executar para a seção 8
+      moverModelo(leafeonModel, -25)
+
+      moverModelo(glaceonModel, 0)
+
+      moverModelo(sylveonModel, -25);
+
+      body.style.background = 'grey';
+  },
+  9: () => {
+      // Ação para a seção 9
+      console.log('Executando ação para a seção 9');
+      // Adicione aqui o código que deseja executar para a seção 9
+      moverModelo(glaceonModel, 25)
+
+      moverModelo(sylveonModel, 0)
+
+      body.style.background = 'black';
+  }
+  // Adicione mais pares chave-valor conforme necessário para cada seção
+};
+
+window.addEventListener('load', () => {
+  // Executa a ação da seção 0 assim que a página é carregada
+  sectionActions[0]();
+});
+
+// Adicione um listener de evento de scroll à janela
+window.addEventListener('scroll', () => {
+  // Atualiza a variável scrollY com o valor atual do scroll vertical da janela
+  scrollY = window.scrollY
+  // Calcula a nova seção com base na posição do scroll e na altura da janela
+  const newSection = Math.round(scrollY / window.innerHeight)
+
+  // Verifica se a nova seção é diferente da seção atual
+  if (newSection != currentSection) {
+      // Atualiza a seção atual com a nova seção
+      currentSection = newSection
+
+      // Executa a ação correspondente à seção atual
+      if (sectionActions[currentSection]) {
+          sectionActions[currentSection]();
+      } else {
+          console.log('Não há ação definida para esta seção');
+      }
+  }
+});
+
+function moverModelo(modelo, positionX) {
+  // Defina aqui o código para mover todos os modelos
+    if (modelo) {
+      gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX });
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Cria um renderizador WebGL com as configurações especificadas
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas, // Define o canvas onde a renderização será feita
@@ -52,231 +234,155 @@ scene.add(directionalLight)
 // Modelos
 
 //2dRenderer
+/*
 const botaoRenderer = new CSS2DRenderer();
 botaoRenderer.setSize(window.innerWidth, window.innerHeight);
 botaoRenderer.domElement.style.position = 'absolute';
 botaoRenderer.domElement.style.top = '0px'
 document.body.appendChild(botaoRenderer.domElement);
 
+const botao = document.createElement('button');
+botao.className = 'botao';
+const botaoContainer = document.createElement('div');
+botaoContainer.appendChild(botao);
+*/
 
-// BOTÃO EEVEE
-const botaoEevee = document.createElement('button');
-botaoEevee.textContent = 'Eevee';
-botaoEevee.addEventListener('click', () => {
-  carregarModelos('eevee');
-});
-const botaoEeveeObj = new CSS2DObject(botaoEevee);
-botaoEeveeObj.position.set(0, -2, 0);
-scene.add(botaoEeveeObj);
-
-// BOTÃO ESPEON
-const botaoEspeon = document.createElement('button');
-botaoEspeon.textContent = 'Espeon';
-botaoEspeon.addEventListener('click', () => {
-  carregarModelos('espeon');
-});
-const botaoEspeonObj = new CSS2DObject(botaoEspeon);
-botaoEspeonObj.position.set(1, -2, 0);
-scene.add(botaoEspeonObj);
-
-// BOTÃO FLAREON
-const botaoFlareon = document.createElement('button');
-botaoFlareon.textContent = 'Espeon';
-botaoFlareon.addEventListener('click', () => {
-  carregarModelos('flareon');
-});
-const botaoFlareonObj = new CSS2DObject(botaoFlareon);
-botaoFlareonObj.position.set(2, -2, 0);
-scene.add(botaoFlareonObj);
-
-// BOTÃO GLACEON
-const botaoGlaceon = document.createElement('button');
-botaoGlaceon.textContent = 'Glaceon';
-botaoGlaceon.addEventListener('click', () => {
-  carregarModelos('glaceon');
-});
-const botaoGlaceonObj = new CSS2DObject(botaoGlaceon);
-botaoGlaceonObj.position.set(-1, -2, 0);
-scene.add(botaoGlaceonObj);
-
-// BOTÃO JOLTEON
-const botaoJolteon = document.createElement('button');
-botaoJolteon.textContent = 'Jolteon';
-botaoJolteon.addEventListener('click', () => {
-  carregarModelos('jolteon');
-});
-const botaoJolteonObj = new CSS2DObject(botaoJolteon);
-botaoJolteonObj.position.set(-2, -2, 0);
-scene.add(botaoJolteonObj);
-
-// BOTÃO LEAFEON
-const botaoLeafeon = document.createElement('button');
-botaoLeafeon.textContent = 'Leafeon';
-botaoLeafeon.addEventListener('click', () => {
-  carregarModelos('leafeon');
-});
-const botaoLeafeonObj = new CSS2DObject(botaoLeafeon);
-botaoLeafeonObj.position.set(-3, -2, 0);
-scene.add(botaoLeafeonObj);
-
-// BOTÃO SYLVEON
-const botaoSylveon = document.createElement('button');
-botaoSylveon.textContent = 'Sylveon';
-botaoSylveon.addEventListener('click', () => {
-  carregarModelos('sylveon');
-});
-const botaoSylveonObj = new CSS2DObject(botaoSylveon);
-botaoSylveonObj.position.set(3, -2, 0);
-scene.add(botaoSylveonObj);
-
-// BOTÃO UMBREON
-const botaoUmbreon = document.createElement('button');
-botaoUmbreon.textContent = 'Umbreon';
-botaoUmbreon.addEventListener('click', () => {
-  carregarModelos('umbreon');
-});
-const botaoUmbreonObj = new CSS2DObject(botaoUmbreon);
-botaoUmbreonObj.position.set(-4, -2, 0);
-scene.add(botaoUmbreonObj);
-
+/*
 // BOTÃO VAPOREON
 const botaoVaporeon = document.createElement('button');
-botaoVaporeon.textContent = 'Vaporeon';
+botaoVaporeon.className = 'botaoVaporeon';
+const imgVaporeon = document.createElement('img');
+imgVaporeon.src = "../site/simbolos/water.webp";
+botaoVaporeon.appendChild(imgVaporeon);
 botaoVaporeon.addEventListener('click', () => {
   carregarModelos('vaporeon');
 });
 const botaoVaporeonObj = new CSS2DObject(botaoVaporeon);
-botaoVaporeonObj.position.set(4, -2, 0);
+botaoVaporeonObj.position.set(6, -2, 0);
 scene.add(botaoVaporeonObj);
+*/
 
-var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 
-function carregarModelos(modelo) {
-  // Remova o modelo existente, se houver
-  if (eeveeModel) {
-    scene.remove(eeveeModel);
-    eeveeModel = undefined;
-  }
-  if (espeonModel) {
-    scene.remove(espeonModel);
-    espeonModel = undefined;
-  }
-  if (flareonModel) {
-    scene.remove(flareonModel);
-    flareonModel = undefined;
-  }
-  if (glaceonModel) {
-    scene.remove(glaceonModel);
-    glaceonModel = undefined;
-  }
-  if (jolteonModel) {
-    scene.remove(jolteonModel);
-    jolteonModel = undefined;
-  }
-  if (leafeonModel) {
-    scene.remove(leafeonModel);
-    leafeonModel = undefined;
-  }
-  if (sylveonModel) {
-    scene.remove(sylveonModel);
-    sylveonModel = undefined;
-  }
-  if (umbreonModel) {
-    scene.remove(umbreonModel);
-    umbreonModel = undefined;
-  }
-  if (vaporeonModel) {
-    scene.remove(vaporeonModel);
-    vaporeonModel = undefined;
-  }
+function carregarEevee(){
+  console.log('Carregando Eevee'); 
+  const Eevee = new GLTFLoader();
+  Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
+    eevee.scene.scale.set(8, 8, 8);
+    scene.add(eevee.scene);
+    eevee.scene.castShadow = true;
+    eeveeModel = eevee.scene;
+    eeveeModel.position.set(-25, 0, 0);
+  });
+}
 
-  // Carregue o modelo correspondente
-  if (modelo === 'eevee') {
-    console.log('Carregando modelo Eevee');
-    const Eevee = new GLTFLoader();
-    Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-      eevee.scene.scale.set(8, 8, 8);
-      scene.add(eevee.scene);
-      eevee.scene.castShadow = true;
-      eeveeModel = eevee.scene;
-    });
-  } else if (modelo === 'espeon') {
-    console.log('Carregando modelo Espeon');
-    const Espeon = new GLTFLoader();
-    Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
-      espeon.scene.scale.set(2, 2, 2);
-      scene.add(espeon.scene);
-      espeon.scene.castShadow = true;
-      espeonModel = espeon.scene;
-    });
-  } else if (modelo === 'flareon') {
-    console.log('Carregando modelo Flareon')
+function carregarEspeon(){
+  const Espeon = new GLTFLoader();
+  Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
+    espeon.scene.scale.set(2, 2, 2);
+    scene.add(espeon.scene);
+    espeon.scene.castShadow = true;
+    espeonModel = espeon.scene;
+    espeonModel.position.set(-25, 0, 0);
+  });
+}
+
+function carregarFlareon(){
   const Flareon = new GLTFLoader();
   Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
     flareon.scene.scale.set(2,2,2);
     scene.add(flareon.scene);
     flareon.scene.castShadow = true
     flareonModel = flareon.scene;
+    flareonModel.position.set(25, 0, 0);
   });
-  } else if (modelo === 'glaceon') {
-    console.log('Carregando modelo Glaceon')
+}
+
+function carregarGlaceon(){
   const Glaceon = new GLTFLoader();
   Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
     glaceon.scene.scale.set(2,2,2);
     scene.add(glaceon.scene);
     glaceon.scene.castShadow = true
     glaceonModel = glaceon.scene;
+    glaceonModel.position.set(25, 0, 0);
   });
-  } else if (modelo === 'jolteon') {
-    console.log('Carregando modelo Jolteon')
+}
+
+function carregarJolteon(){
   const Jolteon = new GLTFLoader();
   Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
     jolteon.scene.scale.set(2,2,2);
     scene.add(jolteon.scene);
     jolteon.scene.castShadow = true
     jolteonModel = jolteon.scene;
+    jolteonModel.position.set(-25, 0, 0);
   });
-  } else if (modelo === 'leafeon') {
-    console.log('Carregando modelo Leafeon')
+}
+
+function carregarLeafeon(){
   const Leafeon = new GLTFLoader();
   Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
     leafeon.scene.scale.set(2,2,2);
     scene.add(leafeon.scene);
     leafeon.scene.castShadow = true
     leafeonModel = leafeon.scene;
+    leafeonModel.position.set(-25, 0, 0);
   });
-  } else if (modelo === 'sylveon') {
-    console.log('Carregando modelo Sylveon')
+}
+
+function carregarSylveon(){
   const Sylveon = new GLTFLoader();
   Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
     sylveon.scene.scale.set(2,2,2);
     scene.add(sylveon.scene);
     sylveon.scene.castShadow = true
     sylveonModel = sylveon.scene;
+    sylveonModel.position.set(-25, 0, 0);
   });
-  } else if (modelo === 'umbreon') {
-    console.log('Carregando modelo Umbreon')
+}
+
+function carregarUmbreon(){
   const Umbreon = new GLTFLoader();
   Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
     umbreon.scene.scale.set(2,2,2);
     scene.add(umbreon.scene);
     umbreon.scene.castShadow = true
     umbreonModel = umbreon.scene;
+    umbreonModel.position.set(25, 0, 0);
   });
-  } else if (modelo === 'vaporeon') {
-    
+}
+
+function carregarVaporeon(){
   const Vaporeon = new GLTFLoader();
   Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
     vaporeon.scene.scale.set(2,2,2);
     scene.add(vaporeon.scene);
     vaporeon.scene.castShadow = true
     vaporeonModel = vaporeon.scene;
+    vaporeonModel.position.set(25, 0, 0);
   });
+}
+
+// Função para apagar o modelo existente
+function apagarModelo(modelo) {
+  if (modelo) {
+    scene.remove(modelo);
+    modelo = undefined;
   }
 }
-carregarModelos();
 
 
+var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
+
+carregarEevee();
+carregarEspeon();
+carregarFlareon();
+      carregarGlaceon();
+      carregarJolteon();
+      carregarLeafeon();
+      carregarSylveon();
+      carregarUmbreon();
+      carregarVaporeon();
 
 const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,2,32) , new THREE.MeshStandardMaterial( { color: 0x00ffff, metalness:0.25 } ) );
 scene.add( ground );
@@ -333,14 +439,19 @@ function onMouseMove(event) {
   }
 }
 
+
 // ANIMAÇÃO
 
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
-    botaoRenderer.render(scene, camera);
+    //botaoRenderer.render(scene, camera);
 
 }
 
 animate();
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
