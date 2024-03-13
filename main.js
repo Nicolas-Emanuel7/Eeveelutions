@@ -28,6 +28,8 @@ let currentSection = 0
 // Acesse o elemento pelo ID
 const body = document.body;
 
+const moldura = document.getElementById('moldura')
+
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
   0: () => {
@@ -48,6 +50,7 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25);
 
       body.style.background = 'blue';
+      moldura.style.background = 'pink'
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -63,6 +66,7 @@ const sectionActions = {
       moverModelo(jolteonModel, -25);
 
       body.style.background = 'green';
+      moldura.style.background = 'brown';
 
       minhaLuz1.atualizarCor(0xff0000);
       minhaluz2.atualizarCor(0x00ff00);
@@ -78,6 +82,7 @@ const sectionActions = {
       moverModelo(flareonModel, 25);
 
       body.style.background = 'yellow';
+      moldura.style.background = 'brown';
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -93,6 +98,7 @@ const sectionActions = {
       moverModelo(espeonModel, -25);
 
       body.style.background = 'purple';
+      moldura.style.background = 'brown';
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -108,6 +114,7 @@ const sectionActions = {
       moverModelo(umbreonModel, 25);
 
       body.style.background = 'orange';
+      moldura.style.background = 'brown';
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -123,6 +130,7 @@ const sectionActions = {
       moverModelo(leafeonModel, -25);
 
       body.style.background = 'pink';
+      moldura.style.background = '#ffffff'
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -137,7 +145,7 @@ const sectionActions = {
 
       moverModelo(glaceonModel, 25);
 
-      body.style.background = 'brown';
+      body.style.background = '#acdeb2';
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -165,7 +173,7 @@ const sectionActions = {
 
       moverModelo(sylveonModel, 0)
 
-      body.style.background = 'black';
+      body.style.background = '#fc6990';
 
       minhaLuz1.atualizarCor(0x00ff00);
       minhaluz2.atualizarCor(0xff0000);
@@ -273,7 +281,7 @@ function carregarModelos(){
 
   const Flareon = new GLTFLoader();
   Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
-    flareon.scene.scale.set(2,2,2);
+    flareon.scene.scale.set(1.8,1.9,2);
     scene.add(flareon.scene);
     flareon.scene.castShadow = true
     flareonModel = flareon.scene;
@@ -327,7 +335,7 @@ function carregarModelos(){
 
   const Vaporeon = new GLTFLoader();
   Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
-    vaporeon.scene.scale.set(2,2,2);
+    vaporeon.scene.scale.set(1.7,1.7,1.7);
     scene.add(vaporeon.scene);
     vaporeon.scene.castShadow = true
     vaporeonModel = vaporeon.scene;

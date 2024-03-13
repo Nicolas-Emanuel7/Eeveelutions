@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *,
 *::before,
 *::after {
@@ -16,8 +16,17 @@ body {
     position: relative;
     height: 100%;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
+    font-family:'Press Start 2P';
     overflow-y: auto;
+
+
+}
+
+#moldura{
+    background-color: aqua;
+    height: 80%;
+    width: 80%;
+    
 }
 
 body.loaded {
@@ -53,6 +62,7 @@ section .container {
 
 section.one .container {
     grid-template-areas: 'content ..';
+    background: #f5f5f5;
 }
 
 .hero {
@@ -72,7 +82,7 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 90px;
+    font-size: 50px;
     line-height: 100px;
     font-weight: 700;
     height: 100px;
@@ -84,7 +94,7 @@ h1 {
 }
 
 h2 {
-    font-size: 60px;
+    font-size: 10px;
     font-weight: 600;
     line-height: 70px;
     font-family: inherit;
@@ -142,7 +152,9 @@ p {
 
 .custom-section header {
     height: 70px;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
+    padding-top: 20px;
+    padding-left: 20px;
     /* Adicione mais estilos conforme necessário */
   }
