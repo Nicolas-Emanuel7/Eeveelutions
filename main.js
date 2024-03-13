@@ -53,6 +53,9 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25);
 
       body.style.background = 'blue';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   2: () => {
       // Ação para a seção 2
@@ -65,6 +68,9 @@ const sectionActions = {
       moverModelo(jolteonModel, -25);
 
       body.style.background = 'green';
+
+      minhaLuz1.atualizarCor(0xff0000);
+      minhaluz2.atualizarCor(0x00ff00);
   },
   3: () => {
       // Ação para a seção 3
@@ -184,24 +190,6 @@ function moverModelo(modelo, positionX) {
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Cria um renderizador WebGL com as configurações especificadas
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas, // Define o canvas onde a renderização será feita
@@ -217,53 +205,37 @@ renderer.setSize(sizes.width, sizes.height)
 // Define a proporção de pixels do renderizador para ser o mínimo entre o dispositivo e 2
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.8)
+const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(luzAmbiente)
 
-// Cria uma luz direcional com cor branca e intensidade 1
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-// Define a posição da luz direcional
-directionalLight.position.set(1, 2, 0)
+class MinhaLuz extends THREE.Object3D {
+  constructor(cor, intensidade) {
+      super();
+      // Crie a luz direcional
+      this.luz = new THREE.DirectionalLight(cor, intensidade);
+      // Defina a posição inicial da luz
+      this.luz.position.set(1, 1, 1); // Posiciona a luz à direita
+      // Adicione a luz como filho desta instância da classe
+      this.add(this.luz);
+      this.castShadow = true;
+  }
+  // Método para atualizar a cor da luz
+  atualizarCor(cor) {
+      this.luz.color.set(cor);
+  }
+}
 
-// Ativa a capacidade de emitir sombras para a luz direcional
-directionalLight.castShadow = true
-
-// Adiciona a luz direcional à cena
-scene.add(directionalLight)
+// Crie uma instância da classe MinhaLuz
+const minhaLuz1 = new MinhaLuz(0xff0000, 3);
+const minhaluz2 = new MinhaLuz(0x0000ff, 3);
+const minhaluz3 = new MinhaLuz(0xffffff, 1);
+scene.add(minhaLuz1);
+scene.add(minhaluz2);
+scene.add(minhaluz3);
 
 // Modelos
 
-//2dRenderer
-/*
-const botaoRenderer = new CSS2DRenderer();
-botaoRenderer.setSize(window.innerWidth, window.innerHeight);
-botaoRenderer.domElement.style.position = 'absolute';
-botaoRenderer.domElement.style.top = '0px'
-document.body.appendChild(botaoRenderer.domElement);
-
-const botao = document.createElement('button');
-botao.className = 'botao';
-const botaoContainer = document.createElement('div');
-botaoContainer.appendChild(botao);
-*/
-
-/*
-// BOTÃO VAPOREON
-const botaoVaporeon = document.createElement('button');
-botaoVaporeon.className = 'botaoVaporeon';
-const imgVaporeon = document.createElement('img');
-imgVaporeon.src = "../site/simbolos/water.webp";
-botaoVaporeon.appendChild(imgVaporeon);
-botaoVaporeon.addEventListener('click', () => {
-  carregarModelos('vaporeon');
-});
-const botaoVaporeonObj = new CSS2DObject(botaoVaporeon);
-botaoVaporeonObj.position.set(6, -2, 0);
-scene.add(botaoVaporeonObj);
-*/
-
-
-function carregarEevee(){
+function carregarModelos(){
   console.log('Carregando Eevee'); 
   const Eevee = new GLTFLoader();
   Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
@@ -273,9 +245,7 @@ function carregarEevee(){
     eeveeModel = eevee.scene;
     eeveeModel.position.set(-25, 0, 0);
   });
-}
 
-function carregarEspeon(){
   const Espeon = new GLTFLoader();
   Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
     espeon.scene.scale.set(2, 2, 2);
@@ -284,9 +254,7 @@ function carregarEspeon(){
     espeonModel = espeon.scene;
     espeonModel.position.set(-25, 0, 0);
   });
-}
 
-function carregarFlareon(){
   const Flareon = new GLTFLoader();
   Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
     flareon.scene.scale.set(2,2,2);
@@ -295,9 +263,7 @@ function carregarFlareon(){
     flareonModel = flareon.scene;
     flareonModel.position.set(25, 0, 0);
   });
-}
 
-function carregarGlaceon(){
   const Glaceon = new GLTFLoader();
   Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
     glaceon.scene.scale.set(2,2,2);
@@ -306,9 +272,7 @@ function carregarGlaceon(){
     glaceonModel = glaceon.scene;
     glaceonModel.position.set(25, 0, 0);
   });
-}
 
-function carregarJolteon(){
   const Jolteon = new GLTFLoader();
   Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
     jolteon.scene.scale.set(2,2,2);
@@ -317,9 +281,7 @@ function carregarJolteon(){
     jolteonModel = jolteon.scene;
     jolteonModel.position.set(-25, 0, 0);
   });
-}
 
-function carregarLeafeon(){
   const Leafeon = new GLTFLoader();
   Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
     leafeon.scene.scale.set(2,2,2);
@@ -328,9 +290,7 @@ function carregarLeafeon(){
     leafeonModel = leafeon.scene;
     leafeonModel.position.set(-25, 0, 0);
   });
-}
 
-function carregarSylveon(){
   const Sylveon = new GLTFLoader();
   Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
     sylveon.scene.scale.set(2,2,2);
@@ -339,9 +299,7 @@ function carregarSylveon(){
     sylveonModel = sylveon.scene;
     sylveonModel.position.set(-25, 0, 0);
   });
-}
 
-function carregarUmbreon(){
   const Umbreon = new GLTFLoader();
   Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
     umbreon.scene.scale.set(2,2,2);
@@ -350,9 +308,7 @@ function carregarUmbreon(){
     umbreonModel = umbreon.scene;
     umbreonModel.position.set(25, 0, 0);
   });
-}
 
-function carregarVaporeon(){
   const Vaporeon = new GLTFLoader();
   Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
     vaporeon.scene.scale.set(2,2,2);
@@ -371,18 +327,10 @@ function apagarModelo(modelo) {
   }
 }
 
-
 var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
+carregarModelos()
 
-carregarEevee();
-carregarEspeon();
-carregarFlareon();
-      carregarGlaceon();
-      carregarJolteon();
-      carregarLeafeon();
-      carregarSylveon();
-      carregarUmbreon();
-      carregarVaporeon();
+// CHAO
 
 const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,2,32) , new THREE.MeshStandardMaterial( { color: 0x00ffff, metalness:0.25 } ) );
 scene.add( ground );
@@ -439,14 +387,69 @@ function onMouseMove(event) {
   }
 }
 
+// 1. Carregar a imagem da textura
+const textureLoader = new THREE.TextureLoader();
+
+const texturaEevee = textureLoader.load('assets/CARTAS/eevee.webp');
+const texturaEspeon = textureLoader.load('assets/CARTAS/espeon.webp');
+const texturaFlareon = textureLoader.load('assets/CARTAS/flareon.webp');
+const texturaGlaceon = textureLoader.load('assets/CARTAS/glaceon.webp');
+const texturaJolteon = textureLoader.load('assets/CARTAS/jolteon.webp');
+const texturaLeafeon = textureLoader.load('assets/CARTAS/leafeon.webp');
+const texturaUmbreon = textureLoader.load('assets/CARTAS/umbreon.webp');
+const texturaVaporeon = textureLoader.load('assets/CARTAS/vaporeon.webp');
+const texturaSylveon = textureLoader.load('assets/CARTAS/sylveon.jpg');
+
+const parteTraseira = textureLoader.load('assets/CARTAS/backside.png');
+
+// Criando a geometria da carta
+const geometry = new THREE.PlaneGeometry(3, 4.5); // Usando um quadrado como exemplo
+
+// criando o objeto da carta (o material é adicionado diretamente dentro do MESH, pois assim poupa espaço)
+
+const cartaEevee = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaEevee }));
+const cartaEspeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaEspeon }));
+const cartaFlareon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaFlareon }));
+const cartaGlaceon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaGlaceon }));
+const cartaJolteon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaJolteon }));
+const cartaLeafeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaLeafeon }));
+const cartaUmbreon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaUmbreon }));
+const cartaVaporeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaVaporeon }));
+const cartaSylveon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaSylveon }));
+
+// adicionando todas as cartas em uma array
+const cartas = [cartaEevee, cartaEspeon, cartaFlareon, cartaGlaceon, cartaJolteon, cartaLeafeon, cartaUmbreon, cartaVaporeon, cartaSylveon];
+
+// Função para adicionar a carta em local aleatório no eixo x e y
+function adicionarCartaAleatoria(carta) {
+  carta.position.x = Math.random() * 10 - 5;
+  carta.position.y = Math.random() * 10 - 5;
+  carta.position.z = -5;
+  scene.add(carta);
+}
+
+// fazendo um for para todas as cartas passarem pela função anterior
+for (let i = 0; i < cartas.length; i++) {
+  adicionarCartaAleatoria(cartas[i]);
+}
+
+
 
 // ANIMAÇÃO
+
+let angulo = 0.0
+let R = 10
 
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
     //botaoRenderer.render(scene, camera);
+
+    angulo += 0.01
+    minhaLuz1.position.set(R*Math.cos(angulo),0, R*Math.sin(angulo))
+    minhaluz2.position.set(R*Math.cos(-angulo),0, R*Math.sin(-angulo))
+    minhaluz3.position.set(0, R*Math.cos(angulo), R*Math.sin(angulo))
 
 }
 
@@ -455,3 +458,33 @@ animate();
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
+
+//2dRenderer
+/*
+const botaoRenderer = new CSS2DRenderer();
+botaoRenderer.setSize(window.innerWidth, window.innerHeight);
+botaoRenderer.domElement.style.position = 'absolute';
+botaoRenderer.domElement.style.top = '0px'
+document.body.appendChild(botaoRenderer.domElement);
+
+const botao = document.createElement('button');
+botao.className = 'botao';
+const botaoContainer = document.createElement('div');
+botaoContainer.appendChild(botao);
+*/
+
+/*
+// BOTÃO VAPOREON
+const botaoVaporeon = document.createElement('button');
+botaoVaporeon.className = 'botaoVaporeon';
+const imgVaporeon = document.createElement('img');
+imgVaporeon.src = "../site/simbolos/water.webp";
+botaoVaporeon.appendChild(imgVaporeon);
+botaoVaporeon.addEventListener('click', () => {
+  carregarModelos('vaporeon');
+});
+const botaoVaporeonObj = new CSS2DObject(botaoVaporeon);
+botaoVaporeonObj.position.set(6, -2, 0);
+scene.add(botaoVaporeonObj);
+*/
