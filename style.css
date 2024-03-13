@@ -21,12 +21,13 @@ body {
 
 
 }
-
-#moldura{
-    background-color: aqua;
-    height: 80%;
-    width: 80%;
-    
+.moldura{
+    background-color: #53d657;
+    height: 70px;
+    font-size: 40px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 body.loaded {
