@@ -28,10 +28,6 @@ let currentSection = 0
 // Acesse o elemento pelo ID
 const body = document.body;
 
-// Modifique uma propriedade CSS diretamente
-
-
-
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
   0: () => {
@@ -39,7 +35,6 @@ const sectionActions = {
       console.log('Executando ação para a seção 0');
       // Adicione aqui o código que deseja executar para a seção 0
       
-
       moverModelo(eeveeModel, -25)
 
       body.style.background = 'red';
@@ -83,6 +78,9 @@ const sectionActions = {
       moverModelo(flareonModel, 25);
 
       body.style.background = 'yellow';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   4: () => {
       // Ação para a seção 4
@@ -95,6 +93,9 @@ const sectionActions = {
       moverModelo(espeonModel, -25);
 
       body.style.background = 'purple';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   5: () => {
       // Ação para a seção 5
@@ -107,6 +108,9 @@ const sectionActions = {
       moverModelo(umbreonModel, 25);
 
       body.style.background = 'orange';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   6: () => {
       // Ação para a seção 6
@@ -119,6 +123,9 @@ const sectionActions = {
       moverModelo(leafeonModel, -25);
 
       body.style.background = 'pink';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   7: () => {
       // Ação para a seção 7
@@ -131,6 +138,9 @@ const sectionActions = {
       moverModelo(glaceonModel, 25);
 
       body.style.background = 'brown';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   8: () => {
       // Ação para a seção 8
@@ -143,6 +153,9 @@ const sectionActions = {
       moverModelo(sylveonModel, -25);
 
       body.style.background = 'grey';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   },
   9: () => {
       // Ação para a seção 9
@@ -153,6 +166,9 @@ const sectionActions = {
       moverModelo(sylveonModel, 0)
 
       body.style.background = 'black';
+
+      minhaLuz1.atualizarCor(0x00ff00);
+      minhaluz2.atualizarCor(0xff0000);
   }
   // Adicione mais pares chave-valor conforme necessário para cada seção
 };
@@ -387,53 +403,56 @@ function onMouseMove(event) {
   }
 }
 
-// 1. Carregar a imagem da textura
 const textureLoader = new THREE.TextureLoader();
 
-const texturaEevee = textureLoader.load('assets/CARTAS/eevee.webp');
-const texturaEspeon = textureLoader.load('assets/CARTAS/espeon.webp');
-const texturaFlareon = textureLoader.load('assets/CARTAS/flareon.webp');
-const texturaGlaceon = textureLoader.load('assets/CARTAS/glaceon.webp');
-const texturaJolteon = textureLoader.load('assets/CARTAS/jolteon.webp');
-const texturaLeafeon = textureLoader.load('assets/CARTAS/leafeon.webp');
-const texturaUmbreon = textureLoader.load('assets/CARTAS/umbreon.webp');
-const texturaVaporeon = textureLoader.load('assets/CARTAS/vaporeon.webp');
-const texturaSylveon = textureLoader.load('assets/CARTAS/sylveon.jpg');
+// Carregar textura para a parte de trás da carta
+const texturaAtras = textureLoader.load('assets/CARTAS/backside.png');
 
-const parteTraseira = textureLoader.load('assets/CARTAS/backside.png');
+const cartasLista = []
 
-// Criando a geometria da carta
-const geometry = new THREE.PlaneGeometry(3, 4.5); // Usando um quadrado como exemplo
+// Função para criar uma carta
+function criarCarta(texturaFrente) {
 
-// criando o objeto da carta (o material é adicionado diretamente dentro do MESH, pois assim poupa espaço)
+    // Criar material da parte da frente da carta
+    const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
 
-const cartaEevee = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaEevee }));
-const cartaEspeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaEspeon }));
-const cartaFlareon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaFlareon }));
-const cartaGlaceon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaGlaceon }));
-const cartaJolteon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaJolteon }));
-const cartaLeafeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaLeafeon }));
-const cartaUmbreon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaUmbreon }));
-const cartaVaporeon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaVaporeon }));
-const cartaSylveon = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texturaSylveon }));
+    // Criar geometria da carta
+    const geometry = new THREE.BoxGeometry(3, 0.1, 4.5);
 
-// adicionando todas as cartas em uma array
-const cartas = [cartaEevee, cartaEspeon, cartaFlareon, cartaGlaceon, cartaJolteon, cartaLeafeon, cartaUmbreon, cartaVaporeon, cartaSylveon];
+    // Criar a carta (usando um plano como exemplo)
+    const carta = new THREE.Mesh(geometry, parteFrente);
 
-// Função para adicionar a carta em local aleatório no eixo x e y
-function adicionarCartaAleatoria(carta) {
-  carta.position.x = Math.random() * 10 - 5;
-  carta.position.y = Math.random() * 10 - 5;
-  carta.position.z = -5;
-  scene.add(carta);
+    // Posicionar a carta aleatoriamente
+    carta.position.x = Math.random() * 10 - 5;
+    carta.position.y = Math.random() * 10 - 5;
+    carta.position.z = Math.random() * 10 - 10;
+
+    console.log(carta.position.x, carta.position.y, carta.position.z);
+
+    cartasLista.push(carta);
+
+    return carta;
 }
 
-// fazendo um for para todas as cartas passarem pela função anterior
-for (let i = 0; i < cartas.length; i++) {
-  adicionarCartaAleatoria(cartas[i]);
-}
+// Carregar texturas para a parte da frente das cartas
+const texturasFrente = [
+    textureLoader.load('assets/CARTAS/eevee.webp'),
+    textureLoader.load('assets/CARTAS/espeon.webp'),
+    textureLoader.load('assets/CARTAS/flareon.webp'),
+    textureLoader.load('assets/CARTAS/glaceon.webp'),
+    textureLoader.load('assets/CARTAS/jolteon.webp'),
+    textureLoader.load('assets/CARTAS/leafeon.webp'),
+    textureLoader.load('assets/CARTAS/umbreon.webp'),
+    textureLoader.load('assets/CARTAS/vaporeon.webp'),
+    textureLoader.load('assets/CARTAS/sylveon.jpg')
+];
 
-
+// Criar as cartas e adicioná-las à cena
+const cartas = texturasFrente.map(textura => {
+    const carta = criarCarta(textura);
+    scene.add(carta);
+    return carta;
+});
 
 // ANIMAÇÃO
 
@@ -450,6 +469,13 @@ function animate(){
     minhaLuz1.position.set(R*Math.cos(angulo),0, R*Math.sin(angulo))
     minhaluz2.position.set(R*Math.cos(-angulo),0, R*Math.sin(-angulo))
     minhaluz3.position.set(0, R*Math.cos(angulo), R*Math.sin(angulo))
+
+    
+    for (let i = 0; i < cartasLista.length; i++) {
+        cartasLista[i].rotation.y += 0.01;
+        cartasLista[i].rotation.x += 0.01;  
+    }
+    
 
 }
 
