@@ -415,6 +415,17 @@ const textureLoader = new THREE.TextureLoader();
 
 // Carregar textura para a parte de trás da carta
 const texturaAtras = textureLoader.load('assets/CARTAS/backside.png');
+const parteAtras = new THREE.MeshBasicMaterial({ map: texturaAtras });
+
+// Criar geometria da carta
+const geometry = new THREE.BoxGeometry(3, 4.5, 0.01);
+
+const cartaVerso = new THREE.Mesh(geometry, parteAtras);
+cartaVerso.position.x = 5
+cartaVerso.position.y = 3
+cartaVerso.position.z = -0.01
+
+// scene.add(cartaVerso);
 
 const cartasLista = []
 
@@ -424,16 +435,15 @@ function criarCarta(texturaFrente) {
     // Criar material da parte da frente da carta
     const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
 
-    // Criar geometria da carta
-    const geometry = new THREE.BoxGeometry(3, 0.1, 4.5);
+    
 
     // Criar a carta (usando um plano como exemplo)
     const carta = new THREE.Mesh(geometry, parteFrente);
 
     // Posicionar a carta aleatoriamente
-    carta.position.x = Math.random() * 10 - 5;
-    carta.position.y = Math.random() * 10 - 5;
-    carta.position.z = Math.random() * 10 - 10;
+    carta.position.x = 5
+    carta.position.y = 3
+    carta.position.z = 0.01
 
     console.log(carta.position.x, carta.position.y, carta.position.z);
 
@@ -456,11 +466,13 @@ const texturasFrente = [
 ];
 
 // Criar as cartas e adicioná-las à cena
+/*
 const cartas = texturasFrente.map(textura => {
     const carta = criarCarta(textura);
     scene.add(carta);
     return carta;
 });
+*/
 
 // ANIMAÇÃO
 
@@ -478,13 +490,18 @@ function animate(){
     minhaluz2.position.set(R*Math.cos(-angulo),0, R*Math.sin(-angulo))
     minhaluz3.position.set(0, R*Math.cos(angulo), R*Math.sin(angulo))
 
+    /*
     
     for (let i = 0; i < cartasLista.length; i++) {
-        cartasLista[i].rotation.y += 0.01;
-        cartasLista[i].rotation.x += 0.01;  
+        
+        cartasLista[i].position.set(0 ,0, 0.01*Math.cos(angulo))
+        cartasLista[i].rotation.y += 0.01
+        
     }
-    
+    cartaVerso.position.set(0 ,0, 0.01*Math.cos(angulo))
+    cartaVerso.rotation.y += 0.01
 
+    */
 }
 
 animate();
