@@ -36,8 +36,17 @@ const sectionActions = {
       // Ação para a seção 0
       console.log('Executando ação para a seção 0');
       // Adicione aqui o código que deseja executar para a seção 0
-      
-      moverModelo(eeveeModel, -25)
+      moverModelo(cartasLista[0], 7, -10, 0)
+      moverModelo(cartasLista[1], 7, -10, 0)
+      moverModelo(cartasLista[2], 7, -10, 0)
+      moverModelo(cartasLista[3], 7, -10, 0)
+      moverModelo(cartasLista[4], 7, -10, 0)
+      moverModelo(cartasLista[5], 7, -10, 0)
+      moverModelo(cartasLista[6], 7, -10, 0)
+      moverModelo(cartasLista[7], 7, -10, 0)
+      moverModelo(cartasLista[8], 7, -10, 0)
+
+      moverModelo(eeveeModel, -25, 0, 0)
 
       body.style.background = 'red';
   },
@@ -45,138 +54,168 @@ const sectionActions = {
       // Ação para a seção 1
       console.log('Executando ação para a seção 1');
       // Adicione aqui o código que deseja executar para a seção 1
-      moverModelo(eeveeModel, 0)
+      moverModelo(cartasLista[0], 7, 1, 1)
+      moverModelo(cartasLista[7], 7, -10, 0)
 
-      moverModelo(vaporeonModel, 25);
+      moverModelo(eeveeModel, 0, 0, 0)
+      moverModelo(vaporeonModel, 25, 0, 0);
 
-      body.style.background = 'blue';
+      body.style.background = '#f3d5a5';
       moldura.style.background = 'pink'
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   2: () => {
       // Ação para a seção 2
       console.log('Executando ação para a seção 2');
       // Adicione aqui o código que deseja executar para a seção 2
-      moverModelo(eeveeModel, -25)
+      moverModelo(cartasLista[0], 7, -10, 0)
+      moverModelo(cartasLista[7], 7, 1, 1)
+      moverModelo(cartasLista[4], 7, -10, 0)
 
-      moverModelo(vaporeonModel, 0);
 
-      moverModelo(jolteonModel, -25);
+      moverModelo(eeveeModel, -25, 0, 0)
+      moverModelo(vaporeonModel, 0, 0, 0);
+      moverModelo(jolteonModel, -25, 0, 0);
 
-      body.style.background = 'green';
+      body.style.background = '#79CEE0';
       moldura.style.background = 'brown';
 
-      minhaLuz1.atualizarCor(0xff0000);
-      minhaluz2.atualizarCor(0x00ff00);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   3: () => {
       // Ação para a seção 3
       console.log('Executando ação para a seção 3');
       // Adicione aqui o código que deseja executar para a seção 3
-      moverModelo(jolteonModel, 0);
+      moverModelo(cartasLista[7], 7, -10, 0)
+      moverModelo(cartasLista[4], 7, 1, 1)
+      moverModelo(cartasLista[2], 7, -10, 0)
 
-      moverModelo(vaporeonModel, 25);
 
-      moverModelo(flareonModel, 25);
+      moverModelo(jolteonModel, 0, 0, 0);
+      moverModelo(vaporeonModel, 25, 0, 0);
+      moverModelo(flareonModel, 25, 0, 0);
 
-      body.style.background = 'yellow';
+      body.style.background = '#ffff71';
       moldura.style.background = 'brown';
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   4: () => {
       // Ação para a seção 4
       console.log('Executando ação para a seção 4');
       // Adicione aqui o código que deseja executar para a seção 4
-      moverModelo(jolteonModel, -25);
+      moverModelo(cartasLista[4], 7, -10, 0)
+      moverModelo(cartasLista[2], 7, 1, 1)
+      moverModelo(cartasLista[1], 7, -10, 0)
 
-      moverModelo(flareonModel, 0)
+      moverModelo(jolteonModel, -25, 0, 0);
+      moverModelo(flareonModel, 0, 0, 0)
+      moverModelo(espeonModel, -25, 0, 0);
 
-      moverModelo(espeonModel, -25);
-
-      body.style.background = 'purple';
+      body.style.background = '#F7E8A1';
       moldura.style.background = 'brown';
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   5: () => {
       // Ação para a seção 5
       console.log('Executando ação para a seção 5');
       // Adicione aqui o código que deseja executar para a seção 5
-      moverModelo(flareonModel, 25)
+      moverModelo(cartasLista[2], 7, -10, 0)
+      moverModelo(cartasLista[1], 7, 1, 1)
+      moverModelo(cartasLista[6], 7, -10, 0)
 
-      moverModelo(espeonModel, 0)
 
-      moverModelo(umbreonModel, 25);
+      moverModelo(flareonModel, 25, 0, 0)
+      moverModelo(espeonModel, 0, 0, 0)
+      moverModelo(umbreonModel, 25, 0, 0);
 
-      body.style.background = 'orange';
+      body.style.background = '#E4CDDD';
       moldura.style.background = 'brown';
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   6: () => {
       // Ação para a seção 6
       console.log('Executando ação para a seção 6');
       // Adicione aqui o código que deseja executar para a seção 6
-      moverModelo(espeonModel, -25)
+      moverModelo(cartasLista[1], 7, -10, 0)
+      moverModelo(cartasLista[6], 7, 1, 1)
+      moverModelo(cartasLista[5], 7, -10, 0)
 
-      moverModelo(umbreonModel, 0)
+      moverModelo(espeonModel, -25, 0, 0)
+      moverModelo(umbreonModel, 0, 0, 0)
+      moverModelo(leafeonModel, -25, 0, 0);
 
-      moverModelo(leafeonModel, -25);
-
-      body.style.background = 'pink';
+      body.style.background = '#efcb69';
       moldura.style.background = '#ffffff'
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
+
   },
   7: () => {
       // Ação para a seção 7
       console.log('Executando ação para a seção 7');
       // Adicione aqui o código que deseja executar para a seção 7
-      moverModelo(umbreonModel, 25)
+      moverModelo(cartasLista[6], 7, -10, 0)
+      moverModelo(cartasLista[5], 7, 1, 1)
+      moverModelo(cartasLista[3], 7, -10, 0)
 
-      moverModelo(leafeonModel, 0)
+      moverModelo(umbreonModel, 25, 0, 0)
+      moverModelo(leafeonModel, 0, 0, 0)
+      moverModelo(glaceonModel, 25, 0, 0);
 
-      moverModelo(glaceonModel, 25);
+      body.style.background = '#FAE9B9';
 
-      body.style.background = '#acdeb2';
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
   },
   8: () => {
       // Ação para a seção 8
       console.log('Executando ação para a seção 8');
       // Adicione aqui o código que deseja executar para a seção 8
-      moverModelo(leafeonModel, -25)
+      moverModelo(cartasLista[5], 7, -10, 0)
+      moverModelo(cartasLista[3], 7, 1, 1)
+      moverModelo(cartasLista[8], 7, -10, 0)
 
-      moverModelo(glaceonModel, 0)
+      moverModelo(leafeonModel, -25, 0, 0)
+      moverModelo(glaceonModel, 0, 0, 0)
+      moverModelo(sylveonModel, -25, 0, 0);
 
-      moverModelo(sylveonModel, -25);
+      body.style.background = '#DFF6F0';
 
-      body.style.background = 'grey';
+      minhaLuz1.atualizarCor('white');
+      minhaluz2.atualizarCor('white');
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
   },
   9: () => {
       // Ação para a seção 9
       console.log('Executando ação para a seção 9');
       // Adicione aqui o código que deseja executar para a seção 9
-      moverModelo(glaceonModel, 25)
+      moverModelo(cartasLista[3], 7, -10, 0)
+      moverModelo(cartasLista[8], 7, 1, 1)
 
-      moverModelo(sylveonModel, 0)
+      moverModelo(glaceonModel, 25, 0, 0)
+      moverModelo(sylveonModel, 0, 0, 0)
 
-      body.style.background = '#fc6990';
+      body.style.background = '#ffdae3';
 
-      minhaLuz1.atualizarCor(0x00ff00);
-      minhaluz2.atualizarCor(0xff0000);
+      minhaLuz1.atualizarCor('pink');
+      minhaluz2.atualizarCor('yellow');
+
   }
   // Adicione mais pares chave-valor conforme necessário para cada seção
 };
@@ -207,10 +246,10 @@ window.addEventListener('scroll', () => {
   }
 });
 
-function moverModelo(modelo, positionX) {
+function moverModelo(modelo, positionX, positionY, positionZ) {
   // Defina aqui o código para mover todos os modelos
     if (modelo) {
-      gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX });
+      gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX , y: positionY, z: positionZ });
     }
 };
 
@@ -236,9 +275,10 @@ class MinhaLuz extends THREE.Object3D {
   constructor(cor, intensidade) {
       super();
       // Crie a luz direcional
-      this.luz = new THREE.DirectionalLight(cor, intensidade);
+      this.luz = new THREE.SpotLight(cor, intensidade);
       // Defina a posição inicial da luz
-      this.luz.position.set(1, 1, 1); // Posiciona a luz à direita
+      this.luz.target.position.set(0, 1, 0); // Posiciona a luz à direita
+      this.luz.angle = Math.PI / 2;
       // Adicione a luz como filho desta instância da classe
       this.add(this.luz);
       this.castShadow = true;
@@ -250,9 +290,9 @@ class MinhaLuz extends THREE.Object3D {
 }
 
 // Crie uma instância da classe MinhaLuz
-const minhaLuz1 = new MinhaLuz(0xff0000, 3);
-const minhaluz2 = new MinhaLuz(0x0000ff, 3);
-const minhaluz3 = new MinhaLuz(0xffffff, 1);
+const minhaLuz1 = new MinhaLuz(0x00ff00, 4);
+const minhaluz2 = new MinhaLuz(0x0000ff, 4);
+const minhaluz3 = new MinhaLuz(0xffffff, 8);
 scene.add(minhaLuz1);
 scene.add(minhaluz2);
 scene.add(minhaluz3);
@@ -354,13 +394,25 @@ function apagarModelo(modelo) {
 var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 carregarModelos()
 
-// CHAO
+// GRAMA
+const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
+const chao = new THREE.MeshStandardMaterial({map: texturaGrama});
 
-const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,2,32) , new THREE.MeshStandardMaterial( { color: 0x00ffff, metalness:0.25 } ) );
+const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,0.3,32) , new THREE.MeshStandardMaterial( chao ) );
 scene.add( ground );
-ground.position.y = -1;
+ground.position.y = -0.1;
 ground.receiveShadow = true
 ground.castShadow = true
+
+// TERRA
+const texturaTerra = new THREE.TextureLoader().load('assets/CARTAS/terra.jpg');
+const terra = new THREE.MeshStandardMaterial({map: texturaTerra});
+
+const ground2 = new THREE.Mesh( new THREE.CylinderGeometry(3.1,3.1,0.4,32) , new THREE.MeshStandardMaterial( terra ) );
+scene.add( ground2 );
+ground2.position.y = -0.2;
+ground2.receiveShadow = true
+ground2.castShadow = true
 // Controles
 
 // Adicione um evento de mousemove ao documento
@@ -404,10 +456,8 @@ function onMouseMove(event) {
   if(vaporeonModel){
     vaporeonModel.rotation.y = rotationY;
   }
-
   if(ground){
     ground.rotation.y = rotationY;
-  
   }
 }
 
@@ -418,12 +468,9 @@ const texturaAtras = textureLoader.load('assets/CARTAS/backside.png');
 const parteAtras = new THREE.MeshBasicMaterial({ map: texturaAtras });
 
 // Criar geometria da carta
-const geometry = new THREE.BoxGeometry(3, 4.5, 0.01);
+const geometry = new THREE.BoxGeometry(2.5, 4, 0.01);
 
 const cartaVerso = new THREE.Mesh(geometry, parteAtras);
-cartaVerso.position.x = 5
-cartaVerso.position.y = 3
-cartaVerso.position.z = -0.01
 
 // scene.add(cartaVerso);
 
@@ -431,24 +478,19 @@ const cartasLista = []
 
 // Função para criar uma carta
 function criarCarta(texturaFrente) {
-
     // Criar material da parte da frente da carta
     const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
-
-    
-
     // Criar a carta (usando um plano como exemplo)
     const carta = new THREE.Mesh(geometry, parteFrente);
-
     // Posicionar a carta aleatoriamente
     carta.position.x = 5
     carta.position.y = 3
     carta.position.z = 0.01
 
+    
+
     console.log(carta.position.x, carta.position.y, carta.position.z);
-
     cartasLista.push(carta);
-
     return carta;
 }
 
@@ -466,18 +508,45 @@ const texturasFrente = [
 ];
 
 // Criar as cartas e adicioná-las à cena
-/*
+
 const cartas = texturasFrente.map(textura => {
     const carta = criarCarta(textura);
     scene.add(carta);
     return carta;
 });
-*/
+
+
+// esferas
+
+class Esfera extends THREE.Mesh {
+  constructor(raio = 1, segmentos = 32, cor = 0xffffff) {
+      // Chame o construtor da classe pai (THREE.Mesh) usando super()
+      super(new THREE.SphereGeometry(raio, segmentos, segmentos), new THREE.MeshBasicMaterial({ color: cor }));
+  }
+  girarEmTornoDoEixoY(velocidade) {
+      this.rotation.y += velocidade;
+  }
+  // Método para mudar a cor da esfera
+  mudarCor(novaCor) {
+    if (this.material instanceof THREE.MeshBasicMaterial) {
+        // Define a nova cor para o material da esfera
+        this.material.color.set(novaCor);
+    } 
+  }
+}
+
+const esfera1 = new Esfera(0.03, 32, 0xff0000);
+scene.add(esfera1);
+esfera1.mudarCor('yellow');
+
+const esfera2 = new Esfera(0.03, 32, 0xff0000);
+scene.add(esfera2);
+esfera2.mudarCor('yellow');
 
 // ANIMAÇÃO
 
 let angulo = 0.0
-let R = 10
+let raio = 3
 
 function animate(){
     requestAnimationFrame(animate);
@@ -485,23 +554,14 @@ function animate(){
 
     //botaoRenderer.render(scene, camera);
 
-    angulo += 0.01
-    minhaLuz1.position.set(R*Math.cos(angulo),0, R*Math.sin(angulo))
-    minhaluz2.position.set(R*Math.cos(-angulo),0, R*Math.sin(-angulo))
-    minhaluz3.position.set(0, R*Math.cos(angulo), R*Math.sin(angulo))
-
-    /*
+    angulo += 0.05
+    esfera1.position.set(raio*Math.cos(angulo),0.5, raio*Math.sin(angulo))
+    esfera2.position.set(raio*Math.cos(-angulo),0.5, raio*Math.sin(-angulo))
     
-    for (let i = 0; i < cartasLista.length; i++) {
-        
-        cartasLista[i].position.set(0 ,0, 0.01*Math.cos(angulo))
-        cartasLista[i].rotation.y += 0.01
-        
-    }
-    cartaVerso.position.set(0 ,0, 0.01*Math.cos(angulo))
-    cartaVerso.rotation.y += 0.01
-
-    */
+    minhaLuz1.position.set(raio*Math.cos(angulo),1, raio*Math.sin(angulo))
+    minhaluz2.position.set(raio*Math.cos(-angulo),1, raio*Math.sin(-angulo))
+    minhaluz3.position.set(0, 5*Math.cos(angulo), 5*Math.sin(angulo))
+    
 }
 
 animate();

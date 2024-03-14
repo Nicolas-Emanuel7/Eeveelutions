@@ -157,5 +157,6 @@ p {
     font-weight: bold;
     padding-top: 20px;
     padding-left: 20px;
+    border-bottom: 5px solid;
     /* Adicione mais estilos conforme necessário */
   }
