@@ -52,7 +52,7 @@ const sectionActions = {
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], -6, 1, 1.5)
+      moverModelo(simbolosLista[0], -6, 0, 0.7)
       moverModelo(simbolosLista[1], -6, -5, 0.7)
 
       moverModelo(ground, 0, -0.1, 0)
@@ -73,7 +73,7 @@ const sectionActions = {
       moverModelo(cartasLista[4], 10, 1, 10)
 
       moverModelo(simbolosLista[0], -6, -5, 0.7)
-      moverModelo(simbolosLista[1], -6, 1, 1.5)
+      moverModelo(simbolosLista[1], -6, 0, 0.7)
       moverModelo(simbolosLista[2], -6, -5, 0.7)
 
       moverModelo(eeveeModel, -25, 0, 0)
@@ -93,7 +93,7 @@ const sectionActions = {
       moverModelo(cartasLista[2], 10, 1, 10)
 
       moverModelo(simbolosLista[1], -6, -5, 0.7)
-      moverModelo(simbolosLista[2], -6, 1, 1.5)
+      moverModelo(simbolosLista[2], -6, -0.5, 0.7)
       moverModelo(simbolosLista[3], -6, -5, 0.7)
 
       moverModelo(jolteonModel, 0, 0, 0);
@@ -113,7 +113,7 @@ const sectionActions = {
       moverModelo(cartasLista[1], 10, 1, 10)
 
       moverModelo(simbolosLista[2], -6, -5, 0.7)
-      moverModelo(simbolosLista[3], -6, 1, 1.5)
+      moverModelo(simbolosLista[3], -6, 1, 0.7)
       moverModelo(simbolosLista[4], -6, -5, 0.7)
 
       moverModelo(jolteonModel, -25, 0, 0);
@@ -133,7 +133,7 @@ const sectionActions = {
       moverModelo(cartasLista[6], 10, 1, 10)
 
       moverModelo(simbolosLista[3], -6, -5, 0.7)
-      moverModelo(simbolosLista[4], -6, 1, 1.5)
+      moverModelo(simbolosLista[4], -6, 1, 0.7)
       moverModelo(simbolosLista[5], -6, -5, 0.7)
 
       moverModelo(flareonModel, 25, 0, 0)
@@ -153,7 +153,7 @@ const sectionActions = {
       moverModelo(cartasLista[5], 10, 1, 10)
 
       moverModelo(simbolosLista[4], -6, -5, 0.7)
-      moverModelo(simbolosLista[5], -6, 1, 1.5)
+      moverModelo(simbolosLista[5], -6, 1, 0.7)
       moverModelo(simbolosLista[6], -6, -5, 0.7)
 
       moverModelo(espeonModel, -25, 0, 0)
@@ -173,7 +173,7 @@ const sectionActions = {
       moverModelo(cartasLista[3], 10, 1, 10)
 
       moverModelo(simbolosLista[5], -6, -5, 0.7)
-      moverModelo(simbolosLista[6], -6, 1, 1.5)
+      moverModelo(simbolosLista[6], -6, 1, 0.7)
       moverModelo(simbolosLista[7], -6, -5, 0.7)
 
       moverModelo(umbreonModel, 25, 0, 0)
@@ -193,7 +193,7 @@ const sectionActions = {
       moverModelo(cartasLista[8], 10, 1, 10)
 
       moverModelo(simbolosLista[6], -6, -5, 0.7)
-      moverModelo(simbolosLista[7], -6, 1, 1.5)
+      moverModelo(simbolosLista[7], -6, 1, 0.7)
       moverModelo(simbolosLista[8], -6, -5, 0.7)
 
       moverModelo(leafeonModel, -25, 0, 0)
@@ -212,7 +212,7 @@ const sectionActions = {
       moverModelo(cartasLista[8], 6, 1, 1.5)
 
       moverModelo(simbolosLista[7], -6, -5, 0.7)
-      moverModelo(simbolosLista[8], -6, 1, 1.5)
+      moverModelo(simbolosLista[8], -6, 1, 0.7)
 
 
       moverModelo(glaceonModel, 25, 0, 0)
@@ -442,9 +442,6 @@ function onMouseMove(event) {
   cartasLista.forEach(carta => {
     carta.rotation.y = rotationY * 0.1
   });
-  simbolosLista.forEach(simbolo =>{
-    simbolo.rotation.y = rotationY * 0.1
-  })
   modelosLista.forEach(modelo => {
     modelo.rotation.y = rotationY;
   });
@@ -502,10 +499,11 @@ const cartas = texturasFrente.map(textura => {
 });
 
 // CIRCULOS
-const geometryCirculo = new THREE.CircleGeometry(0.5, 64)
+const geometryCirculo = new THREE.SphereGeometry(0.3, 32, 32);
 const simbolosLista = []
 
 function criarSimbolo(texturaSimbolo){
+  texturaSimbolo.repeat.x = 2
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
   simbolo.position.set(0, 2, -5)
@@ -544,11 +542,17 @@ function simbolosInicial(pagina){
     moverModelo(simbolosLista[6], -1, 1, 0.7)
     moverModelo(simbolosLista[7], -1.5, 2, 0.7)
     moverModelo(simbolosLista[8], -1, 3, 0.7)
+    simbolosLista.forEach(simbolo =>{
+      simbolo.rotation.y = 0
+      simbolo.rotation.x = 0
+    })
   }
   if(pagina === 2){
     console.log('tela segunda')
     simbolosLista.forEach(simbolo =>{
       moverModelo(simbolo, -6, -5, 0.7)
+      simbolo.rotation.y = 0.5
+      simbolo.rotation.x = -0.2
     })
   }
 }
@@ -651,7 +655,6 @@ function animate(){
     minhaLuz1.position.set(raio*Math.cos(angulo),1, raio*Math.sin(angulo))
     minhaluz2.position.set(raio*Math.cos(-angulo),1, raio*Math.sin(-angulo))
     minhaluz3.position.set(0, 5*Math.cos(angulo), 5*Math.sin(angulo))
-
     
     
 }
