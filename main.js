@@ -484,14 +484,14 @@ atualizar();
 
 const texturasFrente = [ // Carregar texturas para a parte da frente das cartas
     textureLoader.load('assets/CARTAS/eevee.webp'),
-    textureLoader.load('assets/CARTAS/espeon.webp'),
+    textureLoader.load('assets/CARTAS/espeon.png'),
     textureLoader.load('assets/CARTAS/flareon.webp'),
     textureLoader.load('assets/CARTAS/glaceon.webp'),
     textureLoader.load('assets/CARTAS/jolteon.webp'),
     textureLoader.load('assets/CARTAS/leafeon.webp'),
     textureLoader.load('assets/CARTAS/umbreon.webp'),
-    textureLoader.load('assets/CARTAS/vaporeon.webp'),
-    textureLoader.load('assets/CARTAS/sylveon.jpg')
+    textureLoader.load('assets/CARTAS/vaporeon.jpg'),
+    textureLoader.load('assets/CARTAS/sylveon.webp')
 ];
 
 // Criar as cartas e adicioná-las à cena
