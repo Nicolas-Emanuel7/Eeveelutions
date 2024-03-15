@@ -28,7 +28,7 @@ const sectionActions = {
   0: () => {
       // Ação para a seção 0
       cartasLista.forEach(carta => {
-        moverModelo(carta, 10, 1, -4);
+        moverModelo(carta, 10, 1, 10);
       })
 
       movimentarEsferas(2);
@@ -42,8 +42,6 @@ const sectionActions = {
 
       simbolosInicial(1)
 
-
-      body.style.background = 'red';
   },
   1: () => {
       // Ação para a seção 1
@@ -51,8 +49,8 @@ const sectionActions = {
 
       simbolosInicial(2)
 
-      moverModelo(cartasLista[1], 6, 1, 1.5)
-      moverModelo(cartasLista[8], 10, 1, -4)
+      moverModelo(cartasLista[0], 6, 1, 1.5)
+      moverModelo(cartasLista[7], 10, 1, 10)
 
       moverModelo(simbolosLista[0], -6, 1, 1.5)
       moverModelo(simbolosLista[1], -6, -5, 0.7)
@@ -70,9 +68,9 @@ const sectionActions = {
   },
   2: () => {
       // Ação para a seção 2
-      moverModelo(cartasLista[1], 10, 1, -4)
-      moverModelo(cartasLista[8], 6, 1, 1.5)
-      moverModelo(cartasLista[5], 10, 1, -4)
+      moverModelo(cartasLista[0], 10, 1, 10)
+      moverModelo(cartasLista[7], 6, 1, 1.5)
+      moverModelo(cartasLista[4], 10, 1, 10)
 
       moverModelo(simbolosLista[0], -6, -5, 0.7)
       moverModelo(simbolosLista[1], -6, 1, 1.5)
@@ -90,9 +88,9 @@ const sectionActions = {
   },
   3: () => {
       // Ação para a seção 3
-      moverModelo(cartasLista[8], 10, 1, -4)
-      moverModelo(cartasLista[5], 6, 1, 1.5)
-      moverModelo(cartasLista[3], 10, 1, -4)
+      moverModelo(cartasLista[7], 10, 1, 10)
+      moverModelo(cartasLista[4], 6, 1, 1.5)
+      moverModelo(cartasLista[2], 10, 1, 10)
 
       moverModelo(simbolosLista[1], -6, -5, 0.7)
       moverModelo(simbolosLista[2], -6, 1, 1.5)
@@ -110,9 +108,9 @@ const sectionActions = {
   },
   4: () => {
       // Ação para a seção 4
-      moverModelo(cartasLista[5], 10, 1, -4)
-      moverModelo(cartasLista[3], 6, 1, 1.5)
-      moverModelo(cartasLista[2], 10, 1, -4)
+      moverModelo(cartasLista[4], 10, 1, 10)
+      moverModelo(cartasLista[2], 6, 1, 1.5)
+      moverModelo(cartasLista[1], 10, 1, 10)
 
       moverModelo(simbolosLista[2], -6, -5, 0.7)
       moverModelo(simbolosLista[3], -6, 1, 1.5)
@@ -130,9 +128,9 @@ const sectionActions = {
   },
   5: () => {
       // Ação para a seção 5
-      moverModelo(cartasLista[3], 10, 1, -4)
-      moverModelo(cartasLista[2], 6, 1, 1.5)
-      moverModelo(cartasLista[7], 10, 1, -4)
+      moverModelo(cartasLista[2], 10, 1, 10)
+      moverModelo(cartasLista[1], 6, 1, 1.5)
+      moverModelo(cartasLista[6], 10, 1, 10)
 
       moverModelo(simbolosLista[3], -6, -5, 0.7)
       moverModelo(simbolosLista[4], -6, 1, 1.5)
@@ -150,9 +148,9 @@ const sectionActions = {
   },
   6: () => {
       // Ação para a seção 6
-      moverModelo(cartasLista[2], 10, 1, -4)
-      moverModelo(cartasLista[7], 6, 1, 1.5)
-      moverModelo(cartasLista[6], 10, 1, -4)
+      moverModelo(cartasLista[1], 10, 1, 10)
+      moverModelo(cartasLista[6], 6, 1, 1.5)
+      moverModelo(cartasLista[5], 10, 1, 10)
 
       moverModelo(simbolosLista[4], -6, -5, 0.7)
       moverModelo(simbolosLista[5], -6, 1, 1.5)
@@ -170,9 +168,9 @@ const sectionActions = {
   },
   7: () => {
       // Ação para a seção 7
-      moverModelo(cartasLista[7], 10, 1, -4)
-      moverModelo(cartasLista[6], 6, 1, 1.5)
-      moverModelo(cartasLista[4], 10, 1, -4)
+      moverModelo(cartasLista[6], 10, 1, 10)
+      moverModelo(cartasLista[5], 6, 1, 1.5)
+      moverModelo(cartasLista[3], 10, 1, 10)
 
       moverModelo(simbolosLista[5], -6, -5, 0.7)
       moverModelo(simbolosLista[6], -6, 1, 1.5)
@@ -190,9 +188,9 @@ const sectionActions = {
   },
   8: () => {
       // Ação para a seção 8
-      moverModelo(cartasLista[6], 10, 1, -4)
-      moverModelo(cartasLista[4], 6, 1, 1.5)
-      moverModelo(cartasLista[9], 10, 1, -4)
+      moverModelo(cartasLista[5], 10, 1, 10)
+      moverModelo(cartasLista[3], 6, 1, 1.5)
+      moverModelo(cartasLista[8], 10, 1, 10)
 
       moverModelo(simbolosLista[6], -6, -5, 0.7)
       moverModelo(simbolosLista[7], -6, 1, 1.5)
@@ -210,8 +208,8 @@ const sectionActions = {
   },
   9: () => {
       // Ação para a seção 9
-      moverModelo(cartasLista[4], 10, 1, -4)
-      moverModelo(cartasLista[9], 6, 1, 1.5)
+      moverModelo(cartasLista[3], 10, 1, 10)
+      moverModelo(cartasLista[8], 6, 1, 1.5)
 
       moverModelo(simbolosLista[7], -6, -5, 0.7)
       moverModelo(simbolosLista[8], -6, 1, 1.5)
@@ -454,26 +452,15 @@ function onMouseMove(event) {
 
 const textureLoader = new THREE.TextureLoader();
 
-// Carregar textura para a parte de trás da carta
-const texturaAtras = textureLoader.load('assets/CARTAS/backside.png');
-const parteAtras = new THREE.MeshBasicMaterial({ map: texturaAtras });
-
 // Criar geometria da carta
 const geometry = new THREE.BoxGeometry(2.5, 3.7, 0.01);
 
-const cartaVerso = new THREE.Mesh(geometry, parteAtras);
-
 const cartasLista = []
-
-scene.add(cartaVerso);
-cartaVerso.position.set(10, -5, -5)
-cartaVerso.scale.set(1.1,1.1,1.1)
-cartasLista.push(cartaVerso);
 
 function criarCarta(texturaFrente) {// Função para criar uma carta
     const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
     const carta = new THREE.Mesh(geometry, parteFrente);
-    carta.position.set(10, 1, -4)
+    carta.position.set(10, 1, 10)
 
     cartasLista.push(carta);    
     return carta;

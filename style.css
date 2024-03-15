@@ -55,9 +55,6 @@ section .container {
 
 section.one .container {
     grid-template-areas: 'content ..';
-    background: red;
-    width: 30%;
-    float: right;
 }
 
 .hero {
