@@ -12,15 +12,16 @@ html {
 }
 
 body {
-    background: #ffc0cb;
+    background: linear-gradient(45deg, #0dcfff, #18a4c0, #ef90c7, #6bb0ff, #b563d6);
+    animation: color 12s ease-in-out infinite;
     position: relative;
     height: 100%;
     overflow: hidden;
     font-family:'Press Start 2P';
     overflow-y: auto;
 
-
 }
+
 
 body.loaded {
     overflow: auto;
