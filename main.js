@@ -42,6 +42,9 @@ const sectionActions = {
 
       simbolosInicial(1)
 
+      body.style.background = 'linear-gradient(45deg, #0dcfff, #18a4c0, #ef90c7, #6bb0ff, #b563d6)';
+      body.style.animation = 'color 12s ease-in-out infinite';
+
   },
   1: () => {
       // Ação para a seção 1
@@ -52,8 +55,8 @@ const sectionActions = {
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], -6, 0, 0.7)
-      moverModelo(simbolosLista[1], -6, -5, 0.7)
+      moverModelo(simbolosLista[0], -8, -0.5, 0.7)
+      moverModelo(simbolosLista[1], -8, -5, 0.7)
 
       moverModelo(ground, 0, -0.1, 0)
       moverModelo(ground2, 0, -0.2, 0)
@@ -506,7 +509,7 @@ function criarSimbolo(texturaSimbolo){
   texturaSimbolo.repeat.x = 2
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
-  simbolo.position.set(0, 2, -5)
+  simbolo.position.set(-6, 2, -5)
 
   simbolosLista.push(simbolo);
   return simbolo;
@@ -533,17 +536,17 @@ function simbolosInicial(pagina){
   console.log('teste')
   if(pagina === 1){
     console.log('tela primeira')
-    moverModelo(simbolosLista[0], 0, 2, 0.7)
-    moverModelo(simbolosLista[1], 0, 3.5, 0.7)
-    moverModelo(simbolosLista[2], 1, 3, 0.7)
-    moverModelo(simbolosLista[3], 1.5, 2, 0.7)
-    moverModelo(simbolosLista[4], 1, 1, 0.7)
-    moverModelo(simbolosLista[5], 0, 0.5, 0.7)
-    moverModelo(simbolosLista[6], -1, 1, 0.7)
-    moverModelo(simbolosLista[7], -1.5, 2, 0.7)
-    moverModelo(simbolosLista[8], -1, 3, 0.7)
+    moverModelo(simbolosLista[0], -6, 2, 0.7)
+    moverModelo(simbolosLista[1], -6, 3.5, 0.7)
+    moverModelo(simbolosLista[2], -5, 3, 0.7)
+    moverModelo(simbolosLista[3], -4.5, 2, 0.7)
+    moverModelo(simbolosLista[4], -5, 1, 0.7)
+    moverModelo(simbolosLista[5], -6, 0.5, 0.7)
+    moverModelo(simbolosLista[6], -7, 1, 0.7)
+    moverModelo(simbolosLista[7], -7.5, 2, 0.7)
+    moverModelo(simbolosLista[8], -7, 3, 0.7)
     simbolosLista.forEach(simbolo =>{
-      simbolo.rotation.y = 0
+      simbolo.rotation.y = 0.5
       simbolo.rotation.x = 0
     })
   }
