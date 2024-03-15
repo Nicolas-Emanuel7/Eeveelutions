@@ -27,16 +27,9 @@ const body = document.body;
 const sectionActions = {
   0: () => {
       // Ação para a seção 0
-      moverModelo(cartasLista[0], 10, 1, -4)
-      moverModelo(cartasLista[1], 10, 1, -4)
-      moverModelo(cartasLista[2], 10, 1, -4)
-      moverModelo(cartasLista[3], 10, 1, -4)
-      moverModelo(cartasLista[4], 10, 1, -4)
-      moverModelo(cartasLista[5], 10, 1, -4)
-      moverModelo(cartasLista[6], 10, 1, -4)
-      moverModelo(cartasLista[7], 10, 1, -4)
-      moverModelo(cartasLista[8], 10, 1, -4)
-      moverModelo(cartasLista[9], 10, 1, -4)
+      cartasLista.forEach(carta => {
+        moverModelo(carta, 10, 1, -4);
+      })
 
       movimentarEsferas(2);
 
@@ -47,7 +40,8 @@ const sectionActions = {
       moverModelo(ground2, 0, -10, 0)
       moverModelo(eeveeModel, 0, -10, 0)
 
-      moverModelo(simbolosLista[0], -6, -5, 0.7)
+      simbolosInicial(1)
+
 
       body.style.background = 'red';
   },
@@ -55,10 +49,12 @@ const sectionActions = {
       // Ação para a seção 1
       movimentarEsferas(1);
 
-      moverModelo(cartasLista[1], 7, 1, 1)
-      moverModelo(cartasLista[8], 10, -10, -4)
+      simbolosInicial(2)
 
-      moverModelo(simbolosLista[0], -6, 1, 0.7)
+      moverModelo(cartasLista[1], 6, 1, 1.5)
+      moverModelo(cartasLista[8], 10, 1, -4)
+
+      moverModelo(simbolosLista[0], -6, 1, 1.5)
       moverModelo(simbolosLista[1], -6, -5, 0.7)
 
       moverModelo(ground, 0, -0.1, 0)
@@ -74,12 +70,12 @@ const sectionActions = {
   },
   2: () => {
       // Ação para a seção 2
-      moverModelo(cartasLista[1], 10, -10, -4)
-      moverModelo(cartasLista[8], 7, 1, 1)
-      moverModelo(cartasLista[5], 10, -10, -4)
+      moverModelo(cartasLista[1], 10, 1, -4)
+      moverModelo(cartasLista[8], 6, 1, 1.5)
+      moverModelo(cartasLista[5], 10, 1, -4)
 
       moverModelo(simbolosLista[0], -6, -5, 0.7)
-      moverModelo(simbolosLista[1], -6, 1, 0.7)
+      moverModelo(simbolosLista[1], -6, 1, 1.5)
       moverModelo(simbolosLista[2], -6, -5, 0.7)
 
       moverModelo(eeveeModel, -25, 0, 0)
@@ -94,12 +90,12 @@ const sectionActions = {
   },
   3: () => {
       // Ação para a seção 3
-      moverModelo(cartasLista[8], 10, -10, -4)
-      moverModelo(cartasLista[5], 7, 1, 1)
-      moverModelo(cartasLista[3], 10, -10, -4)
+      moverModelo(cartasLista[8], 10, 1, -4)
+      moverModelo(cartasLista[5], 6, 1, 1.5)
+      moverModelo(cartasLista[3], 10, 1, -4)
 
       moverModelo(simbolosLista[1], -6, -5, 0.7)
-      moverModelo(simbolosLista[2], -6, 1, 0.7)
+      moverModelo(simbolosLista[2], -6, 1, 1.5)
       moverModelo(simbolosLista[3], -6, -5, 0.7)
 
       moverModelo(jolteonModel, 0, 0, 0);
@@ -114,12 +110,12 @@ const sectionActions = {
   },
   4: () => {
       // Ação para a seção 4
-      moverModelo(cartasLista[5], 10, -10, -4)
-      moverModelo(cartasLista[3], 7, 1, 1)
-      moverModelo(cartasLista[2], 10, -10, -4)
+      moverModelo(cartasLista[5], 10, 1, -4)
+      moverModelo(cartasLista[3], 6, 1, 1.5)
+      moverModelo(cartasLista[2], 10, 1, -4)
 
       moverModelo(simbolosLista[2], -6, -5, 0.7)
-      moverModelo(simbolosLista[3], -6, 1, 0.7)
+      moverModelo(simbolosLista[3], -6, 1, 1.5)
       moverModelo(simbolosLista[4], -6, -5, 0.7)
 
       moverModelo(jolteonModel, -25, 0, 0);
@@ -134,12 +130,12 @@ const sectionActions = {
   },
   5: () => {
       // Ação para a seção 5
-      moverModelo(cartasLista[3], 10, -10, -4)
-      moverModelo(cartasLista[2], 7, 1, 1)
-      moverModelo(cartasLista[7], 10, -10, -4)
+      moverModelo(cartasLista[3], 10, 1, -4)
+      moverModelo(cartasLista[2], 6, 1, 1.5)
+      moverModelo(cartasLista[7], 10, 1, -4)
 
       moverModelo(simbolosLista[3], -6, -5, 0.7)
-      moverModelo(simbolosLista[4], -6, 1, 0.7)
+      moverModelo(simbolosLista[4], -6, 1, 1.5)
       moverModelo(simbolosLista[5], -6, -5, 0.7)
 
       moverModelo(flareonModel, 25, 0, 0)
@@ -154,12 +150,12 @@ const sectionActions = {
   },
   6: () => {
       // Ação para a seção 6
-      moverModelo(cartasLista[2], 10, -10, -4)
-      moverModelo(cartasLista[7], 7, 1, 1)
-      moverModelo(cartasLista[6], 10, -10, -4)
+      moverModelo(cartasLista[2], 10, 1, -4)
+      moverModelo(cartasLista[7], 6, 1, 1.5)
+      moverModelo(cartasLista[6], 10, 1, -4)
 
       moverModelo(simbolosLista[4], -6, -5, 0.7)
-      moverModelo(simbolosLista[5], -6, 1, 0.7)
+      moverModelo(simbolosLista[5], -6, 1, 1.5)
       moverModelo(simbolosLista[6], -6, -5, 0.7)
 
       moverModelo(espeonModel, -25, 0, 0)
@@ -174,12 +170,12 @@ const sectionActions = {
   },
   7: () => {
       // Ação para a seção 7
-      moverModelo(cartasLista[7], 10, -10, -4)
-      moverModelo(cartasLista[6], 7, 1, 1)
-      moverModelo(cartasLista[4], 10, -10, -4)
+      moverModelo(cartasLista[7], 10, 1, -4)
+      moverModelo(cartasLista[6], 6, 1, 1.5)
+      moverModelo(cartasLista[4], 10, 1, -4)
 
       moverModelo(simbolosLista[5], -6, -5, 0.7)
-      moverModelo(simbolosLista[6], -6, 1, 0.7)
+      moverModelo(simbolosLista[6], -6, 1, 1.5)
       moverModelo(simbolosLista[7], -6, -5, 0.7)
 
       moverModelo(umbreonModel, 25, 0, 0)
@@ -194,12 +190,12 @@ const sectionActions = {
   },
   8: () => {
       // Ação para a seção 8
-      moverModelo(cartasLista[6], 10, -10, -4)
-      moverModelo(cartasLista[4], 7, 1, 1)
-      moverModelo(cartasLista[9], 10, -10, -4)
+      moverModelo(cartasLista[6], 10, 1, -4)
+      moverModelo(cartasLista[4], 6, 1, 1.5)
+      moverModelo(cartasLista[9], 10, 1, -4)
 
       moverModelo(simbolosLista[6], -6, -5, 0.7)
-      moverModelo(simbolosLista[7], -6, 1, 0.7)
+      moverModelo(simbolosLista[7], -6, 1, 1.5)
       moverModelo(simbolosLista[8], -6, -5, 0.7)
 
       moverModelo(leafeonModel, -25, 0, 0)
@@ -214,11 +210,11 @@ const sectionActions = {
   },
   9: () => {
       // Ação para a seção 9
-      moverModelo(cartasLista[4], 10, -10, -4)
-      moverModelo(cartasLista[9], 7, 1, 1)
+      moverModelo(cartasLista[4], 10, 1, -4)
+      moverModelo(cartasLista[9], 6, 1, 1.5)
 
       moverModelo(simbolosLista[7], -6, -5, 0.7)
-      moverModelo(simbolosLista[8], -6, 1, 0.7)
+      moverModelo(simbolosLista[8], -6, 1, 1.5)
 
 
       moverModelo(glaceonModel, 25, 0, 0)
@@ -477,7 +473,7 @@ cartasLista.push(cartaVerso);
 function criarCarta(texturaFrente) {// Função para criar uma carta
     const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
     const carta = new THREE.Mesh(geometry, parteFrente);
-    carta.position.set(10, 3, -5)
+    carta.position.set(10, 1, -4)
 
     cartasLista.push(carta);    
     return carta;
@@ -525,7 +521,7 @@ const simbolosLista = []
 function criarSimbolo(texturaSimbolo){
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
-  simbolo.position.set(-6, -5, 0.7)
+  simbolo.position.set(0, 2, -5)
 
   simbolosLista.push(simbolo);
   return simbolo;
@@ -547,6 +543,28 @@ const simbolos = texturasSimbolo.map(textura => {
   scene.add(simbolo);
   return simbolo;
 });
+
+function simbolosInicial(pagina){
+  console.log('teste')
+  if(pagina === 1){
+    console.log('tela primeira')
+    moverModelo(simbolosLista[0], 0, 2, 0.7)
+    moverModelo(simbolosLista[1], 0, 3.5, 0.7)
+    moverModelo(simbolosLista[2], 1, 3, 0.7)
+    moverModelo(simbolosLista[3], 1.5, 2, 0.7)
+    moverModelo(simbolosLista[4], 1, 1, 0.7)
+    moverModelo(simbolosLista[5], 0, 0.5, 0.7)
+    moverModelo(simbolosLista[6], -1, 1, 0.7)
+    moverModelo(simbolosLista[7], -1.5, 2, 0.7)
+    moverModelo(simbolosLista[8], -1, 3, 0.7)
+  }
+  if(pagina === 2){
+    console.log('tela segunda')
+    simbolosLista.forEach(simbolo =>{
+      moverModelo(simbolo, -6, -5, 0.7)
+    })
+  }
+}
 
 // esferas
 class Esfera extends THREE.Mesh {
@@ -583,13 +601,12 @@ let anguloVelocidade = 0.0
 let raio = 3
 function movimentarEsferas(opcao) {
   // Define um limite de velocidade
-  const limiteVelocidade = 0.005;
+  const limiteVelocidade = 0.002;
   // Verifica se a velocidade atual é menor que o limite
   if (anguloVelocidade < limiteVelocidade) {
     // Incrementa a velocidade
     anguloVelocidade += 0.001;
   }
-
   // Atualiza o ângulo com base na velocidade
   angulo += anguloVelocidade;
   esfera1.position.x = raio*Math.cos(angulo)
