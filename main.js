@@ -40,9 +40,18 @@ const sectionActions = {
       moverModelo(ground2, 0, -10, 0)
       moverModelo(eeveeModel, 0, -10, 0)
 
+
+      moverModelo(florestaModel, 0, -1, 0)
+
+      minhaLuz1.atualizarIntensidade(0)
+      minhaluz2.atualizarIntensidade(0)
+      minhaluz3.atualizarIntensidade(0)
+    
+      
+      
       simbolosInicial(1)
 
-      body.style.background = 'linear-gradient(45deg, #0dcfff, #18a4c0, #ef90c7, #6bb0ff, #b563d6)';
+      body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #b563d6)';
       body.style.animation = 'color 12s ease-in-out infinite';
 
   },
@@ -55,7 +64,7 @@ const sectionActions = {
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], -8, -0.5, 0.7)
+      moverModelo(simbolosLista[0], -7, -1, 0.7)
       moverModelo(simbolosLista[1], -8, -5, 0.7)
 
       moverModelo(ground, 0, -0.1, 0)
@@ -67,6 +76,13 @@ const sectionActions = {
 
       minhaLuz1.atualizarCor('white');
       minhaluz2.atualizarCor('white');
+
+      mudarCamera(0,2.2, 7,0,0,0)
+      moverModelo(florestaModel, 0, 13,0)
+
+      minhaLuz1.atualizarIntensidade(3)
+      minhaluz2.atualizarIntensidade(3)
+      minhaluz3.atualizarIntensidade(6)
 
   },
   2: () => {
@@ -230,6 +246,13 @@ const sectionActions = {
   // Adicione mais pares chave-valor conforme necessário para cada seção
 };
 
+function mudarCamera(posX, posY, posZ, alvoX, alvoY, alvoZ){
+  const duracaoAnimacao = 1;
+
+  gsap.to(camera.position, { duration: duracaoAnimacao, ease: 'power2.inOut', x: posX, y: posY, z: posZ });
+  gsap.to(camera.rotation, { duration: duracaoAnimacao, ease: 'power2.inOut', x: alvoX, y: alvoY, z: alvoZ });
+}
+
 window.addEventListener('load', () => {
   // Executa a ação da seção 0 assim que a página é carregada
   sectionActions[0]();
@@ -296,6 +319,10 @@ class MinhaLuz extends THREE.Object3D {
   atualizarCor(cor) {
       this.luz.color.set(cor);
   }
+  // método para atualizar a intensidade da luz
+  atualizarIntensidade(intensidade) {
+      this.luz.intensity = intensidade;
+  }
 }
 
 // Crie uma instância da classe MinhaLuz
@@ -305,6 +332,11 @@ const minhaluz3 = new MinhaLuz(0xffffff, 8);
 scene.add(minhaLuz1);
 scene.add(minhaluz2);
 scene.add(minhaluz3);
+
+const luzDirecional = new THREE.DirectionalLight(0xffffff, 1);
+luzDirecional.position.set(0, 1, 3);
+scene.add(luzDirecional);
+
 
 // Modelos
 
@@ -408,13 +440,18 @@ carregarModelos()
 
 // tela inicial modelos
 // florestinha
+var florestaModel;
 const Floresta = new GLTFLoader();
   Floresta.load('/assets/cenario/scene.gltf', (floresta) => {
-  floresta.scene.scale.set(0.7,0.7,0.7);
+  floresta.scene.scale.set(1.5,1.5,1.5);
   scene.add(floresta.scene);
   floresta.scene.castShadow = true
-  floresta.scene.position.set(0,0,0);
+  floresta.scene.position.set(0,-1,0);
+  floresta.scene.rotation.y = 0
+  florestaModel = floresta.scene;
 });
+
+// NUVEM
 
 
 // GRAMA
@@ -453,9 +490,6 @@ function onMouseMove(event) {
   if(ground){
     ground.rotation.y = rotationY;
   }
-  cartasLista.forEach(carta => {
-    carta.rotation.y = rotationY * 0.1
-  });
   modelosLista.forEach(modelo => {
     modelo.rotation.y = rotationY;
   });
@@ -513,11 +547,10 @@ const cartas = texturasFrente.map(textura => {
 });
 
 // CIRCULOS
-const geometryCirculo = new THREE.SphereGeometry(0.3, 32, 32);
+const geometryCirculo = new THREE.CircleGeometry(0.5, 32);
 const simbolosLista = []
 
 function criarSimbolo(texturaSimbolo){
-  texturaSimbolo.repeat.x = 2
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
   simbolo.position.set(-6, 2, -5)
@@ -556,10 +589,8 @@ function simbolosInicial(pagina){
     moverModelo(simbolosLista[6], -7, 1, 0.7)
     moverModelo(simbolosLista[7], -7.5, 2, 0.7)
     moverModelo(simbolosLista[8], -7, 3, 0.7)
-    simbolosLista.forEach(simbolo =>{
-      simbolo.rotation.y = 0.5
-      simbolo.rotation.x = 0
-    })
+    
+    
   }
   if(pagina === 2){
     console.log('tela segunda')
