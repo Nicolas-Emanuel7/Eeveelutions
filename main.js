@@ -403,6 +403,17 @@ function carregarModelos(){
 var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 carregarModelos()
 
+// tela inicial modelos
+// florestinha
+const Floresta = new GLTFLoader();
+  Floresta.load('/assets/cenario/scene.gltf', (floresta) => {
+  floresta.scene.scale.set(0.7,0.7,0.7);
+  scene.add(floresta.scene);
+  floresta.scene.castShadow = true
+  floresta.scene.position.set(0,0,0);
+});
+
+
 // GRAMA
 const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
 const chao = new THREE.MeshStandardMaterial({map: texturaGrama});

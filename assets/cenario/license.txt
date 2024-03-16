@@ -1,0 +1,11 @@
+Model Information:
+* title:	Little floating island
+* source:	https://sketchfab.com/3d-models/little-floating-island-045ab0df160d4ae99be91dd46d4030fb
+* author:	tharadelamo (https://sketchfab.com/tharadelamo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Little floating island" (https://sketchfab.com/3d-models/little-floating-island-045ab0df160d4ae99be91dd46d4030fb) by tharadelamo (https://sketchfab.com/tharadelamo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
