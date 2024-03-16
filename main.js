@@ -547,7 +547,7 @@ function simbolosInicial(pagina){
   console.log('teste')
   if(pagina === 1){
     console.log('tela primeira')
-    moverModelo(simbolosLista[0], -6, 2, 0.7)
+    moverModelo(simbolosLista[0], -6, 2, 0.4)
     moverModelo(simbolosLista[1], -6, 3.5, 0.7)
     moverModelo(simbolosLista[2], -5, 3, 0.7)
     moverModelo(simbolosLista[3], -4.5, 2, 0.7)
