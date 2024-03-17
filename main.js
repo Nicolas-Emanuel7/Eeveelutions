@@ -643,9 +643,9 @@ const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
 
 // Função para carregar o modelo da estrela
 function carregarEstrela() {
-  for(let i = 0; i < 10; i++){
-    const estrela = new Esfera(0.04, 16, Math.random() * 0xffffff);
-    estrela.position.set(Math.random() * 30 - 20, Math.random() * 10 + 10, Math.random() * 10 - 15);
+  for(let i = 0; i < 15; i++){
+    const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
+    estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
     scene.add(estrela);
     estrelasLista.push(estrela); 
   }
@@ -729,16 +729,19 @@ function animarFundo(){
     estrela.position.x += Math.random() * 0.01 + 0.02;
     estrela.position.z += Math.random() * 0 + 0.01;
     if (estrela.position.y < -10) {
-      estrela.position.y = 10;
-      
+      estrela.position.y = Math.random() * 20 + 10;
+      estrela.position.x = Math.random() * 30 - 20;
+      estrela.position.z = Math.random() * 10 - 15;
+      console.log(estrela.position)
     }
   });
   nuvensLista.forEach(nuvem => {
     nuvem.position.x += Math.random() * 0.006 + 0.005;
     nuvem.position.z += Math.random() * 0.001 + 0.001;
     if (nuvem.position.x > 25) {
-      nuvem.position.x = Math.random() * 30 - 20;
-      console.log('nuvem respawnou')
+      nuvem.position.x = Math.random() * 40 - 30;
+      nuvem.position.z = Math.random() * 10 - 15;
+      console.log(nuvem.position)
     }
   });
   renderer.render(scene, camera);
