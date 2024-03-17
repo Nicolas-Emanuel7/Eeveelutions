@@ -420,8 +420,8 @@ carregarModelos()
 // florestinha
 var florestaModel;
 const Floresta = new GLTFLoader();
-  Floresta.load('/assets/cenario2/scene.gltf', (floresta) => {
-  floresta.scene.scale.set(0.05,0.05,0.05);
+  Floresta.load('/assets/cenario3/scene.gltf', (floresta) => {
+  floresta.scene.scale.set(0.0050,0.0050,0.0050);
   scene.add(floresta.scene);
   floresta.scene.castShadow = true
   floresta.scene.position.set(0,0.8,3);
