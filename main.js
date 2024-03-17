@@ -11,6 +11,8 @@ const sizes = {
   height: window.innerHeight
 }
 const scene = new THREE.Scene();
+scene.castShadow = true;
+scene.receiveShadow = true;
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
 camera.position.set(0, 2.2, 7);
 scene.add(camera);
@@ -98,7 +100,7 @@ const sectionActions = {
       moverModelo(simbolosLista[4], -6, -5, 7)
 
       moverModelo(jolteonModel, -25, 0, 0);
-      moverModelo(flareonModel, 0, 0, 0)
+      moverModelo(flareonModel, 0, 0.15, 0)
       moverModelo(espeonModel, -25, 0, 0);
 
       body.style.background = '#F7E8A1';
@@ -116,7 +118,7 @@ const sectionActions = {
       moverModelo(simbolosLista[5], -6, -5, 7)
 
       moverModelo(flareonModel, 25, 0, 0)
-      moverModelo(espeonModel, 0, 0, 0)
+      moverModelo(espeonModel, 0, 0.05, 0)
       moverModelo(umbreonModel, 25, 0, 0);
 
       body.style.background = '#E4CDDD';
@@ -299,6 +301,7 @@ scene.add(minhaluz3);
 
 const luzDirecional = new THREE.DirectionalLight(0xffffff, 1.5);
 luzDirecional.position.set(0, 1, 3);
+luzDirecional.castShadow = true;
 scene.add(luzDirecional);
 
 
