@@ -407,8 +407,8 @@ function carregarModelos(){
     scene.add(eeveeInicial.scene);
     eeveeInicial.scene.castShadow = true;
     eeveeModel2 = eeveeInicial.scene;
-    eeveeModel2.position.set(0.7, 1, 4.8);
-    eeveeModel2.rotation.y = -0.5
+    eeveeModel2.position.set(-0.3, 0.9, 4.8);
+    eeveeModel2.rotation.y = -0.7
    
   });
 }
@@ -425,21 +425,32 @@ const Floresta = new GLTFLoader();
   scene.add(floresta.scene);
   floresta.scene.castShadow = true
   floresta.scene.position.set(0,0.8,3);
-  floresta.scene.rotation.y = 0.5
+  floresta.scene.rotation.y = 3
   florestaModel = floresta.scene;
 });
 
 // NUVEM
-var nuvemModel;
-const Nuvem = new GLTFLoader();
-  Nuvem.load('/assets/nuvem/scene.gltf', (nuvem) => {
-  nuvem.scene.scale.set(1,1,1);
-  scene.add(nuvem.scene);
-  nuvem.scene.castShadow = true
-  nuvem.scene.position.set(0,0,0);
-  nuvem.scene.rotation.y = 0
-  nuvemModel = nuvem.scene;
-});
+const nuvensLista = []; // Lista para armazenar as instâncias das nuvens
+
+// Função para carregar o modelo da nuvem
+function carregarNuvem() {
+    const loader = new GLTFLoader();
+    loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
+        nuvem.scene.scale.set(0.5,0.5,0.5);
+        nuvem.scene.castShadow = true;
+        for (let i = 0; i < 10; i++) { // Criar 5 instâncias da nuvem
+            const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
+            nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
+            nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
+            scene.add(nuvemInstancia); // Adicionar a instância à cena
+            nuvensLista.push(nuvemInstancia); // Adicionar a instância à lista
+        }
+    });
+}
+// Chamar a função para carregar a nuvem
+carregarNuvem();
+
+
 
 // GRAMA
 const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
@@ -582,13 +593,13 @@ function telaInicial(pagina){
     moverModelo(simbolosLista[0], -8, -5, 0.7)
 
     moverModelo(florestaModel, 0,0.8,3)
-    moverModelo(eeveeModel2, 0.7, 1, 4.8)
+    moverModelo(eeveeModel2, -0.3, 0.9, 4.8)
 
     minhaLuz1.atualizarIntensidade(0)
     minhaluz2.atualizarIntensidade(0)
     minhaluz3.atualizarIntensidade(0)
     
-    mudarCamera(0,1.2, 6,0.4,0,0)
+    mudarCamera(-1,1.5, 5.7,-0.1,-0.1,0)
 
     luzDirecional.intensity = 2.5
   }
@@ -626,6 +637,20 @@ class Esfera extends THREE.Mesh {
     } 
   }
 }
+
+// ESTRELA CADENTE
+const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
+
+// Função para carregar o modelo da estrela
+function carregarEstrela() {
+  for(let i = 0; i < 10; i++){
+    const estrela = new Esfera(0.04, 16, Math.random() * 0xffffff);
+    estrela.position.set(Math.random() * 30 - 20, Math.random() * 10 + 10, Math.random() * 10 - 15);
+    scene.add(estrela);
+    estrelasLista.push(estrela); 
+  }
+}
+carregarEstrela();
 
 const esferasLista = []
 
@@ -666,7 +691,6 @@ function movimentarEsferas(opcao) {
     esfera1.position.y = -10
     esfera2.position.y = -10
   }
-
   renderer.render(scene, camera);
   requestAnimationFrame(movimentarEsferas);
 }
@@ -697,6 +721,30 @@ document.addEventListener('keydown', (event) => {
   
 });
 // ANIMAÇÃO
+
+function animarFundo(){
+  requestAnimationFrame(animarFundo);
+  estrelasLista.forEach(estrela => {
+    estrela.position.y -= 0.05;
+    estrela.position.x += Math.random() * 0.01 + 0.02;
+    estrela.position.z += Math.random() * 0 + 0.01;
+    if (estrela.position.y < -10) {
+      estrela.position.y = 10;
+      
+    }
+  });
+  nuvensLista.forEach(nuvem => {
+    nuvem.position.x += Math.random() * 0.006 + 0.005;
+    nuvem.position.z += Math.random() * 0.001 + 0.001;
+    if (nuvem.position.x > 25) {
+      nuvem.position.x = Math.random() * 30 - 20;
+      console.log('nuvem respawnou')
+    }
+  });
+  renderer.render(scene, camera);
+
+}
+animarFundo();
 
 function animate(){
     requestAnimationFrame(animate);
