@@ -27,45 +27,23 @@ const body = document.body;
 const sectionActions = {
   0: () => {
       // Ação para a seção 0
-      cartasLista.forEach(carta => {
-        moverModelo(carta, 10, 1, 10);
-      })
-
-      movimentarEsferas(2);
-
-      moverModelo(esfera1, 0, -10, 0)
-      moverModelo(esfera2, 0, -10, 0)
-
-      moverModelo(ground, 0, -10, 0)
-      moverModelo(ground2, 0, -10, 0)
-      moverModelo(eeveeModel, 0, -10, 0)
-
-
-      moverModelo(florestaModel, 0, -1, 0)
-
-      minhaLuz1.atualizarIntensidade(0)
-      minhaluz2.atualizarIntensidade(0)
-      minhaluz3.atualizarIntensidade(0)
-    
       
+      telaInicial(1)
       
-      simbolosInicial(1)
-
       body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #b563d6)';
       body.style.animation = 'color 12s ease-in-out infinite';
 
   },
   1: () => {
       // Ação para a seção 1
-      movimentarEsferas(1);
-
-      simbolosInicial(2)
+      
+      telaInicial(2)
 
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
-
-      moverModelo(simbolosLista[0], -7, -1, 0.7)
-      moverModelo(simbolosLista[1], -8, -5, 0.7)
+  
+      moverModelo(simbolosLista[0], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[1], -6, -5, 7)
 
       moverModelo(ground, 0, -0.1, 0)
       moverModelo(ground2, 0, -0.2, 0)
@@ -74,16 +52,6 @@ const sectionActions = {
 
       body.style.background = '#f3d5a5';
 
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
-
-      mudarCamera(0,2.2, 7,0,0,0)
-      moverModelo(florestaModel, 0, 13,0)
-
-      minhaLuz1.atualizarIntensidade(3)
-      minhaluz2.atualizarIntensidade(3)
-      minhaluz3.atualizarIntensidade(6)
-
   },
   2: () => {
       // Ação para a seção 2
@@ -91,18 +59,15 @@ const sectionActions = {
       moverModelo(cartasLista[7], 6, 1, 1.5)
       moverModelo(cartasLista[4], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], -6, -5, 0.7)
-      moverModelo(simbolosLista[1], -6, 0, 0.7)
-      moverModelo(simbolosLista[2], -6, -5, 0.7)
+      moverModelo(simbolosLista[0], -6, -5, 7)
+      moverModelo(simbolosLista[1], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[2], -6, -5, 7)
 
       moverModelo(eeveeModel, -25, 0, 0)
       moverModelo(vaporeonModel, 0, 0, 0);
       moverModelo(jolteonModel, -25, 0, 0);
 
       body.style.background = '#79CEE0';
-
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   3: () => {
@@ -111,18 +76,15 @@ const sectionActions = {
       moverModelo(cartasLista[4], 6, 1, 1.5)
       moverModelo(cartasLista[2], 10, 1, 10)
 
-      moverModelo(simbolosLista[1], -6, -5, 0.7)
-      moverModelo(simbolosLista[2], -6, -0.5, 0.7)
-      moverModelo(simbolosLista[3], -6, -5, 0.7)
+      moverModelo(simbolosLista[1], -6, -5, 7)
+      moverModelo(simbolosLista[2], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[3], -6, -5, 7)
 
       moverModelo(jolteonModel, 0, 0, 0);
       moverModelo(vaporeonModel, 25, 0, 0);
       moverModelo(flareonModel, 25, 0, 0);
 
       body.style.background = '#ffff71';
-
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   4: () => {
@@ -131,9 +93,9 @@ const sectionActions = {
       moverModelo(cartasLista[2], 6, 1, 1.5)
       moverModelo(cartasLista[1], 10, 1, 10)
 
-      moverModelo(simbolosLista[2], -6, -5, 0.7)
-      moverModelo(simbolosLista[3], -6, 1, 0.7)
-      moverModelo(simbolosLista[4], -6, -5, 0.7)
+      moverModelo(simbolosLista[2], -6, -5, 7)
+      moverModelo(simbolosLista[3], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[4], -6, -5, 7)
 
       moverModelo(jolteonModel, -25, 0, 0);
       moverModelo(flareonModel, 0, 0, 0)
@@ -141,8 +103,6 @@ const sectionActions = {
 
       body.style.background = '#F7E8A1';
 
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   5: () => {
@@ -151,9 +111,9 @@ const sectionActions = {
       moverModelo(cartasLista[1], 6, 1, 1.5)
       moverModelo(cartasLista[6], 10, 1, 10)
 
-      moverModelo(simbolosLista[3], -6, -5, 0.7)
-      moverModelo(simbolosLista[4], -6, 1, 0.7)
-      moverModelo(simbolosLista[5], -6, -5, 0.7)
+      moverModelo(simbolosLista[3], -6, -5, 7)
+      moverModelo(simbolosLista[4], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[5], -6, -5, 7)
 
       moverModelo(flareonModel, 25, 0, 0)
       moverModelo(espeonModel, 0, 0, 0)
@@ -161,8 +121,6 @@ const sectionActions = {
 
       body.style.background = '#E4CDDD';
 
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   6: () => {
@@ -171,9 +129,9 @@ const sectionActions = {
       moverModelo(cartasLista[6], 6, 1, 1.5)
       moverModelo(cartasLista[5], 10, 1, 10)
 
-      moverModelo(simbolosLista[4], -6, -5, 0.7)
-      moverModelo(simbolosLista[5], -6, 1, 0.7)
-      moverModelo(simbolosLista[6], -6, -5, 0.7)
+      moverModelo(simbolosLista[4], -6, -5, 7)
+      moverModelo(simbolosLista[5], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[6], -6, -5, 7)
 
       moverModelo(espeonModel, -25, 0, 0)
       moverModelo(umbreonModel, 0, 0, 0)
@@ -181,8 +139,6 @@ const sectionActions = {
 
       body.style.background = '#efcb69';
 
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   7: () => {
@@ -191,18 +147,15 @@ const sectionActions = {
       moverModelo(cartasLista[5], 6, 1, 1.5)
       moverModelo(cartasLista[3], 10, 1, 10)
 
-      moverModelo(simbolosLista[5], -6, -5, 0.7)
-      moverModelo(simbolosLista[6], -6, 1, 0.7)
-      moverModelo(simbolosLista[7], -6, -5, 0.7)
+      moverModelo(simbolosLista[5], -6, -5, 7)
+      moverModelo(simbolosLista[6], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[7], -6, -5, 7)
 
       moverModelo(umbreonModel, 25, 0, 0)
       moverModelo(leafeonModel, 0, 0, 0)
       moverModelo(glaceonModel, 25, 0, 0);
 
       body.style.background = '#FAE9B9';
-
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
 
   },
   8: () => {
@@ -211,9 +164,9 @@ const sectionActions = {
       moverModelo(cartasLista[3], 6, 1, 1.5)
       moverModelo(cartasLista[8], 10, 1, 10)
 
-      moverModelo(simbolosLista[6], -6, -5, 0.7)
-      moverModelo(simbolosLista[7], -6, 1, 0.7)
-      moverModelo(simbolosLista[8], -6, -5, 0.7)
+      moverModelo(simbolosLista[6], -6, -5, 7)
+      moverModelo(simbolosLista[7], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[8], -6, -5, 7)
 
       moverModelo(leafeonModel, -25, 0, 0)
       moverModelo(glaceonModel, 0, 0, 0)
@@ -221,27 +174,38 @@ const sectionActions = {
 
       body.style.background = '#DFF6F0';
 
-      minhaLuz1.atualizarCor('white');
-      minhaluz2.atualizarCor('white');
-
   },
   9: () => {
       // Ação para a seção 9
       moverModelo(cartasLista[3], 10, 1, 10)
       moverModelo(cartasLista[8], 6, 1, 1.5)
 
-      moverModelo(simbolosLista[7], -6, -5, 0.7)
-      moverModelo(simbolosLista[8], -6, 1, 0.7)
-
+      moverModelo(simbolosLista[7], -6, -5, 7)
+      moverModelo(simbolosLista[8], -8.3, -1, 0.7)
 
       moverModelo(glaceonModel, 25, 0, 0)
       moverModelo(sylveonModel, 0, 0, 0)
 
+      moverModelo(ground, 0, -0.1, 0)
+      moverModelo(ground2, 0, -0.2, 0)
+
+      movimentarEsferas(1);
+
       body.style.background = '#ffdae3';
+  },
+  10: () => {
+      // Ação para a seção 10
+      moverModelo(cartasLista[8], 10, 1, 10)
 
-      minhaLuz1.atualizarCor('pink');
-      minhaluz2.atualizarCor('yellow');
+      moverModelo(simbolosLista[8], -6, -5, 7)
 
+      moverModelo(ground, 0, -10, 0)
+      moverModelo(ground2, 0, -10, 0)
+      moverModelo(sylveonModel, 0, -10, 0)
+
+      movimentarEsferas(2);
+      
+      body.style.background = '#f3d5a5';
   }
   // Adicione mais pares chave-valor conforme necessário para cada seção
 };
@@ -326,14 +290,14 @@ class MinhaLuz extends THREE.Object3D {
 }
 
 // Crie uma instância da classe MinhaLuz
-const minhaLuz1 = new MinhaLuz(0x00ff00, 4);
-const minhaluz2 = new MinhaLuz(0x0000ff, 4);
-const minhaluz3 = new MinhaLuz(0xffffff, 8);
+const minhaLuz1 = new MinhaLuz(0xffffff, 3);
+const minhaluz2 = new MinhaLuz(0xffffff, 3);
+const minhaluz3 = new MinhaLuz(0xffffff, 6);
 scene.add(minhaLuz1);
 scene.add(minhaluz2);
 scene.add(minhaluz3);
 
-const luzDirecional = new THREE.DirectionalLight(0xffffff, 1);
+const luzDirecional = new THREE.DirectionalLight(0xffffff, 1.5);
 luzDirecional.position.set(0, 1, 3);
 scene.add(luzDirecional);
 
@@ -433,26 +397,46 @@ function carregarModelos(){
     vaporeonModel.position.set(25, 0, 0);
     modelosLista.push(vaporeonModel)
   });
+
+  const EeveeInicial = new GLTFLoader();
+  EeveeInicial.load('/assets/eevee/scene.gltf', (eeveeInicial) => {
+    eeveeInicial.scene.scale.set(2,2,2);
+    scene.add(eeveeInicial.scene);
+    eeveeInicial.scene.castShadow = true;
+    eeveeModel2 = eeveeInicial.scene;
+    eeveeModel2.position.set(0.7, 1, 4.8);
+    eeveeModel2.rotation.y = -0.5
+   
+  });
 }
 
-var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
+var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel, eeveeModel2;
 carregarModelos()
 
 // tela inicial modelos
 // florestinha
 var florestaModel;
 const Floresta = new GLTFLoader();
-  Floresta.load('/assets/cenario/scene.gltf', (floresta) => {
-  floresta.scene.scale.set(1.5,1.5,1.5);
+  Floresta.load('/assets/cenario2/scene.gltf', (floresta) => {
+  floresta.scene.scale.set(0.05,0.05,0.05);
   scene.add(floresta.scene);
   floresta.scene.castShadow = true
-  floresta.scene.position.set(0,-1,0);
-  floresta.scene.rotation.y = 0
+  floresta.scene.position.set(0,0.8,3);
+  floresta.scene.rotation.y = 0.5
   florestaModel = floresta.scene;
 });
 
 // NUVEM
-
+var nuvemModel;
+const Nuvem = new GLTFLoader();
+  Nuvem.load('/assets/nuvem/scene.gltf', (nuvem) => {
+  nuvem.scene.scale.set(1,1,1);
+  scene.add(nuvem.scene);
+  nuvem.scene.castShadow = true
+  nuvem.scene.position.set(0,0,0);
+  nuvem.scene.rotation.y = 0
+  nuvemModel = nuvem.scene;
+});
 
 // GRAMA
 const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
@@ -553,7 +537,7 @@ const simbolosLista = []
 function criarSimbolo(texturaSimbolo){
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
-  simbolo.position.set(-6, 2, -5)
+  simbolo.position.set(-6, -5, 7)
 
   simbolosLista.push(simbolo);
   return simbolo;
@@ -576,29 +560,49 @@ const simbolos = texturasSimbolo.map(textura => {
   return simbolo;
 });
 
-function simbolosInicial(pagina){
+function telaInicial(pagina){
   console.log('teste')
   if(pagina === 1){
     console.log('tela primeira')
-    moverModelo(simbolosLista[0], -6, 2, 0.4)
-    moverModelo(simbolosLista[1], -6, 3.5, 0.7)
-    moverModelo(simbolosLista[2], -5, 3, 0.7)
-    moverModelo(simbolosLista[3], -4.5, 2, 0.7)
-    moverModelo(simbolosLista[4], -5, 1, 0.7)
-    moverModelo(simbolosLista[5], -6, 0.5, 0.7)
-    moverModelo(simbolosLista[6], -7, 1, 0.7)
-    moverModelo(simbolosLista[7], -7.5, 2, 0.7)
-    moverModelo(simbolosLista[8], -7, 3, 0.7)
+
+    cartasLista.forEach(carta => {
+      moverModelo(carta, 10, 1, 10);
+    })
+    movimentarEsferas(2);
+    moverModelo(esfera1, 0, -10, 0)
+    moverModelo(esfera2, 0, -10, 0)
+
+    moverModelo(ground, 0, -10, 0)
+    moverModelo(ground2, 0, -10, 0)
+    moverModelo(eeveeModel, 0, -10, 0)
+
+    moverModelo(simbolosLista[0], -8, -5, 0.7)
+
+    moverModelo(florestaModel, 0,0.8,3)
+    moverModelo(eeveeModel2, 0.7, 1, 4.8)
+
+    minhaLuz1.atualizarIntensidade(0)
+    minhaluz2.atualizarIntensidade(0)
+    minhaluz3.atualizarIntensidade(0)
     
-    
+    mudarCamera(0,1.2, 6,0.4,0,0)
+
+    luzDirecional.intensity = 2.5
   }
   if(pagina === 2){
     console.log('tela segunda')
-    simbolosLista.forEach(simbolo =>{
-      moverModelo(simbolo, -6, -5, 0.7)
-      simbolo.rotation.y = 0.5
-      simbolo.rotation.x = -0.2
-    })
+    
+    movimentarEsferas(1);
+
+    mudarCamera(0,2.2, 7,0,0,0)
+    moverModelo(florestaModel, 0, 13,0)
+    moverModelo(eeveeModel2, 0, 13,0)
+
+    minhaLuz1.atualizarIntensidade(2)
+    minhaluz2.atualizarIntensidade(2)
+    minhaluz3.atualizarIntensidade(4)
+
+    luzDirecional.intensity = 1.5
   }
 }
 

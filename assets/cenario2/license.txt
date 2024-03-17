@@ -1,11 +1,11 @@
 Model Information:
-* title:	Low Poly Tree
-* source:	https://sketchfab.com/3d-models/low-poly-tree-7b5503c10a88444ea2bfb877a7137bfa
-* author:	Nodaris (https://sketchfab.com/Nodaris)
+* title:	Tree House
+* source:	https://sketchfab.com/3d-models/tree-house-dc86dd4763934cd58fb290a2f6bcaf52
+* author:	kluchek (https://sketchfab.com/kluchek)
 
 Model License:
-* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
-* requirements:	Author must be credited. Commercial use is allowed.
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Low Poly Tree" (https://sketchfab.com/3d-models/low-poly-tree-7b5503c10a88444ea2bfb877a7137bfa) by Nodaris (https://sketchfab.com/Nodaris) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Tree House" (https://sketchfab.com/3d-models/tree-house-dc86dd4763934cd58fb290a2f6bcaf52) by kluchek (https://sketchfab.com/kluchek) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

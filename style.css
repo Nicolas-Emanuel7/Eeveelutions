@@ -21,6 +21,18 @@ body {
     overflow-y: auto;
 
 }
+.logo{
+    width: 50%;
+    height: 50%;
+}
+.section.one.nomes{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: #000 2px 2px;
+
+}
 
 
 body.loaded {
@@ -84,7 +96,7 @@ section.one .container {
   
 h1, h2{
     margin-left: 20px;
-    text-shadow: #000 2px 2px;
+    text-shadow: #000000 2px 2px;
    
 }
 
