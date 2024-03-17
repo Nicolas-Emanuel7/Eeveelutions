@@ -1,0 +1,11 @@
+Model Information:
+* title:	[Stylized] Tree stump
+* source:	https://sketchfab.com/3d-models/stylized-tree-stump-00c944f33e1046fdb16506ece49a3914
+* author:	metrosp (https://sketchfab.com/metrosp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "[Stylized] Tree stump" (https://sketchfab.com/3d-models/stylized-tree-stump-00c944f33e1046fdb16506ece49a3914) by metrosp (https://sketchfab.com/metrosp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
