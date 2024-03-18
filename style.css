@@ -46,6 +46,7 @@ body.loaded {
     outline: none;
 }
 
+
 /* Mexendo nas caracteristicas dos eevees */
 section {
     height: 100vh;
@@ -146,5 +147,9 @@ h1, h2{
     padding-top: 20px;
     padding-left: 20px;
     border-bottom: 5px solid;
-    /* Adicione mais estilos conforme necessário */
+  }
+
+  .creditos{
+    font-size: 12px;
+    margin-left: 30px;
   }
