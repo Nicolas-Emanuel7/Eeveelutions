@@ -64,7 +64,7 @@ section.one .container {
     margin-left: 20px;
     font-size: 12px;
     max-width: 450px;
-    background-color: #eafa57;
+    
 }
 
 .ataque{
@@ -72,14 +72,17 @@ section.one .container {
     font-size: 12px;
     max-width: 450px;
     max-height: 50px;
-    background-color: #c424ae;
+      
+}
+.tipo{
+    margin-top: 50px;
     
 }
-
 .esp{
     position: absolute;
-    left: 70%;
+    left: 68%;
     top: 95px;
+
 }
 .especial{ 
     position: absolute;
