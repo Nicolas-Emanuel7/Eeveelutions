@@ -62,28 +62,32 @@ section.one .container {
 .desc { 
     margin-top:10px;
     margin-left: 20px;
-    height: 15vh;
     font-size: 12px;
     max-width: 450px;
+    background-color: #eafa57;
 }
 
 .ataque{
-   
     margin-left: 20px;
-    height: 20vh;
     font-size: 12px;
     max-width: 450px;
+    max-height: 50px;
+    background-color: #c424ae;
     
 }
 
+.esp{
+    position: absolute;
+    left: 70%;
+    top: 95px;
+}
 .especial{ 
     position: absolute;
-    margin-top:10px;
-    margin-left: 75%;
-    margin-bottom: 75%;
-    height: 15vh;
+    top: 25%;
+    left: 70%;
     font-size: 12px;
     max-width: 450px; 
+    
 }
 
 
