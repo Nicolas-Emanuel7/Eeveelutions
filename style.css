@@ -154,8 +154,9 @@ h1, h2{
 
   .sprites{
     position: absolute;
-    bottom: 0;
+    bottom: 33px;
     animation: floatAnimation 3s infinite; 
+    left: 5%;
   }
 
   
@@ -173,11 +174,11 @@ h1, h2{
 
   footer{
     background-color:  rgb(71, 127, 231);
-    
+    padding: 20px;
     position: absolute; 
     bottom: 0;
     text-align: center;
     width: 100%;
-    height: ;
+    height: 10px;
     font-size: 12px;
   }
