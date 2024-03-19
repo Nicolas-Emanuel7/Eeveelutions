@@ -24,6 +24,7 @@ body {
 .logo{
     width: 50%;
     height: 50%;
+    animation: floatAnimation 3s infinite; 
 }
 .section.one.nomes{
     margin-top: 20px;
@@ -46,6 +47,7 @@ body.loaded {
     outline: none;
 }
 
+
 /* Mexendo nas caracteristicas dos eevees */
 section {
     height: 100vh;
@@ -62,44 +64,47 @@ section.one .container {
 .desc { 
     margin-top:10px;
     margin-left: 20px;
-    height: 15vh;
-    font-size: 12px;
-    max-width: 450px;
-}
-
-.ataque{
-   
-    margin-left: 20px;
-    height: 20vh;
     font-size: 12px;
     max-width: 450px;
     
 }
 
+.ataque{
+    margin-left: 20px;
+    font-size: 12px;
+    max-width: 450px;
+    max-height: 50px;
+      
+}
+.tipo{
+    margin-top: 50px;
+    
+}
+.esp{
+    position: absolute;
+    left: 68%;
+    top: 95px;
+
+}
 .especial{ 
     position: absolute;
-    margin-top:10px;
-    margin-left: 75%;
-    margin-bottom: 75%;
-    height: 15vh;
+    top: 25%;
+    left: 70%;
     font-size: 12px;
     max-width: 450px; 
+    
 }
-
-
-  h2 {
+h2 {
     margin-left: 20px; 
     margin-bottom: 0;
     margin-top: 30px;
     
-  }
+}
   
 h1, h2{
     margin-left: 20px;
-    text-shadow: #000000 2px 2px;
-   
+    text-shadow: #000000 2px 2px;  
 }
-
 
 .loading-bar {
     position: fixed;
@@ -139,5 +144,40 @@ h1, h2{
     padding-top: 20px;
     padding-left: 20px;
     border-bottom: 5px solid;
-    /* Adicione mais estilos conforme necessário */
+  }
+
+  .creditos{
+    font-size: 12px;
+    margin-left: 30px;
+  }
+
+
+  .sprites{
+    position: absolute;
+    bottom: 0;
+    animation: floatAnimation 3s infinite; 
+  }
+
+  
+@keyframes floatAnimation {
+    0% {
+      transform: translateY(0); 
+    }
+    50% {
+      transform: translateY(-20px); 
+    }
+    100% {
+      transform: translateY(0); 
+    }
+  }
+
+  footer{
+    background-color:  rgb(71, 127, 231);
+    
+    position: absolute; 
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: ;
+    font-size: 12px;
   }
