@@ -32,8 +32,7 @@ const sectionActions = {
       
       telaInicial(1)
       
-      body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #b563d6)';
-      body.style.animation = 'color 12s ease-in-out infinite';
+      body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
 
   },
   1: () => {
@@ -438,7 +437,7 @@ function carregarNuvem() {
     loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
         nuvem.scene.scale.set(0.5,0.5,0.5);
         nuvem.scene.castShadow = true;
-        for (let i = 0; i < 10; i++) { // Criar 5 instâncias da nuvem
+        for (let i = 0; i < 8; i++) { // Criar 5 instâncias da nuvem
             const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
             nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
             nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
@@ -583,8 +582,6 @@ function telaInicial(pagina){
       moverModelo(carta, 10, 1, 10);
     })
     movimentarEsferas(2);
-    moverModelo(esfera1, 0, -10, 0)
-    moverModelo(esfera2, 0, -10, 0)
 
     moverModelo(ground, 0, -10, 0)
     moverModelo(ground2, 0, -10, 0)
@@ -643,7 +640,7 @@ const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
 
 // Função para carregar o modelo da estrela
 function carregarEstrela() {
-  for(let i = 0; i < 15; i++){
+  for(let i = 0; i < 10; i++){
     const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
     estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
     scene.add(estrela);
