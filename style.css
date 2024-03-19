@@ -156,7 +156,9 @@ h1, h2{
     position: absolute;
     bottom: 33px;
     animation: floatAnimation 3s infinite; 
-    left: 5%;
+    left: 4%;
+
+
   }
 
   

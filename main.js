@@ -43,8 +43,8 @@ const sectionActions = {
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
   
-      moverModelo(simbolosLista[0], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[1], -6, -5, 7)
+      moverModelo(simbolosLista[0], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[1], 0, -5, 7)
 
       moverModelo(ground, 0, -0.1, 0)
       moverModelo(ground2, 0, -0.2, 0)
@@ -60,9 +60,9 @@ const sectionActions = {
       moverModelo(cartasLista[7], 6, 1, 1.5)
       moverModelo(cartasLista[4], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], -6, -5, 7)
-      moverModelo(simbolosLista[1], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[2], -6, -5, 7)
+      moverModelo(simbolosLista[0], 0, -5, 7)
+      moverModelo(simbolosLista[1], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[2], 0, -5, 7)
 
       moverModelo(eeveeModel, -25, 0, 0)
       moverModelo(vaporeonModel, 0, 0, 0);
@@ -77,9 +77,9 @@ const sectionActions = {
       moverModelo(cartasLista[4], 6, 1, 1.5)
       moverModelo(cartasLista[2], 10, 1, 10)
 
-      moverModelo(simbolosLista[1], -6, -5, 7)
-      moverModelo(simbolosLista[2], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[3], -6, -5, 7)
+      moverModelo(simbolosLista[1], 0, -5, 7)
+      moverModelo(simbolosLista[2], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[3], 0, -5, 7)
 
       moverModelo(jolteonModel, 0, 0, 0);
       moverModelo(vaporeonModel, 25, 0, 0);
@@ -94,9 +94,9 @@ const sectionActions = {
       moverModelo(cartasLista[2], 6, 1, 1.5)
       moverModelo(cartasLista[1], 10, 1, 10)
 
-      moverModelo(simbolosLista[2], -6, -5, 7)
-      moverModelo(simbolosLista[3], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[4], -6, -5, 7)
+      moverModelo(simbolosLista[2], 0, -5, 7)
+      moverModelo(simbolosLista[3], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[4], 0, -5, 7)
 
       moverModelo(jolteonModel, -25, 0, 0);
       moverModelo(flareonModel, 0, 0.15, 0)
@@ -112,9 +112,9 @@ const sectionActions = {
       moverModelo(cartasLista[1], 6, 1, 1.5)
       moverModelo(cartasLista[6], 10, 1, 10)
 
-      moverModelo(simbolosLista[3], -6, -5, 7)
-      moverModelo(simbolosLista[4], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[5], -6, -5, 7)
+      moverModelo(simbolosLista[3], 0, -5, 7)
+      moverModelo(simbolosLista[4], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[5], 0, -5, 7)
 
       moverModelo(flareonModel, 25, 0, 0)
       moverModelo(espeonModel, 0, 0.05, 0)
@@ -130,9 +130,9 @@ const sectionActions = {
       moverModelo(cartasLista[6], 6, 1, 1.5)
       moverModelo(cartasLista[5], 10, 1, 10)
 
-      moverModelo(simbolosLista[4], -6, -5, 7)
-      moverModelo(simbolosLista[5], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[6], -6, -5, 7)
+      moverModelo(simbolosLista[4], 0, -5, 7)
+      moverModelo(simbolosLista[5], 0, 0.1, 3.2)
+      moverModelo(simbolosLista[6], 0, -5, 7)
 
       moverModelo(espeonModel, -25, 0, 0)
       moverModelo(umbreonModel, 0, 0, 0)
@@ -148,9 +148,9 @@ const sectionActions = {
       moverModelo(cartasLista[5], 6, 1, 1.5)
       moverModelo(cartasLista[3], 10, 1, 10)
 
-      moverModelo(simbolosLista[5], -6, -5, 7)
-      moverModelo(simbolosLista[6], -8.3, -1, 0.7)
-      moverModelo(simbolosLista[7], -6, -5, 7)
+      moverModelo(simbolosLista[5], 0, -5, 7)
+      moverModelo(simbolosLista[6],0, 0.1, 3.2)
+      moverModelo(simbolosLista[7], 0, -5, 7)
 
       moverModelo(umbreonModel, 25, 0, 0)
       moverModelo(leafeonModel, 0, 0, 0)
@@ -165,8 +165,8 @@ const sectionActions = {
       moverModelo(cartasLista[3], 6, 1, 1.5)
       moverModelo(cartasLista[8], 10, 1, 10)
 
-      moverModelo(simbolosLista[6], -6, -5, 7)
-      moverModelo(simbolosLista[7], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[6], 0, -5, 7)
+      moverModelo(simbolosLista[7],0, 0.1, 3.2)
       moverModelo(simbolosLista[8], -6, -5, 7)
 
       moverModelo(leafeonModel, -25, 0, 0)
@@ -181,8 +181,8 @@ const sectionActions = {
       moverModelo(cartasLista[3], 10, 1, 10)
       moverModelo(cartasLista[8], 6, 1, 1.5)
 
-      moverModelo(simbolosLista[7], -6, -5, 7)
-      moverModelo(simbolosLista[8], -8.3, -1, 0.7)
+      moverModelo(simbolosLista[7], 0, -5, 7)
+      moverModelo(simbolosLista[8], 0, 0.1, 3.2)
 
       moverModelo(glaceonModel, 25, 0, 0)
       moverModelo(sylveonModel, 0, 0, 0)
@@ -198,7 +198,7 @@ const sectionActions = {
       // Ação para a seção 10
       moverModelo(cartasLista[8], 10, 1, 10)
 
-      moverModelo(simbolosLista[8], -6, -5, 7)
+      moverModelo(simbolosLista[8], 0, -5, 7)
 
       moverModelo(ground, 0, -10, 0)
       moverModelo(ground2, 0, -10, 0)
@@ -544,33 +544,27 @@ const cartas = texturasFrente.map(textura => {
 });
 
 // CIRCULOS
-const geometryCirculo = new THREE.CircleGeometry(0.5, 32);
+const geometryCirculo = new THREE.CircleGeometry(0.25, 32);
 const simbolosLista = []
 
 function criarSimbolo(texturaSimbolo){
   const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
   const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
-  simbolo.position.set(-6, -5, 7)
+  simbolo.position.set(0, -5, 7)
 
   simbolosLista.push(simbolo);
   return simbolo;
 }
 
 const texturasSimbolo = [
-  textureLoader.load('assets/simbolos/Normal.png'),
-  textureLoader.load('assets/simbolos/Water.png'),
-  textureLoader.load('assets/simbolos/Electric.png'),
-  textureLoader.load('assets/simbolos/Fire.png'),
-  textureLoader.load('assets/simbolos/Psychic.png'),
-  textureLoader.load('assets/simbolos/Dark.png'),
-  textureLoader.load('assets/simbolos/Grass.png'),
-  textureLoader.load('assets/simbolos/Ice.png'),
-  textureLoader.load('assets/simbolos/Fairy.png'),
+  textureLoader.load('assets/simbolos/pokebola.png'),
 ]
 const simbolos = texturasSimbolo.map(textura => {
-  const simbolo = criarSimbolo(textura);
+  for(i=0; i <9; i++){
+    const simbolo = criarSimbolo(textura);
   scene.add(simbolo);
   return simbolo;
+  }
 });
 
 function telaInicial(pagina){
@@ -587,7 +581,7 @@ function telaInicial(pagina){
     moverModelo(ground2, 0, -10, 0)
     moverModelo(eeveeModel, 0, -10, 0)
 
-    moverModelo(simbolosLista[0], -8, -5, 0.7)
+    moverModelo(simbolosLista[0], 0, -5, 3.2)
 
     moverModelo(florestaModel, 0,0.8,3)
     moverModelo(eeveeModel2, -0.3, 0.9, 4.8)
