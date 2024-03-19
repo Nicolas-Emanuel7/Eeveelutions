@@ -170,3 +170,14 @@ h1, h2{
       transform: translateY(0); 
     }
   }
+
+  footer{
+    background-color:  rgb(71, 127, 231);
+    
+    position: absolute; 
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: ;
+    font-size: 12px;
+  }
