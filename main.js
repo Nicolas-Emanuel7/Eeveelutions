@@ -25,6 +25,75 @@ let currentSection = 0
 // SEÇÕES DA PÁGINA /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////QQQQQ
 const body = document.body;
 
+// Seleciona o elemento HTML com a classe 'loading-bar'
+const loadingBarElement = document.querySelector('.loading-bar')
+
+// Cria um novo LoadingManager do Three.js
+const loadingManager = new THREE.LoadingManager(
+  // Função a ser executada quando todos os recursos estiverem carregados
+  () => {
+      // Define um timeout para executar um conjunto de ações após 500 milissegundos
+      window.setTimeout(() => {
+          // Faz uma animação de fade out no elemento de sobreposição usando GSAP
+          gsap.to(overlayMaterial.uniforms.uAlpha, {
+              duration: 3,
+              value: 0,
+              delay: 1
+          })
+          // Adiciona a classe 'ended' ao elemento de barra de carregamento
+          loadingBarElement.classList.add('ended')
+          // Adiciona a classe 'loaded' ao elemento <body>
+          body.classList.add('loaded')
+          // Reseta a transformação CSS da barra de carregamento
+          loadingBarElement.style.transform = ''
+      }, 500)
+  },
+  // Função a ser executada a cada vez que um item é carregado
+  (itemUrl, itemsLoaded, itemsTotal) => {
+      // Exibe no console a URL do item, a quantidade de itens carregados e o total de itens
+      console.log(itemUrl, itemsLoaded, itemsTotal)
+      // Calcula a proporção de progresso do carregamento e atualiza a barra de carregamento
+      const progressRatio = itemsLoaded / itemsTotal
+      loadingBarElement.style.transform = `scaleX(${progressRatio})`
+      console.log(progressRatio)
+  },
+  // Função a ser executada em caso de erro durante o carregamento
+  () => {
+      console.log('Erro ao carregar os recursos')
+  }
+)
+
+// Cria uma geometria plana para representar a sobreposição
+const overlayGeometry = new THREE.PlaneGeometry(2, 2, 1, 1)
+
+// Cria um material para a sobreposição usando shaders
+const overlayMaterial = new THREE.ShaderMaterial({
+    // Define o vertex shader
+    vertexShader: `
+        void main() {
+            gl_Position = vec4(position, 1.0);
+        }
+    `,
+    // Define o fragment shader
+    fragmentShader: `
+        uniform float uAlpha;
+        void main() {
+            gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+        }
+    `,
+    // Define os uniforms (variáveis uniformes do shader)
+    uniforms: {
+        uAlpha: { value: 1.0 } // Define o valor inicial da transparência
+    },
+    transparent: true // Define o material como transparente
+})
+
+// Cria um objeto Mesh usando a geometria e o material criados anteriormente
+const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
+
+// Adiciona a sobreposição à cena
+scene.add(overlay)
+
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
   0: () => {
@@ -310,7 +379,7 @@ const modelosLista = []
 
 function carregarModelos(){
   console.log('Carregando Eevee'); 
-  const Eevee = new GLTFLoader();
+  const Eevee = new GLTFLoader(loadingManager);
   Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
     eevee.scene.scale.set(8, 8, 8);
     scene.add(eevee.scene);
@@ -320,7 +389,7 @@ function carregarModelos(){
     modelosLista.push(eeveeModel)
   });
 
-  const Espeon = new GLTFLoader();
+  const Espeon = new GLTFLoader(loadingManager);
   Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
     espeon.scene.scale.set(2, 2, 2);
     scene.add(espeon.scene);
@@ -330,7 +399,7 @@ function carregarModelos(){
     modelosLista.push(espeonModel)
   });
 
-  const Flareon = new GLTFLoader();
+  const Flareon = new GLTFLoader(loadingManager);
   Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
     flareon.scene.scale.set(1.8,1.9,2);
     scene.add(flareon.scene);
@@ -340,7 +409,7 @@ function carregarModelos(){
     modelosLista.push(flareonModel)
   });
 
-  const Glaceon = new GLTFLoader();
+  const Glaceon = new GLTFLoader(loadingManager);
   Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
     glaceon.scene.scale.set(2,2,2);
     scene.add(glaceon.scene);
@@ -350,7 +419,7 @@ function carregarModelos(){
     modelosLista.push(glaceonModel)
   });
 
-  const Jolteon = new GLTFLoader();
+  const Jolteon = new GLTFLoader(loadingManager);
   Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
     jolteon.scene.scale.set(2,2,2);
     scene.add(jolteon.scene);
@@ -360,7 +429,7 @@ function carregarModelos(){
     modelosLista.push(jolteonModel)
   });
 
-  const Leafeon = new GLTFLoader();
+  const Leafeon = new GLTFLoader(loadingManager);
   Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
     leafeon.scene.scale.set(2,2,2);
     scene.add(leafeon.scene);
@@ -370,7 +439,7 @@ function carregarModelos(){
     modelosLista.push(leafeonModel)
   });
 
-  const Sylveon = new GLTFLoader();
+  const Sylveon = new GLTFLoader(loadingManager);
   Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
     sylveon.scene.scale.set(2,2,2);
     scene.add(sylveon.scene);
@@ -380,7 +449,7 @@ function carregarModelos(){
     modelosLista.push(sylveonModel)
   });
 
-  const Umbreon = new GLTFLoader();
+  const Umbreon = new GLTFLoader(loadingManager);
   Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
     umbreon.scene.scale.set(2,2,2);
     scene.add(umbreon.scene);
@@ -390,7 +459,7 @@ function carregarModelos(){
     modelosLista.push(umbreonModel)
   });
 
-  const Vaporeon = new GLTFLoader();
+  const Vaporeon = new GLTFLoader(loadingManager);
   Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
     vaporeon.scene.scale.set(1.7,1.7,1.7);
     scene.add(vaporeon.scene);
@@ -400,7 +469,7 @@ function carregarModelos(){
     modelosLista.push(vaporeonModel)
   });
 
-  const EeveeInicial = new GLTFLoader();
+  const EeveeInicial = new GLTFLoader(loadingManager);
   EeveeInicial.load('/assets/eevee/scene.gltf', (eeveeInicial) => {
     eeveeInicial.scene.scale.set(2,2,2);
     scene.add(eeveeInicial.scene);
@@ -418,7 +487,7 @@ carregarModelos()
 // tela inicial modelos
 // florestinha
 var florestaModel;
-const Floresta = new GLTFLoader();
+const Floresta = new GLTFLoader(loadingManager);
   Floresta.load('/assets/cenario3/scene.gltf', (floresta) => {
   floresta.scene.scale.set(0.0050,0.0050,0.0050);
   scene.add(floresta.scene);
@@ -433,11 +502,11 @@ const nuvensLista = []; // Lista para armazenar as instâncias das nuvens
 
 // Função para carregar o modelo da nuvem
 function carregarNuvem() {
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader(loadingManager);
     loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
         nuvem.scene.scale.set(0.5,0.5,0.5);
         nuvem.scene.castShadow = true;
-        for (let i = 0; i < 8; i++) { // Criar 5 instâncias da nuvem
+        for (let i = 0; i < 6; i++) { // Criar 5 instâncias da nuvem
             const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
             nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
             nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
@@ -560,7 +629,7 @@ const texturasSimbolo = [
   textureLoader.load('assets/simbolos/pokebola.png'),
 ]
 const simbolos = texturasSimbolo.map(textura => {
-  for(i=0; i <9; i++){
+  for(let i=0; i <9; i++){
     const simbolo = criarSimbolo(textura);
   scene.add(simbolo);
   return simbolo;
@@ -593,6 +662,8 @@ function telaInicial(pagina){
     mudarCamera(-1,1.5, 5.7,-0.1,-0.1,0)
 
     luzDirecional.intensity = 2.5
+
+    animarFundo(2);
   }
   if(pagina === 2){
     console.log('tela segunda')
@@ -608,6 +679,8 @@ function telaInicial(pagina){
     minhaluz3.atualizarIntensidade(4)
 
     luzDirecional.intensity = 1.5
+
+    animarFundo(1);
   }
 }
 
@@ -634,7 +707,7 @@ const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
 
 // Função para carregar o modelo da estrela
 function carregarEstrela() {
-  for(let i = 0; i < 10; i++){
+  for(let i = 0; i < 7; i++){
     const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
     estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
     scene.add(estrela);
@@ -713,32 +786,47 @@ document.addEventListener('keydown', (event) => {
 });
 // ANIMAÇÃO
 
-function animarFundo(){
-  requestAnimationFrame(animarFundo);
-  estrelasLista.forEach(estrela => {
-    estrela.position.y -= 0.05;
-    estrela.position.x += Math.random() * 0.01 + 0.02;
-    estrela.position.z += Math.random() * 0 + 0.01;
-    if (estrela.position.y < -10) {
-      estrela.position.y = Math.random() * 20 + 10;
-      estrela.position.x = Math.random() * 30 - 20;
-      estrela.position.z = Math.random() * 10 - 15;
-      console.log(estrela.position)
-    }
-  });
-  nuvensLista.forEach(nuvem => {
-    nuvem.position.x += Math.random() * 0.006 + 0.005;
-    nuvem.position.z += Math.random() * 0.001 + 0.001;
-    if (nuvem.position.x > 25) {
-      nuvem.position.x = Math.random() * 40 - 30;
-      nuvem.position.z = Math.random() * 10 - 15;
-      console.log(nuvem.position)
-    }
-  });
-  renderer.render(scene, camera);
+let animacaoEmAndamento = false;
 
+function animarFundo(opcao){
+  if(opcao === 1 && !animacaoEmAndamento){
+    console.log('animando')
+    animacaoEmAndamento = true;
+
+    function animacao(){
+      estrelasLista.forEach(estrela => {
+        estrela.position.y -= 0.05;
+        estrela.position.x += Math.random() * 0.01 + 0.02;
+        estrela.position.z += Math.random() * 0 + 0.01;
+        if (estrela.position.y < -10) {
+          estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
+        }
+      });
+
+      nuvensLista.forEach(nuvem => {
+        nuvem.position.x += Math.random() * 0.006 + 0.005;
+        nuvem.position.z += Math.random() * 0.001 + 0.001;
+        if (nuvem.position.x > 25) {
+          nuvem.position.x = Math.random() * 40 - 30;
+          nuvem.position.z = Math.random() * 10 - 15;
+        }
+      });
+
+      renderer.render(scene, camera);
+
+      if (animacaoEmAndamento) {
+        requestAnimationFrame(animacao);
+      }
+    }
+    animacao();
+  }
+  else if(opcao === 2){
+    console.log('parando')
+    animacaoEmAndamento = false;
+  }
 }
-animarFundo();
+
+
 
 function animate(){
     requestAnimationFrame(animate);
@@ -749,7 +837,6 @@ function animate(){
     minhaLuz1.position.set(raio*Math.cos(angulo),1, raio*Math.sin(angulo))
     minhaluz2.position.set(raio*Math.cos(-angulo),1, raio*Math.sin(-angulo))
     minhaluz3.position.set(0, 5*Math.cos(angulo), 5*Math.sin(angulo))
-    
     
 }
 animate();
