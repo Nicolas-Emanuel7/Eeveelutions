@@ -111,9 +111,6 @@ const sectionActions = {
 
       moverModelo(cartasLista[0], 6, 1, 1.5)
       moverModelo(cartasLista[7], 10, 1, 10)
-  
-      moverModelo(simbolosLista[0], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[1], 0, -5, 7)
 
       moverModelo(ground, 0, -0.1, 0)
       moverModelo(ground2, 0, -0.2, 0)
@@ -129,10 +126,6 @@ const sectionActions = {
       moverModelo(cartasLista[7], 6, 1, 1.5)
       moverModelo(cartasLista[4], 10, 1, 10)
 
-      moverModelo(simbolosLista[0], 0, -5, 7)
-      moverModelo(simbolosLista[1], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[2], 0, -5, 7)
-
       moverModelo(eeveeModel, -25, 0, 0)
       moverModelo(vaporeonModel, 0, 0, 0);
       moverModelo(jolteonModel, -25, 0, 0);
@@ -146,10 +139,6 @@ const sectionActions = {
       moverModelo(cartasLista[4], 6, 1, 1.5)
       moverModelo(cartasLista[2], 10, 1, 10)
 
-      moverModelo(simbolosLista[1], 0, -5, 7)
-      moverModelo(simbolosLista[2], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[3], 0, -5, 7)
-
       moverModelo(jolteonModel, 0, 0, 0);
       moverModelo(vaporeonModel, 25, 0, 0);
       moverModelo(flareonModel, 25, 0, 0);
@@ -162,10 +151,6 @@ const sectionActions = {
       moverModelo(cartasLista[4], 10, 1, 10)
       moverModelo(cartasLista[2], 6, 1, 1.5)
       moverModelo(cartasLista[1], 10, 1, 10)
-
-      moverModelo(simbolosLista[2], 0, -5, 7)
-      moverModelo(simbolosLista[3], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[4], 0, -5, 7)
 
       moverModelo(jolteonModel, -25, 0, 0);
       moverModelo(flareonModel, 0, 0.15, 0)
@@ -181,10 +166,6 @@ const sectionActions = {
       moverModelo(cartasLista[1], 6, 1, 1.5)
       moverModelo(cartasLista[6], 10, 1, 10)
 
-      moverModelo(simbolosLista[3], 0, -5, 7)
-      moverModelo(simbolosLista[4], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[5], 0, -5, 7)
-
       moverModelo(flareonModel, 25, 0, 0)
       moverModelo(espeonModel, 0, 0.05, 0)
       moverModelo(umbreonModel, 25, 0, 0);
@@ -198,10 +179,6 @@ const sectionActions = {
       moverModelo(cartasLista[1], 10, 1, 10)
       moverModelo(cartasLista[6], 6, 1, 1.5)
       moverModelo(cartasLista[5], 10, 1, 10)
-
-      moverModelo(simbolosLista[4], 0, -5, 7)
-      moverModelo(simbolosLista[5], 0, 0.1, 3.2)
-      moverModelo(simbolosLista[6], 0, -5, 7)
 
       moverModelo(espeonModel, -25, 0, 0)
       moverModelo(umbreonModel, 0, 0, 0)
@@ -217,10 +194,6 @@ const sectionActions = {
       moverModelo(cartasLista[5], 6, 1, 1.5)
       moverModelo(cartasLista[3], 10, 1, 10)
 
-      moverModelo(simbolosLista[5], 0, -5, 7)
-      moverModelo(simbolosLista[6],0, 0.1, 3.2)
-      moverModelo(simbolosLista[7], 0, -5, 7)
-
       moverModelo(umbreonModel, 25, 0, 0)
       moverModelo(leafeonModel, 0, 0, 0)
       moverModelo(glaceonModel, 25, 0, 0);
@@ -234,10 +207,6 @@ const sectionActions = {
       moverModelo(cartasLista[3], 6, 1, 1.5)
       moverModelo(cartasLista[8], 10, 1, 10)
 
-      moverModelo(simbolosLista[6], 0, -5, 7)
-      moverModelo(simbolosLista[7],0, 0.1, 3.2)
-      moverModelo(simbolosLista[8], -6, -5, 7)
-
       moverModelo(leafeonModel, -25, 0, 0)
       moverModelo(glaceonModel, 0, 0, 0)
       moverModelo(sylveonModel, -25, 0, 0);
@@ -249,9 +218,6 @@ const sectionActions = {
       // Ação para a seção 9
       moverModelo(cartasLista[3], 10, 1, 10)
       moverModelo(cartasLista[8], 6, 1, 1.5)
-
-      moverModelo(simbolosLista[7], 0, -5, 7)
-      moverModelo(simbolosLista[8], 0, 0.1, 3.2)
 
       moverModelo(glaceonModel, 25, 0, 0)
       moverModelo(sylveonModel, 0, 0, 0)
@@ -266,8 +232,6 @@ const sectionActions = {
   10: () => {
       // Ação para a seção 10
       moverModelo(cartasLista[8], 10, 1, 10)
-
-      moverModelo(simbolosLista[8], 0, -5, 7)
 
       moverModelo(ground, 0, -10, 0)
       moverModelo(ground2, 0, -10, 0)
@@ -333,6 +297,7 @@ renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
 
 const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(luzAmbiente)
@@ -612,29 +577,7 @@ const cartas = texturasFrente.map(textura => {
     return carta;
 });
 
-// CIRCULOS
-const geometryCirculo = new THREE.CircleGeometry(0.25, 32);
-const simbolosLista = []
 
-function criarSimbolo(texturaSimbolo){
-  const imagemSimbolo = new THREE.MeshBasicMaterial({ map: texturaSimbolo });
-  const simbolo = new THREE.Mesh(geometryCirculo, imagemSimbolo);
-  simbolo.position.set(0, -5, 7)
-
-  simbolosLista.push(simbolo);
-  return simbolo;
-}
-
-const texturasSimbolo = [
-  textureLoader.load('assets/simbolos/pokebola.png'),
-]
-const simbolos = texturasSimbolo.map(textura => {
-  for(let i=0; i <9; i++){
-    const simbolo = criarSimbolo(textura);
-  scene.add(simbolo);
-  return simbolo;
-  }
-});
 
 function telaInicial(pagina){
   console.log('teste')
@@ -649,8 +592,6 @@ function telaInicial(pagina){
     moverModelo(ground, 0, -10, 0)
     moverModelo(ground2, 0, -10, 0)
     moverModelo(eeveeModel, 0, -10, 0)
-
-    moverModelo(simbolosLista[0], 0, -5, 3.2)
 
     moverModelo(florestaModel, 0,0.8,3)
     moverModelo(eeveeModel2, -0.3, 0.9, 4.8)
@@ -826,6 +767,55 @@ function animarFundo(opcao){
   }
 }
 
+class Particulas {
+  constructor(scene) {
+      this.scene = scene;
+      this.geometry = new THREE.BufferGeometry();
+      this.material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.020 });
+      this.particleSystem = new THREE.Points(this.geometry, this.material);
+      this.scene.add(this.particleSystem);
+  }
+
+  criarParticula(contador) {
+      const positions = [];
+
+      for (let i = 0; i < contador; i++) {
+          positions.push(Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 10 - 5);
+      }
+
+      const attributePosition = new THREE.Float32BufferAttribute(positions, 3);
+      this.geometry.setAttribute('position', attributePosition);
+  }
+
+  mudarCor(cor) {
+      this.material.color.set(cor);
+  }
+
+  mudarVelocidade(velocidade) {
+      this.speed = velocidade;
+  }
+
+  atualizar() {
+      const positions = this.geometry.attributes.position.array;
+      const raioParticula = 5; // Raio do círculo
+
+      console.log(this.speed);
+
+      for (let i = 0; i < positions.length; i += 3) {
+          const anguloParticula = this.speed * i / 10; // Calcula o ângulo com base na velocidade e no índice
+          positions[i] = raioParticula * Math.cos(anguloParticula); // Calcula a posição x
+          positions[i + 1] = Math.random() * 10 - 5; // Mantém a posição y aleatória
+          positions[i + 2] = raioParticula * Math.sin(anguloParticula); // Calcula a posição z
+      }
+
+      this.geometry.attributes.position.needsUpdate = true;
+  }
+}
+
+const funcaoParticulas = new Particulas(scene)
+funcaoParticulas.criarParticula(1000);
+funcaoParticulas.mudarCor('yellow')
+funcaoParticulas.mudarVelocidade(0.01)
 
 
 function animate(){
@@ -837,6 +827,8 @@ function animate(){
     minhaLuz1.position.set(raio*Math.cos(angulo),1, raio*Math.sin(angulo))
     minhaluz2.position.set(raio*Math.cos(-angulo),1, raio*Math.sin(-angulo))
     minhaluz3.position.set(0, 5*Math.cos(angulo), 5*Math.sin(angulo))
+
+    funcaoParticulas.atualizar()
     
 }
 animate();
