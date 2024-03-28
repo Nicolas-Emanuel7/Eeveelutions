@@ -700,7 +700,7 @@ function movimentarEsferas(opcao) {
   requestAnimationFrame(movimentarEsferas);
 }
 
-
+// rotaciona o modelo e a carta para esquerda ou direirta
 document.addEventListener('keydown', (event) => {
   console.log(event)
   if(event.key === 'ArrowLeft'){
@@ -767,11 +767,12 @@ function animarFundo(opcao){
   }
 }
 
+// PARTICULAS 
 class Particulas {
   constructor(scene) {
       this.scene = scene;
       this.geometry = new THREE.BufferGeometry();
-      this.material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.020 });
+      this.material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.010 });
       this.particleSystem = new THREE.Points(this.geometry, this.material);
       this.scene.add(this.particleSystem);
   }
@@ -797,23 +798,25 @@ class Particulas {
 
   atualizar() {
       const positions = this.geometry.attributes.position.array;
-      const raioParticula = 5; // Raio do círculo
+      const numParticulas = positions.length / 3; // Número total de partículas
+      const raioParticula = 3.2; // Raio do círculo
 
       console.log(this.speed);
 
       for (let i = 0; i < positions.length; i += 3) {
           const anguloParticula = this.speed * i / 10; // Calcula o ângulo com base na velocidade e no índice
           positions[i] = raioParticula * Math.cos(anguloParticula); // Calcula a posição x
-          positions[i + 1] = Math.random() * 10 - 5; // Mantém a posição y aleatória
+          positions[i + 1] = Math.random() * 0.4 - 0.3; // Mantém a posição y aleatória
           positions[i + 2] = raioParticula * Math.sin(anguloParticula); // Calcula a posição z
       }
 
       this.geometry.attributes.position.needsUpdate = true;
   }
+
 }
 
 const funcaoParticulas = new Particulas(scene)
-funcaoParticulas.criarParticula(1000);
+funcaoParticulas.criarParticula(10000);
 funcaoParticulas.mudarCor('yellow')
 funcaoParticulas.mudarVelocidade(0.01)
 
