@@ -51,7 +51,7 @@ body.loaded {
 /* Mexendo nas caracteristicas dos eevees */
 section {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     scroll-snap-align: start;
     position: relative;
 }
@@ -64,14 +64,14 @@ section.one .container {
 .desc { 
     margin-top:10px;
     margin-left: 20px;
-    font-size: 12px;
+    font-size: 14px;
     max-width: 450px;
     
 }
 
 .ataque{
     margin-left: 20px;
-    font-size: 12px;
+    font-size: 14px;
     max-width: 450px;
     max-height: 50px;
       
@@ -88,9 +88,9 @@ section.one .container {
 }
 .especial{ 
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 70%;
-    font-size: 12px;
+    font-size: 14px;
     max-width: 450px; 
     
 }

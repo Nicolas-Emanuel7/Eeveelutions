@@ -117,7 +117,7 @@ const sectionActions = {
       moverModelo(eeveeModel, 0, 0, 0)
       moverModelo(vaporeonModel, 25, 0, 0);
 
-      body.style.background = '#f3d5a5';
+      body.style.background = 'linear-gradient(45deg, #fae3be, #f0cd96, #d5af70)';
 
   },
   2: () => {
@@ -130,7 +130,7 @@ const sectionActions = {
       moverModelo(vaporeonModel, 0, 0, 0);
       moverModelo(jolteonModel, -25, 0, 0);
 
-      body.style.background = '#79CEE0';
+      body.style.background = 'linear-gradient(15deg, #d6f8ff, #90deee, #60c9df)';
 
   },
   3: () => {
