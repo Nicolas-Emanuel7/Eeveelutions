@@ -64,16 +64,16 @@ section.one .container {
 .desc { 
     margin-top:10px;
     margin-left: 20px;
-    font-size: 14px;
     max-width: 450px;
+    font-size: 12px;
     
 }
 
 .ataque{
     margin-left: 20px;
-    font-size: 14px;
     max-width: 450px;
     max-height: 50px;
+    font-size: 12px;
       
 }
 .tipo{
@@ -88,23 +88,27 @@ section.one .container {
 }
 .especial{ 
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 70%;
-    font-size: 14px;
     max-width: 450px; 
+    font-size: 12px;
     
 }
 h2 {
     margin-left: 20px; 
     margin-bottom: 0;
     margin-top: 30px;
-    
+    font-size: 16px;
+  
 }
+
   
 h1, h2{
     margin-left: 20px;
     text-shadow: #000000 2px 2px;  
 }
+
+
 
 .loading-bar {
     position: fixed;
@@ -144,6 +148,14 @@ h1, h2{
     padding-top: 20px;
     padding-left: 20px;
     border-bottom: 5px solid;
+    display: flex;
+  }
+
+  .ps{
+    position: absolute;
+    left: 80%;
+    color:white; 
+
   }
 
   .creditos{
