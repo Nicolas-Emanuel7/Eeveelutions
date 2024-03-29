@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>EEVEELUTIONS</title>
+    <script type="module" crossorigin src="/assets/index-B_EUz9Mv.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dpz-tTfZ.css">
+  </head>
+  <body>
+
+    <canvas class="webgl"></canvas>
+    <div class="loading-bar"></div>
+
+    <section class="one">
+      <div class="container"> 
+      </div>
+      <div class="logo">
+        <img src="/assets/logo-DmtLYh43.png" alt="eevee" style="width: 85%; margin: 100px 0px 0px 30px;">
+      </div>
+      <div class="nomes_tela_inicial" style="margin: 30vh 0 10vh 3vh; font-size: 12px; color:rgb(248, 227, 38); width:900px;">
+        <img src="/assets/vaporeon-sprite-vb8pDMUb.png" alt="vaporeon" style="width: 100px; float: left; ">
+        <h1 style="display: inline; margin-top: 10px;">Anabel Marinho</h1>
+        <h1 style="display: inline; margin-top: 10px;">Nicolas Emanuel</h1>
+        <img src="data:image/png;base64,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" alt="sylveon" style="width: 100px; display: inline; ">
+      </div>
+    </section>
+
+    <section class="custom-section two">
+      <header style="background-color: rgb(185, 116, 52); color:rgb(64, 38, 13) ;">EEVEE</header>
+      <div class="container">
+          <h2 style="color:rgb(185, 116, 52) ;">✧ Descrição</h2>
+          <p class="desc">
+            O Eevee tem uma composição genética instável que sofre uma mutação repentina
+            devido ao ambiente em que vive. A radiação das várias pedras evolutivas do mundo
+            Pokémon faz com que este Pokémon evolua para diferentes formas e tipos.
+          </p>
+        </div>
+        <div>
+        <h2 style="color:rgb(185, 116, 52) ;">✧ Sinais de Evolução</h2>
+        <p class="ataque">Procure por 1 carta no seu baralho que evolua do Eevee, revele-a e coloque-a em sua mão. Em seguida, embaralhe o seu baralho. </p>
+          <h2 style="color:rgb(185, 116, 52) ;">✧ Chute sem Pontaria (30)</h2>
+          <p class="ataque">
+           Jogue 1 moeda. Se sair coroa, este ataque não fará nada. 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:rgb(107, 63, 27) ;">Tipo: Normal</h1>
+          <div> 
+            <h2 class="esp" style="color:rgb(185, 116, 52) ;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Antecipação: Eevee vai tremer ao entrar em batalha, se um inimigo tem um movimento
+              que é super-eficas contra ele, ou um movimento one-hit K.O. Só é ativado quando o Eevee
+              entra na batalha, não quando um inimigo entra.
+            </p>
+          </div>
+        </div>
+    </section>
+    <section class="custom-section three">
+      <header style="background-color: #f1eba0; color:#163a4b">VAPOREON</header>
+      <div class="container">
+          <h2 style="color:#f1eba0;">✧ Descrição</h2>
+          <p class="desc">
+            Vaporeon sofreu uma mutação espontânea e cultivou barbatanas e guelras que permitem viver
+            debaixo d'água. Este Pokémon tem a capacidade de controlar livremente a água. Sua composição celular
+            é semelhante às moléculas de água, permitindo que ele se dissolva em água.
+          </p>
+        </div>
+        <div>
+        <h2 style="color:#f1eba0;">✧ Chuva Refrescante</h2>
+        <p class="ataque">Cura 30 de danos de cada um dos seus Pokémon. </p>
+          <h2 style="color:#f1eba0;">✧ Jato D'água (60+)</h2>
+          <p class="ataque">
+            Este ataque causa 20 pontos de dano a mais para cada Energia de Água ligada a este Pokémon.
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:#296196;">Tipo: Água</h1>
+          <div> 
+            <h2 class="esp" style="color:#f1eba0;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Hidratação: O Vaporeon irá curar-se de qualquer condição de status durante a chuva,
+              no final de cada turno. Isso inclui condições autoinflijidas, como Rest e envenenamento.
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <section class="custom-section four">
+      <header style="background-color: rgb(255, 196, 0); color: rgb(31, 25, 6);">JOLTEON</header>
+      <div class="container">
+          <h2 style="color: rgb(255, 196, 0);">✧ Descrição</h2>
+          <p class="desc">
+            As células de Jolteon geram um baixo nível de eletricidade. Esse poder é amplificado
+            pela eletricidade estática de sua pelagem, permitindo que o Pokémon solte raios. O pelo eriçado
+            é feito de agulhas carregadas com eletricidade. Um Pokémon sensível que facilmente fica triste ou com raiva.
+            Toda vez que seu humor muda, ele cobra energia.
+          </p>
+        </div>
+        <div>
+        <h2  style="color:rgb(255, 196, 0); ">✧ Ataque Linear (30)</h2>
+        <p class="ataque">Este ataque causa 30 pontos de dano a 1 dos Pokémon do seu oponente. (Não aplica Fraqueza e Resistência aos Pokémon no Banco.)</p>
+          <h2  style="color:rgb(255, 196, 0); ">✧ Trovão (160)</h2>
+          <p class="ataque">
+            Este Ataque também causa 30 pontos de dano a si mesmo.
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color: rgb(255, 255, 255);">Tipo: Elétrico</h1>         
+          <div> 
+            <h2 class="esp"  style="color: rgb(255, 196, 0); ">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Pé rápido: Aumenta a velócidade de Jolteon em 50% quando infligido por uma doença de status.
+              Se paralisado, o Jolteon não sofre a queda usual na velocidade. Todos os outros efeitos da condição de status permanecem.
+            </p>
+          </div>
+        </div>
+    </section>
+    
+    <section class="custom-section five">
+      <header style="background-color: #ff9563; color: #163a4b;">FLAREON</header>
+      <div class="container">
+          <h2 style="color: #ff9563;">✧ Descrição</h2>
+          <p class="desc">
+            O pelo macio de Flareon tem um objetivo funcional, liberar calor no ar para que seu corpo não 
+            fique excessivamente quente. A temperatura corporal deste Pokémon pode subir para um máximo de 1.650 graus Fahrenheit. 
+            Quando pega presas ou encontra berrys, sopra fogo nelas até que estejam bem cozidas e depois as engole.
+          </p>
+        </div>
+        <div>
+        <h2  style="color:#ff9563;">✧ Chama Destruidora (30)</h2>
+        <p class="ataque">Jogue uma moeda. Se sair cara, descarte uma Energia do Pokémon Ativo do seu oponente. </p>
+          <h2  style="color:#ff9563; ">✧ Coluna Abrasadora (120)</h2>
+          <p class="ataque">
+            O Pokémon Ativo do seu oponente agora está Queimado.
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color: #ff5100;">Tipo: Fogo</h1>       
+          <div> 
+            <h2 class="esp"  style="color: #ff9563;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Nervo: Aumenta em 50% o ataque do Flareon quando infligido por uma doença grave. Se queimado, o Flareon não sofre a queda usual no ataque.
+              Todos os outros efeitos de condição de status permanecem.
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <section class="custom-section five">
+      <header style="background-color: #726CAB; color: #163a4b;">ESPEON</header>
+      <div class="container">
+          <h2 style="color:#726CAB;">✧ Descrição</h2>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ea consectetur dignissimos cumque, minus recusandae excepturi 
+            expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+            quam a inventore, aliquam neque voluptate?
+          </p>
+        </div>
+        <div>
+        <h2  style="color:#726CAB;">✧ Ataque 1</h2>
+        <p class="ataque">orem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur dignissimos cumque, minus recusandae excepturi </p>
+          <h2  style="color:#726CAB;">✧ Ataque 2</h2>
+          <p class="ataque">
+            orem ipsum dolor sit amet Ea consectetur dignissimos cumque, minus recusandae excepturi 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:#f04040;">Tipo: Psíquico</h1>     
+          <div> 
+            <h2 class="esp"  style="color: #726CAB;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ea consectetur dignissimos cumque, minus recusandae excepturi 
+              expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+              quam a inventore, aliquam neque voluptate?
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <section class="custom-section six">
+      <header style="background-color: #282c2e; color:#de634d;">UMBREON</header>
+      <div class="container">
+          <h2 style="color: #282c2e; ">✧ Descrição</h2>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ea consectetur dignissimos cumque, minus recusandae excepturi 
+            expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+            quam a inventore, aliquam neque voluptate?
+          </p>
+        </div>
+        <div>
+        <h2  style="color: #282c2e; ">✧ Ataque 1</h2>
+        <p class="ataque">orem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur dignissimos cumque, minus recusandae excepturi </p>
+          <h2  style="color: #282c2e; ">✧ Ataque 2</h2>
+          <p class="ataque">
+            orem ipsum dolor sit amet Ea consectetur dignissimos cumque, minus recusandae excepturi 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:#fab700;">Tipo: Psíquico</h1>     
+          <div> 
+            <h2 class="esp"  style="color:  #282c2e; ">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ea consectetur dignissimos cumque, minus recusandae excepturi 
+              expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+              quam a inventore, aliquam neque voluptate?
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <section class="custom-section seven">
+      <header style="background-color:#7AC89E; color: #8d6033;">LEAFEON</header>
+      <div class="container">
+          <h2 style="color: #8d6033; ">✧ Descrição</h2>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ea consectetur dignissimos cumque, minus recusandae excepturi 
+            expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+            quam a inventore, aliquam neque voluptate?
+          </p>
+        </div>
+        <div>
+        <h2  style="color: #8d6033;">✧ Ataque 1</h2>
+        <p class="ataque">orem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur dignissimos cumque, minus recusandae excepturi </p>
+          <h2  style="color: #8d6033;">✧ Ataque 2</h2>
+          <p class="ataque">
+            orem ipsum dolor sit amet Ea consectetur dignissimos cumque, minus recusandae excepturi 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:#51d82f;">Tipo: Grama</h1>  
+          <div> 
+            <h2 class="esp"  style="color: #8d6033;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ea consectetur dignissimos cumque, minus recusandae excepturi 
+              expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+              quam a inventore, aliquam neque voluptate?
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <section class="custom-section eight">
+      <header style="background-color: rgb(17, 190, 224); color:#163a4b">GLACEON</header>
+      <div class="container">
+          <h2 style="color:#163a4b;">✧ Descrição</h2>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ea consectetur dignissimos cumque, minus recusandae excepturi 
+            expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+            quam a inventore, aliquam neque voluptate?
+          </p>
+        </div>
+        <div>
+        <h2  style="color: #163a4b;">✧ Ataque 1</h2>
+        <p class="ataque">orem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur dignissimos cumque, minus recusandae excepturi </p>
+          <h2  style="color: #163a4b;">✧ Ataque 2</h2>
+          <p class="ataque">
+            orem ipsum dolor sit amet Ea consectetur dignissimos cumque, minus recusandae excepturi 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color: rgb(17, 190, 224) ;">Tipo: Gelo</h1>
+          <div> 
+            <h2 class="esp"  style="color: #163a4b;">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ea consectetur dignissimos cumque, minus recusandae excepturi 
+              expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+              quam a inventore, aliquam neque voluptate?
+            </p>
+          </div>
+        </div>
+    </section>
+    
+    <section class="custom-section eight">
+      <header style="background-color: rgb(113, 120, 255); color: antiquewhite;">SYLVEON</header>
+      <div class="container">
+          <h2 style="color: rgb(35, 205, 235)">✧ Descrição</h2>
+          <p class="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Ea consectetur dignissimos cumque, minus recusandae excepturi 
+            expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+            quam a inventore, aliquam neque voluptate?
+          </p>
+        </div>
+        <div>
+        <h2  style="color: rgb(35, 205, 235);">✧ Ataque 1</h2>
+        <p class="ataque">orem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur dignissimos cumque, minus recusandae excepturi </p>
+          <h2  style="color: rgb(35, 205, 235);">✧ Ataque 2</h2>
+          <p class="ataque">
+            orem ipsum dolor sit amet Ea consectetur dignissimos cumque, minus recusandae excepturi 
+          </p>
+       </div>
+        <div class="tipo">
+          <h1 style="color:rgb(255, 113, 160);">Tipo: Fada</h1>
+          <div> 
+            <h2 class="esp"  style="color: rgb(35, 205, 235);">✧ Habilidade Oculta</h2>
+            <p class="especial">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Ea consectetur dignissimos cumque, minus recusandae excepturi 
+              expedita voluptatum. Esse provident ipsam autem nesciunt unde dolor, 
+              quam a inventore, aliquam neque voluptate?
+            </p>
+          </div>
+        </div>
+    </section>
+
+   
+
+    <section class="custom-section eleven">
+      <header style="background-color: rgb(71, 127, 231); color:#0d0c49;">CRÉDITOS</header>
+      <div class="creditos">
+        <h2 style="color:#fab700">Créditos dos modelos 3D Utilizados</h2>
+        <h1 style="color: #fab700;">Site: Sketchfab</h1><br>
+          <p>
+            Eevee: drewsdigitaldesigns<br>
+            Espeon: Metooanicet<br>
+            Flareon: Metooanicet<br>
+            Glaceon: Metooanicet<br>
+            Jolteon: Metooanicet<br>
+            Leafeon: Metooanicet<br>
+            Sylveon: Potato<br>
+            Umbreon: gabe.flot<br>
+            Vaporeon: Metooanicet<br>
+            Cenário:<br>
+            Toco de árvore: metrosp<br>
+            Nuvens:
+
+          </p>
+        </div>
+        <div class="sprites">
+        <img src="data:image/webp;base64,UklGRngHAABXRUJQVlA4WAoAAAAUAAAA/wAA/wAAVlA4TFICAAAv/8A/EFdAJmAhhv6JRNjpdIpCNGAhOsH/V4k7QRTJAkyGkT9BKCEMo3P+Q8L/TqS1CY8AUtEJkEFCbdtV4MTCWHgWsICFWMBCLMQCFp7NBGba0rVIv+dE9H8Cyn///w3ycO3p5snq05NVd7hND1ec6nYzWGtpd/vkWksbu5/ZDVZZ2oAK7K64tDuMlc1d2Nxdc1BpQGW3sa76dJb26dW8AkF57LcvrdOu3tF748pqqEJF74wzp+sK0m4AjUpw7y6UT+ZlsJLSRiX4dmm3XjaCNZQGoBUdUu2ms6Bcpt0KpAE0gvKA7x9od4C0EgwVBe0G5VIrkMa0EZSHXAPpAIN267SRlstuJY1L1fKY7x9oNx1AK9AdxlQL3Uoal9qFlQQBpKD10w3QSlxqV6E87PuXdgPQz0FDYUi7ClAe9+1LG9BNK8FXjH0aQHngNdAdgg/vBW2aagDlod++oF8OcCf4EAZIy2Ovg7QS6L1xFsCqAr3THRowpHcOYVUF3VQbdaoDdIN2OeyerKi0m+5qt1HR9oXp4aAnqyntDoe7aZt2c9q9CgY9CdbU7uaupt32hcFxCeVx3760T4PdTd09Se900+BkZTUUgsPdzZPdw1RjekzvwGqCmBbSQ90ddvX45MkA5YHfv+vhZHdzpl8RrCzoprp7pVcnqlAe/u3rNkBPNg9n4xBoqqurTjW9c6hBN4Xy8O+fNhSGzcPhUINuA9YXpAFo4eQw0JPgpE1X2P2gEBRO2jQoP9n373r9BY0KNNJV100bGqw50JiWn/b799//yxdYTVAgAAUAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyMi0wMS0yM1QxODo1MjoxOSswMTowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjItMDEtMjRUMTk6MTU6MzUrMDE6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDEtMjRUMTk6MTU6MzUrMDE6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0ic1JHQiBJRUM2MTk2Ni0yLjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ZGRkMDI4MTUtZjExMi00NjQ1LWEzOTYtZTE3NTBmNjY3NjgyIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmRkZDAyODE1LWYxMTItNDY0NS1hMzk2LWUxNzUwZjY2NzY4MiIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmRkZDAyODE1LWYxMTItNDY0NS1hMzk2LWUxNzUwZjY2NzY4MiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZGRkMDI4MTUtZjExMi00NjQ1LWEzOTYtZTE3NTBmNjY3NjgyIiBzdEV2dDp3aGVuPSIyMDIyLTAxLTIzVDE4OjUyOjE5KzAxOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMCAoV2luZG93cykiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="data:image/png;base64,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" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="data:image/webp;base64,UklGRnICAABXRUJQVlA4TGYCAAAvn8AnEF9gJmASXiLwsTr2/63hZw0yAYudajhl0b+Lj1kATIawnUMZRzi5pZFGBs1/CBD4f0uBcM9onUZjhLBkzSCrtu2wjUzhUhCFR0EUQsEUROFRCIVHQfCsuJ2ZWJ+z7ono/wQc//Wq3RmlvRm1OaM2Z9QO6diYUb/wtnNoW952v27DKED56e0OQ4SOrcjIBe9gCAgd20BBBuMYOjIYgpdLx04MZ1Q65LDg5VE6dmJEBuXACF72KN1hC6AIjHjZHgWhD2zAiE4Ab2S/PAoBxxVTq9RzER2IZSkL4Y+UYpHELoDwR0z1umRQz0ULOrHOocMnC5WqU3ISVIYei1gOGwp0TrHKfsnqQUY91ngtRhMXndNGHBRELzI6BMgPRSyHeI0oQPOk+ZIBRfRL8WCjLi8PKOxpN+swGVBBB6KQH6viZgGa9imSuNmjIJdPZL1HBryhAFuz2QZuUCTVg9IjmWLYXN+CabtduQEdiNLxTKY+vjU/noi43ylxPJWh4C2YN4kfZonjL/46TAN43TxP27pTBDr+5q/DtNu82zxPbN1ARejBzNk823S7NGYzJc7iEyJLD3a262y2Z7ORfdbyUpcDHuxsnrS7KrEQFUAS6Pibvw9wzubZ7Lm6ChJdQISezDbN82w29mxTlYLkBmIDYLaJGzalwyYBffDf/nWYDUqmZPhgEtACPV3jPFSqS6nuyFRAPR62KUBQ/MBkAXq25co/kG2zCyZ+QN6S9wBkggUJ8qYg36JA3oLRqTsGvAg2gU7Jdz4SIO9B5S9l5SYYsE3nBwa8CUs6yN/0C2Xl3hjw3vznLg==" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="/assets/vaporeon-sprite-vb8pDMUb.png" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="/assets/umbreon-sprite-D4B4UCoD.png" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="data:image/webp;base64,UklGRk4CAABXRUJQVlA4TEICAAAvn8AnEG9gJAASLjCBC/6meolq0+YNo7Vt/BV+/KtolraGDYiiqjESScpV+EgUpRYOi+QljvkPAP+fFFfLDbX1riSOZcY2TinYEwyQVYFtGEmisBREQRREYSmIwlAoBVEIhVJYCoOm7Uzn7SZ/dy+i/xOA//RsF6dSl6aSeNKuSaTiWLsrUks8NDan1H5KLgA0NjGj6mMWATQxsSjuGTGlSupnEJtoUszJQ1I/U7tgwklxDEn9CGKTKeYVSf1IbTec2JDkfAK1PS9wjMh2byuB2unMxsG9qSKA2ua89hHbPb7U08gH1O6swH0fbnVMD20bnZs4rc2ZVZcuWb3qK8SdFbhXL9jWZcYYJi5rd0pJW0l6HmxbpxmnxDVtTiiR7FB6fj3lFzPGGPs+iMlVku0+rOfP09cZY4x93wcxO5Ctza9KsXM2xhj7vu+DmB+AuvyuZMcu7XKMfd8H8ea8SJSUbffrQdsuOQbertM5Aah06OP70YNVvN+kmBaizbZJ+ky9hROjfF3XuqNJMTHwqpUrSQTQ9qJJODWQTdImVNlDYzsF0CYh5gagzClpk6zP2xyJ+eHCbydJiXXwjSzxO/8o3xliEdDEd8bhMvjWOOuAvpfEcbooeZWrwFw1ScnlKNOTJiVYXnQVuJEnJAGAG8/CZdhOikuWPAnXgldgSx66Co3t4mVuW+2kS9CNB74GblvtcAW4bUxcvNuNaxG+xZVoEuKeYgW68R6QDleA24G4lcQaMLf90r8HZEKsDEBicf79Dw==" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="/assets/glaceon-sprite-en7ZlRuM.webp" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        <img src="data:image/webp;base64,UklGRiwDAABXRUJQVlA4TB8DAAAvu8AwEHdgprYNFd72bTKopqMaavxNDaNtpLx8i8M+7vdPcGjGYANmMFPbxh/f6EcQQQX9ezBqYP4jIP+fsjQkwCSJ47RLpbnBhdu1GDPNIKu2bTuRsNAWrgUsYCEWsICFWCgLWMBCLGABFSTUoz/u51wR/SebtLFLoJ+c/nzP3fyPmxzDA/yX1+Sg6r+9psdDFfCfxeQYHthjmGvU5r+LSbKpd/XfxCSBYsN/E1NlA8yyYgMFUPNrQ82aqr9Te+VgNcyPevg77L9jxfwaNlAOVruaGrX5EAb4meFnUdQMeThgqAeo+n49HITaDlZ2GOZGbdgbHofb1Pf++pnCJCmoYfOBz1H18O67P0DNjdpcKhjYDLCrj+qBvR/8aqiTJsawuXSzxwkM28GGDxR71Idf1XDCHDm34YTFCYtdHHhGbd7VkdoOwUypezUsXha8fODZpuAcz3hXG3xQc+TepTq3r2trMBz8hg1wruD7atjVFLmpe8PLGof/gaP/0kGxjwMHHxOkLlW9cA2e7avWhnvvdemGzbNj9+pbNTkYDlg7KFUva4t7Ve9Vm2Ffi33d+1ZNj5e1S3CNtaMPFi/7YgPDyYL3r+67PZspC17WADbPXvZVBeduuHRv82xYfOH4q4F5sljjdbhnOLB4r0t1c6/qvdYK7g1844OZsYvXd7dT59aAe8PJ4oa1AU7f39z4cRQFMOyrBk4/3+QY6ubc64cb+MK1Wvutz+RgOPevD5wrgMXwAnz55ZoeN5c+1b8uvcdasTiOxSx6OXbu5hL1srYY2NXOMIV2AUBdqpsXFsefnVrMonq5eX3cor58KIuJdBAAcK3W5hcD196th4P99eUdz06qZhDD2rVndeTLC9e+sFaLKjb8ak2Kgqq1Z5vi4d0LnFvb/5eGX+zJQW1ot4cNtXbt2Qtfrq0NcMPwizU5qIEH2BR1rvbO1cl7MfxqTYyqYcEAz+CBzZeXL5w7Ybh0U3Po3HK4qjqhaq02DCfAwK/2BCmqToD372bzAM9Of7HJwXk3jv8b4NyzP6zJAQB4c3OJc3X63zY5GOD//EwBAA==" alt="eevee" style="width: 100px; margin: 0 0 0 0; display: inline;">
+        <img src="data:image/png;base64,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" alt="eevee" style="width: 150px; margin: 0 0 0 0; display: inline;">
+        </div>
+        <p style="margin: 50vh;">Todos os direitos reservados para The Pokémon Company</p>
+        
+    </section> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  </body>
+</html>
