@@ -228,9 +228,13 @@ const sectionActions = {
       movimentarEsferas(1);
 
       body.style.background = '#ffdae3';
+
+      telaInicial(2)
   },
   10: () => {
       // Ação para a seção 10
+      telaInicial(1)
+
       moverModelo(cartasLista[8], 10, 1, 10)
 
       moverModelo(ground, 0, -10, 0)
@@ -471,7 +475,7 @@ function carregarNuvem() {
     loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
         nuvem.scene.scale.set(0.5,0.5,0.5);
         nuvem.scene.castShadow = true;
-        for (let i = 0; i < 6; i++) { // Criar 5 instâncias da nuvem
+        for (let i = 0; i < 10; i++) { // Criar 5 instâncias da nuvem
             const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
             nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
             nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
@@ -482,8 +486,6 @@ function carregarNuvem() {
 }
 // Chamar a função para carregar a nuvem
 carregarNuvem();
-
-
 
 // GRAMA
 const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
@@ -648,7 +650,7 @@ const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
 
 // Função para carregar o modelo da estrela
 function carregarEstrela() {
-  for(let i = 0; i < 7; i++){
+  for(let i = 0; i < 15; i++){
     const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
     estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
     scene.add(estrela);
