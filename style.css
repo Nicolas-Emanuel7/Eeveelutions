@@ -78,7 +78,7 @@ section.one .container {
 }
 .tipo{
     margin-top: 50px;
-    
+
 }
 .esp{
     position: absolute;
@@ -154,10 +154,13 @@ h1, h2{
   .ps{
     position: absolute;
     left: 80%;
-    color:white; 
 
   }
-
+ .numero{
+    position: absolute;
+    top:300px;
+    
+ }
   .creditos{
     font-size: 12px;
     margin-left: 30px;
