@@ -130,7 +130,7 @@ const sectionActions = {
       moverModelo(vaporeonModel, 0, 0, 0);
       moverModelo(jolteonModel, -25, 0, 0);
 
-      body.style.background = 'linear-gradient(15deg, #d6f8ff, #90deee, #60c9df)';
+      body.style.background = 'linear-gradient(45deg, #fae3be, #f0cd96, #d5af70)';
 
   },
   3: () => {

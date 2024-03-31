@@ -64,7 +64,7 @@ section.one .container {
 .desc { 
     margin-top:10px;
     margin-left: 20px;
-    max-width: 450px;
+    max-width: 500px;
     font-size: 12px;
     
 }
@@ -78,6 +78,7 @@ section.one .container {
 }
 .tipo{
     margin-top: 50px;
+    position: absolute; bottom: 18%
 
 }
 .esp{
@@ -99,6 +100,8 @@ h2 {
     margin-bottom: 0;
     margin-top: 30px;
     font-size: 16px;
+
+    
   
 }
 
@@ -107,7 +110,6 @@ h1, h2{
     margin-left: 20px;
     text-shadow: #000000 2px 2px;  
 }
-
 
 
 .loading-bar {
@@ -158,24 +160,37 @@ h1, h2{
   }
  .numero{
     position: absolute;
-    top:300px;
+    
+    
+    
+    margin-top: 20%; 
+    font-size: 30px;
     
  }
+
   .creditos{
     font-size: 12px;
     margin-left: 30px;
+    
   }
 
 
-  .sprites{
-    position: absolute;
-    bottom: 33px;
-    animation: floatAnimation 3s infinite; 
-    left: 4%;
 
+    .sprites {
+        position: absolute;
+        left: 10%;
+        bottom: 33px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centraliza as imagens horizontalmente */
+        animation: floatAnimation 3s infinite; 
+    }
 
-  }
-
+    .sprites img {
+        width: auto;
+        height: auto;
+        margin: 30px;
+    }
   
 @keyframes floatAnimation {
     0% {
@@ -191,7 +206,7 @@ h1, h2{
 
   footer{
     background-color:  rgb(71, 127, 231);
-    padding: 20px;
+    padding-bottom: 20px;
     position: absolute; 
     bottom: 0;
     text-align: center;
