@@ -204,13 +204,17 @@ h1, h2{
     }
   }
 
-  footer{
-    background-color:  rgb(71, 127, 231);
-    padding-bottom: 20px;
+  footer {
+    background-color: rgb(71, 127, 231);
+    padding: 20px 0;
     position: absolute; 
     bottom: 0;
     text-align: center;
     width: 100%;
-    height: 10px;
+    height: 20px; /* Ajuste conforme necessário */
     font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
