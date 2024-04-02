@@ -2,7 +2,7 @@
 import './style.css'
 import * as THREE from 'three';
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { carregarModelosEevee, modelosLista, carregarCenario, cenarioLista, carregarNuvem, nuvensLista, estrelasLista, carregarEstrela, esferasLista, chaoLista } from './modelos.js';
+import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, estrelasLista, carregarEstrela, esferasLista, chaoLista } from './modelos.js';
 
 // CENA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('canvas.webgl')
@@ -149,8 +149,8 @@ const sectionActions = {
       moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
 
-      moverModelo(modelosLista[0], 0, 0, 0) // EEVEE NORMAL
-      moverModelo(modelosLista[8], 25, 0, 0); // VAPOREON
+      moverModelo(eeveeModel, 0, 0, 0) // EEVEE NORMAL
+      moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
 
       body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
   },
@@ -160,9 +160,9 @@ const sectionActions = {
       moverModelo(cartasLista[7], 6, 1, 1.5) // CARTA VAPOREON
       moverModelo(cartasLista[4], 10, 1, 10) // CARTA JOLTEON
 
-      moverModelo(modelosLista[0], -25, 0, 0) // EEVEE NORMAL
-      moverModelo(modelosLista[8], 0, 0, 0); // VAPOREON
-      moverModelo(modelosLista[4], -25, 0, 0); // JOLTEON
+      moverModelo(eeveeModel, -25, 0, 0) // EEVEE NORMAL
+      moverModelo(vaporeonModel, 0, 0, 0); // VAPOREON
+      moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
       
       body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
   },
@@ -172,9 +172,9 @@ const sectionActions = {
       moverModelo(cartasLista[4], 6, 1, 1.5) // CARTA JOLTEON
       moverModelo(cartasLista[2], 10, 1, 10) // CARTA FLAREON
 
-      moverModelo(modelosLista[4], 0, 0, 0); // JOLTEON
-      moverModelo(modelosLista[8], 25, 0, 0); // VAPOREON
-      moverModelo(modelosLista[2], 25, 0, 0); // FLAREON
+      moverModelo(jolteonModel, 0, 0, 0); // JOLTEON
+      moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
+      moverModelo(flareonModel, 25, 0, 0); // FLAREON
 
       body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
   },
@@ -184,9 +184,9 @@ const sectionActions = {
       moverModelo(cartasLista[2], 6, 1, 1.5) // CARTA FLAREON
       moverModelo(cartasLista[1], 10, 1, 10) // CARTA ESPEON
 
-      moverModelo(modelosLista[4], -25, 0, 0); // JOLTEON
-      moverModelo(modelosLista[2], 0, 0.15, 0) // FLAREON
-      moverModelo(modelosLista[1], -25, 0, 0); // ESPEON
+      moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
+      moverModelo(flareonModel, 0, 0.15, 0) // FLAREON
+      moverModelo(espeonModel, -25, 0, 0); // ESPEON
      
       body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
   },
@@ -196,9 +196,9 @@ const sectionActions = {
       moverModelo(cartasLista[1], 6, 1, 1.5) // CARTA ESPEON
       moverModelo(cartasLista[6], 10, 1, 10) // CARTA UMBREON
 
-      moverModelo(modelosLista[2], 25, 0, 0) // FLAREON
-      moverModelo(modelosLista[1], 0, 0.05, 0) // ESPEON
-      moverModelo(modelosLista[7], 25, 0, 0); // UMBREON
+      moverModelo(flareonModel, 25, 0, 0) // FLAREON
+      moverModelo(espeonModel, 0, 0.05, 0) // ESPEON
+      moverModelo(umbreonModel, 25, 0, 0); // UMBREON
 
       body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
   },
@@ -208,9 +208,9 @@ const sectionActions = {
       moverModelo(cartasLista[6], 6, 1, 1.5) // CARTA UMBREON
       moverModelo(cartasLista[5], 10, 1, 10) // CARTA LEAFEON
 
-      moverModelo(modelosLista[1], -25, 0, 0) // ESPEON
-      moverModelo(modelosLista[7], 0, 0, 0) // UMBREON
-      moverModelo(modelosLista[5], -25, 0, 0);  // LEAFEON
+      moverModelo(espeonModel, -25, 0, 0) // ESPEON
+      moverModelo(umbreonModel, 0, 0, 0) // UMBREON
+      moverModelo(leafeonModel, -25, 0, 0);  // LEAFEON
 
       body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
   },
@@ -220,9 +220,9 @@ const sectionActions = {
       moverModelo(cartasLista[5], 6, 1, 1.5) // CARTA LEAFEON
       moverModelo(cartasLista[3], 10, 1, 10) // CARTA GLACEON
 
-      moverModelo(modelosLista[7], 25, 0, 0) // UMBREON
-      moverModelo(modelosLista[5], 0, 0, 0) // LEAFEON
-      moverModelo(modelosLista[3], 25, 0, 0); // GLACEON
+      moverModelo(umbreonModel, 25, 0, 0) // UMBREON
+      moverModelo(leafeonModel, 0, 0, 0) // LEAFEON
+      moverModelo(glaceonModel, 25, 0, 0); // GLACEON
 
       body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
   },
@@ -232,9 +232,9 @@ const sectionActions = {
       moverModelo(cartasLista[3], 6, 1, 1.5) // CARTA GLACEON
       moverModelo(cartasLista[8], 10, 1, 10) // CARTA SYLVEON
 
-      moverModelo(modelosLista[5], -25, 0, 0) // LEAFEON
-      moverModelo(modelosLista[3], 0, 0, 0) // GLACEON
-      moverModelo(modelosLista[6], -25, 0, 0); // SYLVEON
+      moverModelo(leafeonModel, -25, 0, 0) // LEAFEON
+      moverModelo(glaceonModel, 0, 0, 0) // GLACEON
+      moverModelo(sylveonModel, -25, 0, 0); // SYLVEON
      
       body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
   },
@@ -243,8 +243,8 @@ const sectionActions = {
       moverModelo(cartasLista[3], 10, 1, 10) // CARTA GLACEON
       moverModelo(cartasLista[8], 6, 1, 1.5) // CARTA SYLVEON
 
-      moverModelo(modelosLista[3], 25, 0, 0) // GLACEON
-      moverModelo(modelosLista[6], 0, 0, 0) // SYLVEON
+      moverModelo(glaceonModel, 25, 0, 0) // GLACEON
+      moverModelo(sylveonModel, 0, 0, 0) // SYLVEON
 
       moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
@@ -261,7 +261,7 @@ const sectionActions = {
 
       moverModelo(chaoLista[0], 0, -10, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -10, 0) // CHÃO 2
-      moverModelo(modelosLista[6], 0, -10, 0) // SYLVEON
+      moverModelo(sylveonModel, 0, -10, 0) // SYLVEON
 
       movimentarEsferas(2);
 
@@ -361,9 +361,106 @@ export function moverModelo(modelo, positionX, positionY, positionZ) {
     } });
   }
 };
+var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
+const modelosLista = []
+function carregarModelos(){
+    console.log('Carregando Eevee'); 
+    const Eevee = new GLTFLoader(loadingManager);
+    Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
+      eevee.scene.scale.set(8, 8, 8);
+      scene.add(eevee.scene);
+      eevee.scene.castShadow = true;
+      eeveeModel = eevee.scene;
+      eeveeModel.position.set(0, -9, 0);
+      modelosLista.push(eeveeModel);
+    });
 
-carregarModelosEevee(scene, loadingManager)
-console.log(modelosLista)
+    const Espeon = new GLTFLoader(loadingManager);
+    Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
+      espeon.scene.scale.set(2, 2, 2);
+      scene.add(espeon.scene);
+      espeon.scene.castShadow = true;
+      espeonModel = espeon.scene;
+      espeonModel.position.set(-25, 0, 0);
+      console.log(espeonModel)
+      modelosLista.push(espeonModel);
+    });
+
+    const Flareon = new GLTFLoader(loadingManager);
+    Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
+      flareon.scene.scale.set(1.8,1.9,2);
+      scene.add(flareon.scene);
+      flareon.scene.castShadow = true
+      flareonModel = flareon.scene;
+      flareonModel.position.set(25, 0, 0);
+      modelosLista.push(flareonModel);
+    });
+
+    const Glaceon = new GLTFLoader(loadingManager);
+    Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
+      glaceon.scene.scale.set(2,2,2);
+      scene.add(glaceon.scene);
+      glaceon.scene.castShadow = true
+      glaceonModel = glaceon.scene;
+      glaceonModel.position.set(25, 0, 0);
+      modelosLista.push(glaceonModel);
+    });
+
+    const Jolteon = new GLTFLoader(loadingManager);
+    Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
+      jolteon.scene.scale.set(2,2,2);
+      scene.add(jolteon.scene);
+      jolteon.scene.castShadow = true
+      jolteonModel = jolteon.scene;
+      jolteonModel.position.set(-25, 0, 0);
+      modelosLista.push(jolteonModel);
+    });
+
+    const Leafeon = new GLTFLoader(loadingManager);
+    Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
+      leafeon.scene.scale.set(2,2,2);
+      scene.add(leafeon.scene);
+      leafeon.scene.castShadow = true
+      leafeonModel = leafeon.scene;
+      leafeonModel.position.set(-25, 0, 0);
+      modelosLista.push(leafeonModel);
+    });
+  
+
+    const Sylveon = new GLTFLoader(loadingManager);
+    Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
+      sylveon.scene.scale.set(2,2,2);
+      scene.add(sylveon.scene);
+      sylveon.scene.castShadow = true
+      sylveonModel = sylveon.scene;
+      sylveonModel.position.set(-25, 0, 0);
+      modelosLista.push(sylveonModel);
+    });
+  
+
+    const Umbreon = new GLTFLoader(loadingManager);
+    Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
+      umbreon.scene.scale.set(2,2,2);
+      scene.add(umbreon.scene);
+      umbreon.scene.castShadow = true
+      umbreonModel = umbreon.scene;
+      umbreonModel.position.set(25, 0, 0);
+      modelosLista.push(umbreonModel);
+    });
+
+    const Vaporeon = new GLTFLoader(loadingManager);
+    Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
+      vaporeon.scene.scale.set(1.7,1.7,1.7);
+      scene.add(vaporeon.scene);
+      vaporeon.scene.castShadow = true
+      vaporeonModel = vaporeon.scene;
+      vaporeonModel.position.set(25, 0, 0);
+      modelosLista.push(vaporeonModel);
+    });
+}
+
+carregarModelos()
+
 carregarCenario(scene, loadingManager)
 console.log(cenarioLista)
 carregarNuvem(scene, loadingManager)

@@ -4,102 +4,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 // Variável para controlar se o movimento da carta já foi concluído
 
-export const modelosLista = []
-var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel, eeveeModel2;
-
-export function carregarModelosEevee(scene, loadingManager){
-  console.log('Carregando Eevee'); 
-  const Eevee = new GLTFLoader(loadingManager);
-  Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-    eevee.scene.scale.set(8, 8, 8);
-    scene.add(eevee.scene);
-    eevee.scene.castShadow = true;
-    eeveeModel = eevee.scene;
-    eeveeModel.position.set(0, -9, 0);
-    modelosLista.push(eeveeModel)
-  });
-
-  const Espeon = new GLTFLoader(loadingManager);
-  Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
-    espeon.scene.scale.set(2, 2, 2);
-    scene.add(espeon.scene);
-    espeon.scene.castShadow = true;
-    espeonModel = espeon.scene;
-    espeonModel.position.set(-25, 0, 0);
-    modelosLista.push(espeonModel)
-  });
-
-  const Flareon = new GLTFLoader(loadingManager);
-  Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
-    flareon.scene.scale.set(1.8,1.9,2);
-    scene.add(flareon.scene);
-    flareon.scene.castShadow = true
-    flareonModel = flareon.scene;
-    flareonModel.position.set(25, 0, 0);
-    modelosLista.push(flareonModel)
-  });
-
-  const Glaceon = new GLTFLoader(loadingManager);
-  Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
-    glaceon.scene.scale.set(2,2,2);
-    scene.add(glaceon.scene);
-    glaceon.scene.castShadow = true
-    glaceonModel = glaceon.scene;
-    glaceonModel.position.set(25, 0, 0);
-    modelosLista.push(glaceonModel)
-  });
-
-  const Jolteon = new GLTFLoader(loadingManager);
-  Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
-    jolteon.scene.scale.set(2,2,2);
-    scene.add(jolteon.scene);
-    jolteon.scene.castShadow = true
-    jolteonModel = jolteon.scene;
-    jolteonModel.position.set(-25, 0, 0);
-    modelosLista.push(jolteonModel)
-  });
-
-  const Leafeon = new GLTFLoader(loadingManager);
-  Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
-    leafeon.scene.scale.set(2,2,2);
-    scene.add(leafeon.scene);
-    leafeon.scene.castShadow = true
-    leafeonModel = leafeon.scene;
-    leafeonModel.position.set(-25, 0, 0);
-    modelosLista.push(leafeonModel)
-  });
-
-  const Sylveon = new GLTFLoader(loadingManager);
-  Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
-    sylveon.scene.scale.set(2,2,2);
-    scene.add(sylveon.scene);
-    sylveon.scene.castShadow = true
-    sylveonModel = sylveon.scene;
-    sylveonModel.position.set(-25, 0, 0);
-    modelosLista.push(sylveonModel)
-  });
-
-  const Umbreon = new GLTFLoader(loadingManager);
-  Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
-    umbreon.scene.scale.set(2,2,2);
-    scene.add(umbreon.scene);
-    umbreon.scene.castShadow = true
-    umbreonModel = umbreon.scene;
-    umbreonModel.position.set(25, 0, 0);
-    modelosLista.push(umbreonModel)
-  });
-
-  const Vaporeon = new GLTFLoader(loadingManager);
-  Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
-    vaporeon.scene.scale.set(1.7,1.7,1.7);
-    scene.add(vaporeon.scene);
-    vaporeon.scene.castShadow = true
-    vaporeonModel = vaporeon.scene;
-    vaporeonModel.position.set(25, 0, 0);
-    modelosLista.push(vaporeonModel)
-  });
-}
-
 export const chaoLista = []
 
 // GRAMA
@@ -122,6 +26,8 @@ ground2.receiveShadow = true
 ground2.castShadow = true
 chaoLista.push(ground2)
 
+
+var eeveeModel2;
 export const cenarioLista = []
 export function carregarCenario(scene, loadingManager){
     var florestaModel;
