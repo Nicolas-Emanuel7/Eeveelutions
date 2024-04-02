@@ -2,6 +2,7 @@
 import './style.css'
 import * as THREE from 'three';
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { carregarModelosEevee, modelosLista, carregarCenario, cenarioLista, carregarNuvem, nuvensLista, estrelasLista, carregarEstrela, esferasLista, chaoLista } from './modelos.js';
 
 // CENA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('canvas.webgl')
@@ -29,7 +30,7 @@ const body = document.body;
 // Seleciona o elemento HTML com a classe 'loading-bar'
 const loadingBarElement = document.querySelector('.loading-bar')
 
-// Cria um novo LoadingManager do Three.js
+// Cria um novo LoadingManager do Three.js PARA A TELA DE CARREGAMENTO
 const loadingManager = new THREE.LoadingManager(
   // Função a ser executada quando todos os recursos estiverem carregados
   () => {
@@ -99,160 +100,175 @@ scene.add(overlay)
 const sectionActions = {
   0: () => {
       // Ação para a seção 0
+      cartasLista.forEach(carta => {
+        moverModelo(carta, 10, 1, 10); // FAZ TODAS AS CARTAS IREM PRO MESMO LUGAR
+      })
+      movimentarEsferas(2);
+
+      moverModelo(chaoLista[0], 0, -10, 0) // CHÃO
+      moverModelo(chaoLista[1], 0, -10, 0) // CHÃO 2
+      moverModelo(modelosLista[0], 0, -10, 0) // EEVEE NORMAL
+
+      moverModelo(cenarioLista[1], 0,0.8,3) // FLORESTA
+      moverModelo(cenarioLista[0], -0.3, 0.9, 4.8) // EEVEE TITULO
+
+      minhaLuz1.atualizarIntensidade(0)
+      minhaluz2.atualizarIntensidade(0)
+      minhaluz3.atualizarIntensidade(0)
       
-      telaInicial(1)
+      mudarCamera(-1,1.5, 5.7,-0.1,-0.1,0)
+
+      luzDirecional.intensity = 2.5
+
+      funcaoParticulas.mudarOpacidade(0)
+
+      animarFundo(2);
       
       body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
-
   },
   1: () => {
-      // Ação para a seção 1
-      
-      telaInicial(2)
+      // Ação para a seção 1   
+      movimentarEsferas(1);
+      animarFundo(1);
 
-      moverModelo(cartasLista[0], 6, 1, 1.5)
-      moverModelo(cartasLista[7], 10, 1, 10)
+      mudarCamera(0,2.2, 7,0,0,0)
+      moverModelo(cenarioLista[1], 0, 13,0) // FLORESTA
+      moverModelo(cenarioLista[0], 0, 13,0) // EEVEE TITULO
 
-      moverModelo(ground, 0, -0.1, 0)
-      moverModelo(ground2, 0, -0.2, 0)
-      moverModelo(eeveeModel, 0, 0, 0)
-      moverModelo(vaporeonModel, 25, 0, 0);
+      minhaLuz1.atualizarIntensidade(2)
+      minhaluz2.atualizarIntensidade(2)
+      minhaluz3.atualizarIntensidade(4)
+
+      luzDirecional.intensity = 1.5
+
+      funcaoParticulas.mudarOpacidade(1)
+
+      moverModelo(cartasLista[0], 6, 1, 1.5) // CARTA EEVEE
+      moverModelo(cartasLista[7], 10, 1, 10) // CARTA VAPOREON
+
+      moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
+      moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
+
+      moverModelo(modelosLista[0], 0, 0, 0) // EEVEE NORMAL
+      moverModelo(modelosLista[8], 25, 0, 0); // VAPOREON
 
       body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
-
-
-
   },
   2: () => {
       // Ação para a seção 2
-      moverModelo(cartasLista[0], 10, 1, 10)
-      moverModelo(cartasLista[7], 6, 1, 1.5)
-      moverModelo(cartasLista[4], 10, 1, 10)
+      moverModelo(cartasLista[0], 10, 1, 10) // CARTA EEVEE
+      moverModelo(cartasLista[7], 6, 1, 1.5) // CARTA VAPOREON
+      moverModelo(cartasLista[4], 10, 1, 10) // CARTA JOLTEON
 
-      moverModelo(eeveeModel, -25, 0, 0)
-      moverModelo(vaporeonModel, 0, 0, 0);
-      moverModelo(jolteonModel, -25, 0, 0);
+      moverModelo(modelosLista[0], -25, 0, 0) // EEVEE NORMAL
+      moverModelo(modelosLista[8], 0, 0, 0); // VAPOREON
+      moverModelo(modelosLista[4], -25, 0, 0); // JOLTEON
       
       body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
-     
-
   },
   3: () => {
       // Ação para a seção 3
-      moverModelo(cartasLista[7], 10, 1, 10)
-      moverModelo(cartasLista[4], 6, 1, 1.5)
-      moverModelo(cartasLista[2], 10, 1, 10)
+      moverModelo(cartasLista[7], 10, 1, 10) // CARTA VAPOREON
+      moverModelo(cartasLista[4], 6, 1, 1.5) // CARTA JOLTEON
+      moverModelo(cartasLista[2], 10, 1, 10) // CARTA FLAREON
 
-      moverModelo(jolteonModel, 0, 0, 0);
-      moverModelo(vaporeonModel, 25, 0, 0);
-      moverModelo(flareonModel, 25, 0, 0);
+      moverModelo(modelosLista[4], 0, 0, 0); // JOLTEON
+      moverModelo(modelosLista[8], 25, 0, 0); // VAPOREON
+      moverModelo(modelosLista[2], 25, 0, 0); // FLAREON
 
       body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
-
   },
   4: () => {
       // Ação para a seção 4
-      moverModelo(cartasLista[4], 10, 1, 10)
-      moverModelo(cartasLista[2], 6, 1, 1.5)
-      moverModelo(cartasLista[1], 10, 1, 10)
+      moverModelo(cartasLista[4], 10, 1, 10) // CARTA JOLTEON
+      moverModelo(cartasLista[2], 6, 1, 1.5) // CARTA FLAREON
+      moverModelo(cartasLista[1], 10, 1, 10) // CARTA ESPEON
 
-      moverModelo(jolteonModel, -25, 0, 0);
-      moverModelo(flareonModel, 0, 0.15, 0)
-      moverModelo(espeonModel, -25, 0, 0);
+      moverModelo(modelosLista[4], -25, 0, 0); // JOLTEON
+      moverModelo(modelosLista[2], 0, 0.15, 0) // FLAREON
+      moverModelo(modelosLista[1], -25, 0, 0); // ESPEON
      
       body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
-      
-
-
   },
   5: () => {
       // Ação para a seção 5
-      moverModelo(cartasLista[2], 10, 1, 10)
-      moverModelo(cartasLista[1], 6, 1, 1.5)
-      moverModelo(cartasLista[6], 10, 1, 10)
+      moverModelo(cartasLista[2], 10, 1, 10) // CARTA FLAREON
+      moverModelo(cartasLista[1], 6, 1, 1.5) // CARTA ESPEON
+      moverModelo(cartasLista[6], 10, 1, 10) // CARTA UMBREON
 
-      moverModelo(flareonModel, 25, 0, 0)
-      moverModelo(espeonModel, 0, 0.05, 0)
-      moverModelo(umbreonModel, 25, 0, 0);
+      moverModelo(modelosLista[2], 25, 0, 0) // FLAREON
+      moverModelo(modelosLista[1], 0, 0.05, 0) // ESPEON
+      moverModelo(modelosLista[7], 25, 0, 0); // UMBREON
 
       body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
-
-
-
   },
   6: () => {
       // Ação para a seção 6
-      moverModelo(cartasLista[1], 10, 1, 10)
-      moverModelo(cartasLista[6], 6, 1, 1.5)
-      moverModelo(cartasLista[5], 10, 1, 10)
+      moverModelo(cartasLista[1], 10, 1, 10) // CARTA ESPEON
+      moverModelo(cartasLista[6], 6, 1, 1.5) // CARTA UMBREON
+      moverModelo(cartasLista[5], 10, 1, 10) // CARTA LEAFEON
 
-      moverModelo(espeonModel, -25, 0, 0)
-      moverModelo(umbreonModel, 0, 0, 0)
-      moverModelo(leafeonModel, -25, 0, 0);
+      moverModelo(modelosLista[1], -25, 0, 0) // ESPEON
+      moverModelo(modelosLista[7], 0, 0, 0) // UMBREON
+      moverModelo(modelosLista[5], -25, 0, 0);  // LEAFEON
 
       body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
-
-
   },
   7: () => {
       // Ação para a seção 7
-      moverModelo(cartasLista[6], 10, 1, 10)
-      moverModelo(cartasLista[5], 6, 1, 1.5)
-      moverModelo(cartasLista[3], 10, 1, 10)
+      moverModelo(cartasLista[6], 10, 1, 10) // CARTA UMBREON
+      moverModelo(cartasLista[5], 6, 1, 1.5) // CARTA LEAFEON
+      moverModelo(cartasLista[3], 10, 1, 10) // CARTA GLACEON
 
-      moverModelo(umbreonModel, 25, 0, 0)
-      moverModelo(leafeonModel, 0, 0, 0)
-      moverModelo(glaceonModel, 25, 0, 0);
+      moverModelo(modelosLista[7], 25, 0, 0) // UMBREON
+      moverModelo(modelosLista[5], 0, 0, 0) // LEAFEON
+      moverModelo(modelosLista[3], 25, 0, 0); // GLACEON
 
       body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
-
-
   },
   8: () => {
       // Ação para a seção 8
-      moverModelo(cartasLista[5], 10, 1, 10)
-      moverModelo(cartasLista[3], 6, 1, 1.5)
-      moverModelo(cartasLista[8], 10, 1, 10)
+      moverModelo(cartasLista[5], 10, 1, 10) // CARTA LEAFEON
+      moverModelo(cartasLista[3], 6, 1, 1.5) // CARTA GLACEON
+      moverModelo(cartasLista[8], 10, 1, 10) // CARTA SYLVEON
 
-      moverModelo(leafeonModel, -25, 0, 0)
-      moverModelo(glaceonModel, 0, 0, 0)
-      moverModelo(sylveonModel, -25, 0, 0);
-     
+      moverModelo(modelosLista[5], -25, 0, 0) // LEAFEON
+      moverModelo(modelosLista[3], 0, 0, 0) // GLACEON
+      moverModelo(modelosLista[6], -25, 0, 0); // SYLVEON
      
       body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
-
   },
   9: () => {
       // Ação para a seção 9
-      moverModelo(cartasLista[3], 10, 1, 10)
-      moverModelo(cartasLista[8], 6, 1, 1.5)
+      moverModelo(cartasLista[3], 10, 1, 10) // CARTA GLACEON
+      moverModelo(cartasLista[8], 6, 1, 1.5) // CARTA SYLVEON
 
-      moverModelo(glaceonModel, 25, 0, 0)
-      moverModelo(sylveonModel, 0, 0, 0)
+      moverModelo(modelosLista[3], 25, 0, 0) // GLACEON
+      moverModelo(modelosLista[6], 0, 0, 0) // SYLVEON
 
-      moverModelo(ground, 0, -0.1, 0)
-      moverModelo(ground2, 0, -0.2, 0)
+      moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
+      moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
 
       movimentarEsferas(1);
 
+      funcaoParticulas.mudarOpacidade(1)
+
       body.style.background = 'linear-gradient(90deg,#ffdae3,#d1fffc,#a0f2ed,#d1fffc,#a0f2ed,#ffa1bd)';
-      
   },
   10: () => {
       // Ação para a seção 10
-    
+      moverModelo(cartasLista[8], 10, 1, 10) // CARTA SYLVEON
 
-      moverModelo(cartasLista[8], 10, 1, 10)
-
-      moverModelo(ground, 0, -10, 0)
-      moverModelo(ground2, 0, -10, 0)
-      moverModelo(sylveonModel, 0, -10, 0)
+      moverModelo(chaoLista[0], 0, -10, 0) // CHÃO
+      moverModelo(chaoLista[1], 0, -10, 0) // CHÃO 2
+      moverModelo(modelosLista[6], 0, -10, 0) // SYLVEON
 
       movimentarEsferas(2);
+
+      funcaoParticulas.mudarOpacidade(0)
       
       body.style.background = '#f3d5a5';
   }
-  // Adicione mais pares chave-valor conforme necessário para cada seção
 };
 
 function mudarCamera(posX, posY, posZ, alvoX, alvoY, alvoZ){
@@ -266,7 +282,6 @@ window.addEventListener('load', () => {
   // Executa a ação da seção 0 assim que a página é carregada
   sectionActions[0]();
 });
-
 // Adicione um listener de evento de scroll à janela
 window.addEventListener('scroll', () => {
   // Atualiza a variável scrollY com o valor atual do scroll vertical da janela
@@ -285,18 +300,6 @@ window.addEventListener('scroll', () => {
       }
   }
 });
-
-// Variável para controlar se o movimento da carta já foi concluído
-let movimentoConcluido = false;
-
-function moverModelo(modelo, positionX, positionY, positionZ) {
-  if (modelo) {
-    gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX , y: positionY, z: positionZ, onComplete: () => {
-        movimentoConcluido = true;// Define movimentoConcluido como true após o término do movimento
-    } });
-  }
-};
-
 
 // Cria um renderizador WebGL com as configurações especificadas
 const renderer = new THREE.WebGLRenderer({
@@ -348,204 +351,44 @@ luzDirecional.position.set(0, 1, 3);
 luzDirecional.castShadow = true;
 scene.add(luzDirecional);
 
+// MODELOS CARREGADOS //////////////////////////////////////////////////////////////////////////////////////////////////////////
+let movimentoConcluido = false;
 
-// Modelos
-
-const modelosLista = []
-
-function carregarModelos(){
-  console.log('Carregando Eevee'); 
-  const Eevee = new GLTFLoader(loadingManager);
-  Eevee.load('/assets/eevee/scene.gltf', (eevee) => {
-    eevee.scene.scale.set(8, 8, 8);
-    scene.add(eevee.scene);
-    eevee.scene.castShadow = true;
-    eeveeModel = eevee.scene;
-    eeveeModel.position.set(0, -9, 0);
-    modelosLista.push(eeveeModel)
-  });
-
-  const Espeon = new GLTFLoader(loadingManager);
-  Espeon.load('/assets/espeon/scene.gltf', (espeon) => {
-    espeon.scene.scale.set(2, 2, 2);
-    scene.add(espeon.scene);
-    espeon.scene.castShadow = true;
-    espeonModel = espeon.scene;
-    espeonModel.position.set(-25, 0, 0);
-    modelosLista.push(espeonModel)
-  });
-
-  const Flareon = new GLTFLoader(loadingManager);
-  Flareon.load('/assets/flareon/scene.gltf', (flareon) => {
-    flareon.scene.scale.set(1.8,1.9,2);
-    scene.add(flareon.scene);
-    flareon.scene.castShadow = true
-    flareonModel = flareon.scene;
-    flareonModel.position.set(25, 0, 0);
-    modelosLista.push(flareonModel)
-  });
-
-  const Glaceon = new GLTFLoader(loadingManager);
-  Glaceon.load('/assets/glaceon/scene.gltf', (glaceon) => {
-    glaceon.scene.scale.set(2,2,2);
-    scene.add(glaceon.scene);
-    glaceon.scene.castShadow = true
-    glaceonModel = glaceon.scene;
-    glaceonModel.position.set(25, 0, 0);
-    modelosLista.push(glaceonModel)
-  });
-
-  const Jolteon = new GLTFLoader(loadingManager);
-  Jolteon.load('/assets/jolteon/scene.gltf', (jolteon) => {
-    jolteon.scene.scale.set(2,2,2);
-    scene.add(jolteon.scene);
-    jolteon.scene.castShadow = true
-    jolteonModel = jolteon.scene;
-    jolteonModel.position.set(-25, 0, 0);
-    modelosLista.push(jolteonModel)
-  });
-
-  const Leafeon = new GLTFLoader(loadingManager);
-  Leafeon.load('/assets/leafeon/scene.gltf', (leafeon) => {
-    leafeon.scene.scale.set(2,2,2);
-    scene.add(leafeon.scene);
-    leafeon.scene.castShadow = true
-    leafeonModel = leafeon.scene;
-    leafeonModel.position.set(-25, 0, 0);
-    modelosLista.push(leafeonModel)
-  });
-
-  const Sylveon = new GLTFLoader(loadingManager);
-  Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
-    sylveon.scene.scale.set(2,2,2);
-    scene.add(sylveon.scene);
-    sylveon.scene.castShadow = true
-    sylveonModel = sylveon.scene;
-    sylveonModel.position.set(-25, 0, 0);
-    modelosLista.push(sylveonModel)
-  });
-
-  const Umbreon = new GLTFLoader(loadingManager);
-  Umbreon.load('/assets/umbreon/scene.gltf', (umbreon) => {
-    umbreon.scene.scale.set(2,2,2);
-    scene.add(umbreon.scene);
-    umbreon.scene.castShadow = true
-    umbreonModel = umbreon.scene;
-    umbreonModel.position.set(25, 0, 0);
-    modelosLista.push(umbreonModel)
-  });
-
-  const Vaporeon = new GLTFLoader(loadingManager);
-  Vaporeon.load('/assets/vaporeon/scene.gltf', (vaporeon) => {
-    vaporeon.scene.scale.set(1.7,1.7,1.7);
-    scene.add(vaporeon.scene);
-    vaporeon.scene.castShadow = true
-    vaporeonModel = vaporeon.scene;
-    vaporeonModel.position.set(25, 0, 0);
-    modelosLista.push(vaporeonModel)
-  });
-
-  const EeveeInicial = new GLTFLoader(loadingManager);
-  EeveeInicial.load('/assets/eevee/scene.gltf', (eeveeInicial) => {
-    eeveeInicial.scene.scale.set(2,2,2);
-    scene.add(eeveeInicial.scene);
-    eeveeInicial.scene.castShadow = true;
-    eeveeModel2 = eeveeInicial.scene;
-    eeveeModel2.position.set(-0.3, 0.9, 4.8);
-    eeveeModel2.rotation.y = -0.7
-   
-  });
-}
-
-var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel, eeveeModel2;
-carregarModelos()
-
-// tela inicial modelos
-// florestinha
-var florestaModel;
-const Floresta = new GLTFLoader(loadingManager);
-  Floresta.load('/assets/cenario3/scene.gltf', (floresta) => {
-  floresta.scene.scale.set(0.0050,0.0050,0.0050);
-  scene.add(floresta.scene);
-  floresta.scene.castShadow = true
-  floresta.scene.position.set(0,0.8,3);
-  floresta.scene.rotation.y = 3
-  florestaModel = floresta.scene;
-});
-
-// NUVEM
-const nuvensLista = []; // Lista para armazenar as instâncias das nuvens
-
-// Função para carregar o modelo da nuvem
-function carregarNuvem() {
-    const loader = new GLTFLoader(loadingManager);
-    loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
-        nuvem.scene.scale.set(0.5,0.5,0.5);
-        nuvem.scene.castShadow = true;
-        for (let i = 0; i < 10; i++) { // Criar 5 instâncias da nuvem
-            const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
-            nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
-            nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
-            scene.add(nuvemInstancia); // Adicionar a instância à cena
-            nuvensLista.push(nuvemInstancia); // Adicionar a instância à lista
-        }
-    });
-}
-// Chamar a função para carregar a nuvem
-carregarNuvem();
-
-// GRAMA
-const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
-const chao = new THREE.MeshStandardMaterial({map: texturaGrama});
-
-const ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,0.3,32) , new THREE.MeshStandardMaterial( chao ) );
-scene.add( ground );
-ground.position.y = -10;
-ground.receiveShadow = true
-ground.castShadow = true
-
-// TERRA
-const texturaTerra = new THREE.TextureLoader().load('assets/CARTAS/terra.jpg');
-const terra = new THREE.MeshStandardMaterial({map: texturaTerra});
-
-const ground2 = new THREE.Mesh( new THREE.CylinderGeometry(3.1,3.1,0.4,32) , new THREE.MeshStandardMaterial( terra ) );
-scene.add( ground2 );
-ground2.position.y = -10;
-ground2.receiveShadow = true
-ground2.castShadow = true
-// Controles
-
-// Adicione um evento de mousemove ao documento
-document.addEventListener('mousemove', onMouseMove, false);
-
-// Função para lidar com o movimento do mouse
-function onMouseMove(event) {
-  // Normalizar a posição do mouse entre -1 e 1
-  var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-  // Calcular as rotações com base nas coordenadas do mouse
-  var rotationX = mouseY * Math.PI * 0.2; // Pode ajustar a sensibilidade multiplicando por um fator
-  var rotationY = mouseX * Math.PI * 0.2;
-  if(ground){
-    ground.rotation.y = rotationY;
+export function moverModelo(modelo, positionX, positionY, positionZ) {
+  if (modelo) {
+    gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX , y: positionY, z: positionZ, onComplete: () => {
+        movimentoConcluido = true;// Define movimentoConcluido como true após o término do movimento
+    } });
   }
-  modelosLista.forEach(modelo => {
-    modelo.rotation.y = rotationY;
-  });
-}
+};
+
+carregarModelosEevee(scene, loadingManager)
+console.log(modelosLista)
+carregarCenario(scene, loadingManager)
+console.log(cenarioLista)
+carregarNuvem(scene, loadingManager)
+console.log(nuvensLista)
+carregarEstrela(scene)
+console.log(estrelasLista)
+console.log(esferasLista)
+
+scene.add(esferasLista[0])
+scene.add(esferasLista[1])
+
+scene.add(chaoLista[0])
+scene.add(chaoLista[1])
 
 const textureLoader = new THREE.TextureLoader();
-
 // Criar geometria da carta
-const geometry = new THREE.BoxGeometry(2.5, 3.7, 0.01);
+const geometryCarta = new THREE.BoxGeometry(2.5, 3.7, 0.01);
 
 const cartasLista = []
 
 function criarCarta(texturaFrente) {// Função para criar uma carta
     const parteFrente = new THREE.MeshBasicMaterial({ map: texturaFrente });
-    const carta = new THREE.Mesh(geometry, parteFrente);
+    const carta = new THREE.Mesh(geometryCarta, parteFrente);
     carta.position.set(10, 1, 10)
+    scene.add(carta);
 
     cartasLista.push(carta);    
     return carta;
@@ -553,7 +396,7 @@ function criarCarta(texturaFrente) {// Função para criar uma carta
 
 const clock = new THREE.Clock()// Cria um relógio para rastrear o tempo decorrido
 // Função de atualização para movimentar a carta após o término do movimento principal
-function atualizar() {
+function atualizarCarta() {
   const elapsedTime = clock.getElapsedTime();// Obtém o tempo decorrido desde o último quadro
   
   if (movimentoConcluido) {         // Verifica se o movimento principal já foi concluído
@@ -562,10 +405,9 @@ function atualizar() {
       });
   }
   renderer.render(scene, camera);// Atualiza a cena
-  requestAnimationFrame(atualizar);// Chama a função novamente para o próximo quadro
+  requestAnimationFrame(atualizarCarta);// Chama a função novamente para o próximo quadro
 }
-atualizar();
-
+atualizarCarta();// Inicia a função de atualização
 
 const texturasFrente = [ // Carregar texturas para a parte da frente das cartas
     textureLoader.load('assets/CARTAS/eevee.webp'),
@@ -581,102 +423,30 @@ const texturasFrente = [ // Carregar texturas para a parte da frente das cartas
 
 // Criar as cartas e adicioná-las à cena
 const cartas = texturasFrente.map(textura => {
-    const carta = criarCarta(textura);
+    const carta = criarCarta(textura, scene);
     scene.add(carta);
     return carta;
 });
 
+// Adicione um evento de mousemove ao documento
+document.addEventListener('mousemove', onMouseMove, false);
 
+// Função para lidar com o movimento do mouse
+function onMouseMove(event) {
+  // Normalizar a posição do mouse entre -1 e 1
+  var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-function telaInicial(pagina){
-  console.log('teste')
-  if(pagina === 1){
-    console.log('tela primeira')
-
-    cartasLista.forEach(carta => {
-      moverModelo(carta, 10, 1, 10);
-    })
-    movimentarEsferas(2);
-
-    moverModelo(ground, 0, -10, 0)
-    moverModelo(ground2, 0, -10, 0)
-    moverModelo(eeveeModel, 0, -10, 0)
-
-    moverModelo(florestaModel, 0,0.8,3)
-    moverModelo(eeveeModel2, -0.3, 0.9, 4.8)
-
-    minhaLuz1.atualizarIntensidade(0)
-    minhaluz2.atualizarIntensidade(0)
-    minhaluz3.atualizarIntensidade(0)
-    
-    mudarCamera(-1,1.5, 5.7,-0.1,-0.1,0)
-
-    luzDirecional.intensity = 2.5
-
-    animarFundo(2);
+  // Calcular as rotações com base nas coordenadas do mouse
+  var rotationX = mouseY * Math.PI * 0.2; // Pode ajustar a sensibilidade multiplicando por um fator
+  var rotationY = mouseX * Math.PI * 0.2;
+  if(chaoLista[0]){
+    chaoLista[0].rotation.y = rotationY;
   }
-  if(pagina === 2){
-    console.log('tela segunda')
-    
-    movimentarEsferas(1);
-
-    mudarCamera(0,2.2, 7,0,0,0)
-    moverModelo(florestaModel, 0, 13,0)
-    moverModelo(eeveeModel2, 0, 13,0)
-
-    minhaLuz1.atualizarIntensidade(2)
-    minhaluz2.atualizarIntensidade(2)
-    minhaluz3.atualizarIntensidade(4)
-
-    luzDirecional.intensity = 1.5
-
-    animarFundo(1);
-  }
+  modelosLista.forEach(modelo => {
+    modelo.rotation.y = rotationY;
+  });
 }
-
-// esferas
-class Esfera extends THREE.Mesh {
-  constructor(raio = 1, segmentos = 32, cor = 0xffffff) {
-      // Chame o construtor da classe pai (THREE.Mesh) usando super()
-      super(new THREE.SphereGeometry(raio, segmentos, segmentos), new THREE.MeshBasicMaterial({ color: cor }));
-  }
-  girarEmTornoDoEixoY(velocidade) {
-      this.rotation.y += velocidade;
-  }
-  // Método para mudar a cor da esfera
-  mudarCor(novaCor) {
-    if (this.material instanceof THREE.MeshBasicMaterial) {
-        // Define a nova cor para o material da esfera
-        this.material.color.set(novaCor);
-    } 
-  }
-}
-
-// ESTRELA CADENTE
-const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
-
-// Função para carregar o modelo da estrela
-function carregarEstrela() {
-  for(let i = 0; i < 15; i++){
-    const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
-    estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
-    scene.add(estrela);
-    estrelasLista.push(estrela); 
-  }
-}
-carregarEstrela();
-
-const esferasLista = []
-
-const esfera1 = new Esfera(0.03, 32, 0xff0000);
-scene.add(esfera1);
-esfera1.mudarCor('yellow');
-esferasLista.push(esfera1)
-
-const esfera2 = new Esfera(0.03, 32, 0xff0000);
-scene.add(esfera2);
-esfera2.mudarCor('yellow');
-esferasLista.push(esfera2)
 
 let angulo = 0.0
 let anguloVelocidade = 0.0
@@ -691,19 +461,19 @@ function movimentarEsferas(opcao) {
   }
   // Atualiza o ângulo com base na velocidade
   angulo += anguloVelocidade;
-  esfera1.position.x = raio*Math.cos(angulo)
-  esfera1.position.z = raio*Math.sin(angulo)
+  esferasLista[0].position.x = raio*Math.cos(angulo)
+  esferasLista[0].position.z = raio*Math.sin(angulo)
   
-  esfera2.position.x = raio*Math.cos(-angulo)
-  esfera2.position.z = raio*Math.sin(-angulo)
+  esferasLista[1].position.x = raio*Math.cos(-angulo)
+  esferasLista[1].position.z = raio*Math.sin(-angulo)
   if(opcao === 1){
     console.log('subindo')
-    esfera1.position.y = 0.5
-    esfera2.position.y = 0.5
+    esferasLista[0].position.y = 0.5
+    esferasLista[1].position.y = 0.5
   }else if(opcao === 2){
     console.log('descendo')
-    esfera1.position.y = -10
-    esfera2.position.y = -10
+    esferasLista[0].position.y = -10
+    esferasLista[1].position.y = -10
   }
   renderer.render(scene, camera);
   requestAnimationFrame(movimentarEsferas);
@@ -719,8 +489,8 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += -0.1
     })
-    ground.rotation.y += -0.1
-    ground2.rotation.y += -0.1
+    cenarioLista[1].rotation.y += -0.1
+    cenarioLista[2].rotation.y += -0.1
   }
   if(event.key === 'ArrowRight'){
     cartasLista.forEach(carta => {
@@ -729,8 +499,8 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += 0.1
     })
-    ground.rotation.y += 0.1
-    ground2.rotation.y += 0.1
+    cenarioLista[1].rotation.y += 0.1
+    cenarioLista[2].rotation.y += 0.1
   }
   
 });
@@ -781,11 +551,10 @@ class Particulas {
   constructor(scene) {
       this.scene = scene;
       this.geometry = new THREE.BufferGeometry();
-      this.material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.010 });
+      this.material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.010, opacity: 1, transparent: true });
       this.particleSystem = new THREE.Points(this.geometry, this.material);
       this.scene.add(this.particleSystem);
   }
-
   criarParticula(contador) {
       const positions = [];
 
@@ -796,15 +565,16 @@ class Particulas {
       const attributePosition = new THREE.Float32BufferAttribute(positions, 3);
       this.geometry.setAttribute('position', attributePosition);
   }
-
   mudarCor(cor) {
       this.material.color.set(cor);
   }
-
+  mudarOpacidade(opacidade) {
+    this.material.opacity = opacidade;
+    console.log('mudando opacidade para', opacidade)
+  }
   mudarVelocidade(velocidade) {
       this.speed = velocidade;
   }
-
   atualizar() {
       const positions = this.geometry.attributes.position.array;
       const numParticulas = positions.length / 3; // Número total de partículas
@@ -821,14 +591,12 @@ class Particulas {
 
       this.geometry.attributes.position.needsUpdate = true;
   }
-
 }
 
 const funcaoParticulas = new Particulas(scene)
-funcaoParticulas.criarParticula(10000);
+funcaoParticulas.criarParticula(10000)
 funcaoParticulas.mudarCor('yellow')
 funcaoParticulas.mudarVelocidade(0.01)
-
 
 function animate(){
     requestAnimationFrame(animate);
