@@ -1,3 +1,4 @@
+// IMPORTS //
 import './style.css'
 import * as THREE from 'three';
 import { GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -117,7 +118,9 @@ const sectionActions = {
       moverModelo(eeveeModel, 0, 0, 0)
       moverModelo(vaporeonModel, 25, 0, 0);
 
-      body.style.background = 'linear-gradient(45deg, #fae3be, #f0cd96, #d5af70)';
+      body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
+
+
 
   },
   2: () => {
@@ -129,8 +132,9 @@ const sectionActions = {
       moverModelo(eeveeModel, -25, 0, 0)
       moverModelo(vaporeonModel, 0, 0, 0);
       moverModelo(jolteonModel, -25, 0, 0);
-
-      body.style.background = 'linear-gradient(45deg, #fae3be, #f0cd96, #d5af70)';
+      
+      body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
+     
 
   },
   3: () => {
@@ -143,7 +147,7 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25, 0, 0);
       moverModelo(flareonModel, 25, 0, 0);
 
-      body.style.background = '#ffff71';
+      body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
 
   },
   4: () => {
@@ -155,8 +159,9 @@ const sectionActions = {
       moverModelo(jolteonModel, -25, 0, 0);
       moverModelo(flareonModel, 0, 0.15, 0)
       moverModelo(espeonModel, -25, 0, 0);
-
-      body.style.background = '#F7E8A1';
+     
+      body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
+      
 
 
   },
@@ -170,7 +175,8 @@ const sectionActions = {
       moverModelo(espeonModel, 0, 0.05, 0)
       moverModelo(umbreonModel, 25, 0, 0);
 
-      body.style.background = '#E4CDDD';
+      body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
+
 
 
   },
@@ -184,7 +190,7 @@ const sectionActions = {
       moverModelo(umbreonModel, 0, 0, 0)
       moverModelo(leafeonModel, -25, 0, 0);
 
-      body.style.background = '#efcb69';
+      body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
 
 
   },
@@ -198,7 +204,8 @@ const sectionActions = {
       moverModelo(leafeonModel, 0, 0, 0)
       moverModelo(glaceonModel, 25, 0, 0);
 
-      body.style.background = '#FAE9B9';
+      body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
+
 
   },
   8: () => {
@@ -210,8 +217,9 @@ const sectionActions = {
       moverModelo(leafeonModel, -25, 0, 0)
       moverModelo(glaceonModel, 0, 0, 0)
       moverModelo(sylveonModel, -25, 0, 0);
-
-      body.style.background = '#DFF6F0';
+     
+     
+      body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
 
   },
   9: () => {
@@ -227,13 +235,12 @@ const sectionActions = {
 
       movimentarEsferas(1);
 
-      body.style.background = '#ffdae3';
-
-      telaInicial(2)
+      body.style.background = 'linear-gradient(90deg,#ffdae3,#d1fffc,#a0f2ed,#d1fffc,#a0f2ed,#ffa1bd)';
+      
   },
   10: () => {
       // Ação para a seção 10
-      telaInicial(1)
+    
 
       moverModelo(cartasLista[8], 10, 1, 10)
 
