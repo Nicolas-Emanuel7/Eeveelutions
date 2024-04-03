@@ -1,6 +1,6 @@
 // modelos.js
-import * as THREE from '/node_modules/three/build/three.module.js';
-import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 // Variável para controlar se o movimento da carta já foi concluído
 
@@ -88,19 +88,6 @@ class Esfera extends THREE.Mesh {
           // Define a nova cor para o material da esfera
           this.material.color.set(novaCor);
       } 
-    }
-  }
-  
-  // ESTRELA CADENTE
-  export const estrelasLista = []; // Lista para armazenar as instâncias das estrelas
-  
-  // Função para carregar o modelo da estrela
-  export function carregarEstrela(scene) {
-    for(let i = 0; i < 8; i++){
-      const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
-      estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
-      scene.add(estrela);
-      estrelasLista.push(estrela); 
     }
   }
   

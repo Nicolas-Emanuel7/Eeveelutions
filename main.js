@@ -1,8 +1,8 @@
 // IMPORTS //
-import './style.css'
-import * as THREE from '/node_modules/three/build/three.module.js';
-import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, estrelasLista, carregarEstrela, esferasLista, chaoLista } from './modelos.js';
+import './style.css';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, esferasLista, chaoLista } from './modelos.js';
 
 // CENA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('canvas.webgl')
@@ -96,6 +96,17 @@ const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
 // Adiciona a sobreposição à cena
 scene.add(overlay)
 
+// SOMS DOS EEVEES ////////
+let somEevee = 'assets/sounds/eeveesound.mp3';
+let somEspeon ='assets/sounds/espeonsound.mp3';
+let somFlareon = 'assets/sounds/flareonsound.mp3';
+let somGlaceon = 'assets/sounds/glaceonsound.mp3';
+let somJolteon = 'assets/sounds/jolteonsound.mp3';
+let somLeafeon = 'assets/sounds/leafeonsound.mp3';
+let somUmbreon = 'assets/sounds/umbreonsound.mp3';
+let somVaporeon = 'assets/sounds/vaporeonsound.mp3';
+let somSylveon = 'assets/sounds/sylveonsound.mp3';
+
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
   0: () => {
@@ -150,6 +161,8 @@ const sectionActions = {
       moverModelo(eeveeModel, 0, 0, 0) // EEVEE NORMAL
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
 
+      playSound(somEevee)
+
       body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
   },
   2: () => {
@@ -161,6 +174,8 @@ const sectionActions = {
       moverModelo(eeveeModel, -25, 0, 0) // EEVEE NORMAL
       moverModelo(vaporeonModel, 0, 0, 0); // VAPOREON
       moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
+
+      playSound(somVaporeon)
       
       body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
   },
@@ -174,6 +189,8 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
       moverModelo(flareonModel, 25, 0, 0); // FLAREON
 
+      playSound(somJolteon)
+
       body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
   },
   4: () => {
@@ -185,6 +202,8 @@ const sectionActions = {
       moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
       moverModelo(flareonModel, 0, 0.15, 0) // FLAREON
       moverModelo(espeonModel, -25, 0, 0); // ESPEON
+
+      playSound(somFlareon)
      
       body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
   },
@@ -198,6 +217,8 @@ const sectionActions = {
       moverModelo(espeonModel, 0, 0.05, 0) // ESPEON
       moverModelo(umbreonModel, 25, 0, 0); // UMBREON
 
+      playSound(somEspeon)
+
       body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
   },
   6: () => {
@@ -209,6 +230,8 @@ const sectionActions = {
       moverModelo(espeonModel, -25, 0, 0) // ESPEON
       moverModelo(umbreonModel, 0, 0, 0) // UMBREON
       moverModelo(leafeonModel, -25, 0, 0);  // LEAFEON
+
+      playSound(somUmbreon)
 
       body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
   },
@@ -222,6 +245,8 @@ const sectionActions = {
       moverModelo(leafeonModel, 0, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 25, 0, 0); // GLACEON
 
+      playSound(somLeafeon)
+
       body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
   },
   8: () => {
@@ -233,6 +258,8 @@ const sectionActions = {
       moverModelo(leafeonModel, -25, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 0, 0, 0) // GLACEON
       moverModelo(sylveonModel, -25, 0, 0); // SYLVEON
+
+      playSound(somGlaceon)
      
       body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
   },
@@ -243,6 +270,8 @@ const sectionActions = {
 
       moverModelo(glaceonModel, 25, 0, 0) // GLACEON
       moverModelo(sylveonModel, 0, 0, 0) // SYLVEON
+
+      playSound(somSylveon)
 
       moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
@@ -463,8 +492,6 @@ carregarCenario(scene, loadingManager)
 console.log(cenarioLista)
 carregarNuvem(scene, loadingManager)
 console.log(nuvensLista)
-carregarEstrela(scene)
-console.log(estrelasLista)
 console.log(esferasLista)
 
 scene.add(esferasLista[0])
@@ -584,8 +611,9 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += -0.1
     })
-    cenarioLista[1].rotation.y += -0.1
-    cenarioLista[2].rotation.y += -0.1
+    cenarioLista.forEach(cenario => {
+      cenario.rotation.y += -0.1
+    })  
   }
   if(event.key === 'ArrowRight'){
     cartasLista.forEach(carta => {
@@ -594,8 +622,15 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += 0.1
     })
-    cenarioLista[1].rotation.y += 0.1
-    cenarioLista[2].rotation.y += 0.1
+    cenarioLista.forEach(cenario => {
+      cenario.rotation.y += -0.1
+    }) 
+  }
+  if(event.key === 'm' || event.key === 'M'){
+    playBackgroundSound(1)   
+  }
+  if(event.key === 'p' || event.key === 'P'){
+    playBackgroundSound(2)   
   }
   
 });
@@ -609,15 +644,6 @@ function animarFundo(opcao){
     animacaoEmAndamento = true;
 
     function animacao(){
-      estrelasLista.forEach(estrela => {
-        estrela.position.y -= 0.05;
-        estrela.position.x += Math.random() * 0.01 + 0.02;
-        estrela.position.z += Math.random() * 0 + 0.01;
-        if (estrela.position.y < -10) {
-          estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
-        }
-      });
-
       nuvensLista.forEach(nuvem => {
         nuvem.position.x += Math.random() * 0.006 + 0.005;
         nuvem.position.z += Math.random() * 0.001 + 0.001;
@@ -693,18 +719,30 @@ funcaoParticulas.criarParticula(10000)
 funcaoParticulas.mudarCor('yellow')
 funcaoParticulas.mudarVelocidade(0.01)
 
-function playStartSound(){
+function playBackgroundSound(opcao){
   let audio = new Audio('assets/sounds/PokemonSom.m4a');
-  audio.volume = 0.1;
+  audio.volume = 0.2;
   audio.loop = true;
-  audio.play();
+  if(opcao === 1){
+    console.log('Tocando musica de fundo')
+    audio.play();
+  }
+  if(opcao === 2){
+    console.log('Parando musica de fundo')
+    audio.pause();
+  }
 }
-
-playStartSound();
+function playSound(somRecebido){
+  console.log('tocando som')
+  let som = new Audio(somRecebido);
+  som.volume = 0.6;
+  som.play();
+}
 
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+    
 
     angulo += 0.05
     
@@ -718,4 +756,5 @@ function animate(){
 animate();
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
+  
 }
