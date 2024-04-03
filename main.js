@@ -120,8 +120,6 @@ const sectionActions = {
 
       luzDirecional.intensity = 2.5
 
-      funcaoParticulas.mudarOpacidade(0)
-
       animarFundo(2);
       
       body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
@@ -694,6 +692,15 @@ const funcaoParticulas = new Particulas(scene)
 funcaoParticulas.criarParticula(10000)
 funcaoParticulas.mudarCor('yellow')
 funcaoParticulas.mudarVelocidade(0.01)
+
+function playStartSound(){
+  let audio = new Audio('assets/sounds/PokemonSom.m4a');
+  audio.volume = 0.1;
+  audio.loop = true;
+  audio.play();
+}
+
+playStartSound();
 
 function animate(){
     requestAnimationFrame(animate);

@@ -63,7 +63,7 @@ export function carregarNuvem(scene, loadingManager) {
     loader.load('/assets/nuvem/scene.gltf', (nuvem) => {
         nuvem.scene.scale.set(0.5,0.5,0.5);
         nuvem.scene.castShadow = true;
-        for (let i = 0; i < 10; i++) { // Criar 5 instâncias da nuvem
+        for (let i = 0; i < 8; i++) { // Criar 5 instâncias da nuvem
             const nuvemInstancia = nuvem.scene.clone(); // Clone do modelo da nuvem
             nuvemInstancia.position.set(Math.random() * 40 - 20, Math.random() * (20 - 10) +2 , Math.random() * 10 - 15); // Posição aleatória
             nuvemInstancia.rotation.x = 0 ; // Rotação aleatória
@@ -96,7 +96,7 @@ class Esfera extends THREE.Mesh {
   
   // Função para carregar o modelo da estrela
   export function carregarEstrela(scene) {
-    for(let i = 0; i < 15; i++){
+    for(let i = 0; i < 8; i++){
       const estrela = new Esfera(0.03, 16, Math.random() * 0xffffff);
       estrela.position.set(Math.random() * 30 - 20, Math.random() * 20 + 10, Math.random() * 10 - 15);
       scene.add(estrela);
