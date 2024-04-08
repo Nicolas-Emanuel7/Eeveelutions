@@ -387,6 +387,29 @@ function moverModelo(modelo, positionX, positionY, positionZ) {
     } });
   }
 };
+function toggleTextureOffset(offsetX, offsetY, model, materialName) {
+  console.log('entrou no toggleTextureOffset');
+  // Verificar se o modelo foi carregado corretamente
+  if (model) {
+      console.log("modelo de eevee chegado");
+      model.traverse(function (child) {
+          if (child.isMesh) {
+              console.log('entrou no if');
+              // Supondo que os olhos estão em um material específico no modelo
+              if (child.material.name === materialName) { // Use o nome exato do material conforme indicado no seu arquivo .gltf
+                  // Verificar se offsetX e offsetY estão dentro do intervalo [0, 1]
+                  offsetX = Math.max(0, Math.min(1, offsetX));
+                  offsetY = Math.max(0, Math.min(1, offsetY));
+                  
+                  child.material.map.offset.set(offsetX, offsetY);
+                  child.material.needsUpdate = true; // Atualizar o material
+                  console.log('Textura do olho atualizada');
+              }
+          }
+      });
+  }
+}
+
 var eeveeModel, espeonModel, flareonModel, glaceonModel, jolteonModel, leafeonModel, sylveonModel, umbreonModel, vaporeonModel;
 const modelosLista = []
 function carregarModelos(){
@@ -399,6 +422,8 @@ function carregarModelos(){
       eeveeModel = eevee.scene;
       eeveeModel.position.set(0, -9, 0);
       modelosLista.push(eeveeModel);
+
+      toggleTextureOffset(0.5, 0.25, eeveeModel, 'Material_13');
     });
 
     const Espeon = new GLTFLoader(loadingManager);
@@ -410,6 +435,8 @@ function carregarModelos(){
       espeonModel.position.set(-25, 0, 0);
       console.log(espeonModel)
       modelosLista.push(espeonModel);
+
+      toggleTextureOffset(0.5, 0.75, espeonModel, 'Material_106');
     });
 
     const Flareon = new GLTFLoader(loadingManager);
@@ -420,6 +447,8 @@ function carregarModelos(){
       flareonModel = flareon.scene;
       flareonModel.position.set(25, 0, 0);
       modelosLista.push(flareonModel);
+
+      toggleTextureOffset(0.5, 0.75, espeonModel, 'Material_10');
     });
 
     const Glaceon = new GLTFLoader(loadingManager);
@@ -461,6 +490,8 @@ function carregarModelos(){
       sylveonModel = sylveon.scene;
       sylveonModel.position.set(-25, 0, 0);
       modelosLista.push(sylveonModel);
+
+      toggleTextureOffset(0.5, 0.25, sylveonModel, 'Material_10');
     });
   
 
