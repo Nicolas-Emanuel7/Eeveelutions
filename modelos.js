@@ -8,23 +8,23 @@ export const chaoLista = []
 
 // GRAMA
 const texturaGrama = new THREE.TextureLoader().load('assets/CARTAS/grama-chao.webp');
-const chao = new THREE.MeshStandardMaterial({map: texturaGrama});
+const materialGrama = new THREE.MeshStandardMaterial({map: texturaGrama});
 
-var ground = new THREE.Mesh( new THREE.CylinderGeometry(3,3,0.4,32) , new THREE.MeshStandardMaterial( chao ) );
-ground.position.y = -10;
-ground.receiveShadow = true
-ground.castShadow = true
-chaoLista.push(ground)
+var grama = new THREE.Mesh( new THREE.CylinderGeometry(3,3,0.4,32) , new THREE.MeshStandardMaterial( materialGrama ) );
+grama.position.y = -10;
+grama.receiveShadow = true
+grama.castShadow = true
+chaoLista.push(grama)
 
 // TERRA
 const texturaTerra = new THREE.TextureLoader().load('assets/CARTAS/terra.jpg');
-const terra = new THREE.MeshStandardMaterial({map: texturaTerra});
+const materialTerra = new THREE.MeshStandardMaterial({map: texturaTerra});
 
-var ground2 = new THREE.Mesh( new THREE.CylinderGeometry(3.1,3.1,0.4,32) , new THREE.MeshStandardMaterial( terra ) );
-ground2.position.y = -10;
-ground2.receiveShadow = true
-ground2.castShadow = true
-chaoLista.push(ground2)
+var terra = new THREE.Mesh( new THREE.CylinderGeometry(3.1,3.1,0.4,32) , new THREE.MeshStandardMaterial( materialTerra ) );
+terra.position.y = -10;
+terra.receiveShadow = true
+terra.castShadow = true
+chaoLista.push(terra)
 
 
 var eeveeModel2;
@@ -91,12 +91,12 @@ class Esfera extends THREE.Mesh {
     }
   }
   
-  export const esferasLista = []
+  export const vagalumeLista = []
   
   const esfera1 = new Esfera(0.03, 32, 0xff0000);
   esfera1.mudarCor('yellow');
-  esferasLista.push(esfera1)
+  vagalumeLista.push(esfera1)
   
   const esfera2 = new Esfera(0.03, 32, 0xff0000);
   esfera2.mudarCor('yellow');
-  esferasLista.push(esfera2)
+  vagalumeLista.push(esfera2)

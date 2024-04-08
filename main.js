@@ -2,7 +2,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, esferasLista, chaoLista } from './modelos.js';
+import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, vagalumeLista, chaoLista } from './modelos.js';
 
 // CENA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('canvas.webgl')
@@ -118,7 +118,7 @@ const sectionActions = {
 
       moverModelo(chaoLista[0], 0, -10, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -10, 0) // CHÃO 2
-      moverModelo(modelosLista[0], 0, -10, 0) // EEVEE NORMAL
+      moverModelo(eeveeModel, 0, -10, 0) // EEVEE NORMAL
 
       moverModelo(cenarioLista[1], 0,0.8,3) // FLORESTA
       moverModelo(cenarioLista[0], -0.3, 0.9, 4.8) // EEVEE TITULO
@@ -130,6 +130,8 @@ const sectionActions = {
       mudarCamera(-1,1.5, 5.7,-0.1,-0.1,0)
 
       luzDirecional.intensity = 2.5
+
+      funcaoParticulas.mudarOpacidade(1)
 
       animarFundo(2);
       
@@ -146,11 +148,9 @@ const sectionActions = {
 
       minhaLuz1.atualizarIntensidade(2)
       minhaluz2.atualizarIntensidade(2)
-      minhaluz3.atualizarIntensidade(4)
+      minhaluz3.atualizarIntensidade(8)
 
       luzDirecional.intensity = 1.5
-
-      funcaoParticulas.mudarOpacidade(1)
 
       moverModelo(cartasLista[0], 6, 1, 1.5) // CARTA EEVEE
       moverModelo(cartasLista[7], 10, 1, 10) // CARTA VAPOREON
@@ -293,8 +293,7 @@ const sectionActions = {
       movimentarEsferas(2);
 
       funcaoParticulas.mudarOpacidade(0)
-      
-      body.style.background = '#f3d5a5';
+      body.style.background = 'linear-gradient(90deg, #004173,#0979b0,#0cb7f2,#7cdaf9,#b6ffff,#7cdaf9,#0cb7f2,#0979b0,#004173)';
   }
 };
 
@@ -368,7 +367,7 @@ class MinhaLuz extends THREE.Object3D {
 // Crie uma instância da classe MinhaLuz
 const minhaLuz1 = new MinhaLuz(0xffffff, 3);
 const minhaluz2 = new MinhaLuz(0xffffff, 3);
-const minhaluz3 = new MinhaLuz(0xffffff, 6);
+const minhaluz3 = new MinhaLuz(0xffff00, 6);
 scene.add(minhaLuz1);
 scene.add(minhaluz2);
 scene.add(minhaluz3);
@@ -381,7 +380,7 @@ scene.add(luzDirecional);
 // MODELOS CARREGADOS //////////////////////////////////////////////////////////////////////////////////////////////////////////
 let movimentoConcluido = false;
 
-export function moverModelo(modelo, positionX, positionY, positionZ) {
+function moverModelo(modelo, positionX, positionY, positionZ) {
   if (modelo) {
     gsap.to(modelo.position, { duration: 1.5, ease: 'power2.inOut', x: positionX , y: positionY, z: positionZ, onComplete: () => {
         movimentoConcluido = true;// Define movimentoConcluido como true após o término do movimento
@@ -492,10 +491,10 @@ carregarCenario(scene, loadingManager)
 console.log(cenarioLista)
 carregarNuvem(scene, loadingManager)
 console.log(nuvensLista)
-console.log(esferasLista)
+console.log(vagalumeLista)
 
-scene.add(esferasLista[0])
-scene.add(esferasLista[1])
+scene.add(vagalumeLista[0])
+scene.add(vagalumeLista[1])
 
 scene.add(chaoLista[0])
 scene.add(chaoLista[1])
@@ -583,19 +582,19 @@ function movimentarEsferas(opcao) {
   }
   // Atualiza o ângulo com base na velocidade
   angulo += anguloVelocidade;
-  esferasLista[0].position.x = raio*Math.cos(angulo)
-  esferasLista[0].position.z = raio*Math.sin(angulo)
+  vagalumeLista[0].position.x = raio*Math.cos(angulo)
+  vagalumeLista[0].position.z = raio*Math.sin(angulo)
   
-  esferasLista[1].position.x = raio*Math.cos(-angulo)
-  esferasLista[1].position.z = raio*Math.sin(-angulo)
+  vagalumeLista[1].position.x = raio*Math.cos(-angulo)
+  vagalumeLista[1].position.z = raio*Math.sin(-angulo)
   if(opcao === 1){
     console.log('subindo')
-    esferasLista[0].position.y = 0.5
-    esferasLista[1].position.y = 0.5
+    vagalumeLista[0].position.y = 0.5
+    vagalumeLista[1].position.y = 0.5
   }else if(opcao === 2){
     console.log('descendo')
-    esferasLista[0].position.y = -10
-    esferasLista[1].position.y = -10
+    vagalumeLista[0].position.y = -10
+    vagalumeLista[1].position.y = -10
   }
   renderer.render(scene, camera);
   requestAnimationFrame(movimentarEsferas);
@@ -611,7 +610,7 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += -0.1
     })
-    cenarioLista.forEach(cenario => {
+    chaoLista.forEach(cenario => {
       cenario.rotation.y += -0.1
     })  
   }
@@ -622,8 +621,8 @@ document.addEventListener('keydown', (event) => {
     modelosLista.forEach(modelo => {
       modelo.rotation.y += 0.1
     })
-    cenarioLista.forEach(cenario => {
-      cenario.rotation.y += -0.1
+    chaoLista.forEach(cenario => {
+      cenario.rotation.y += 0.1
     }) 
   }
   if(event.key === 'm' || event.key === 'M'){
