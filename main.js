@@ -387,23 +387,26 @@ function moverModelo(modelo, positionX, positionY, positionZ) {
     } });
   }
 };
-function toggleTextureOffset(offsetX, offsetY, model, materialName) {
-  console.log('entrou no toggleTextureOffset');
+
+// Função para alternar a textura dos olhos entre duas posições diferentes
+function toggleTextureOffset(offsetX1, offsetY1, offsetX2, offsetY2, model, materialName) {
   // Verificar se o modelo foi carregado corretamente
   if (model) {
-      console.log("modelo de eevee chegado");
       model.traverse(function (child) {
           if (child.isMesh) {
-              console.log('entrou no if');
               // Supondo que os olhos estão em um material específico no modelo
-              if (child.material.name === materialName) { // Use o nome exato do material conforme indicado no seu arquivo .gltf
-                  // Verificar se offsetX e offsetY estão dentro do intervalo [0, 1]
-                  offsetX = Math.max(0, Math.min(1, offsetX));
-                  offsetY = Math.max(0, Math.min(1, offsetY));
-                  
-                  child.material.map.offset.set(offsetX, offsetY);
-                  child.material.needsUpdate = true; // Atualizar o material
-                  console.log('Textura do olho atualizada');
+              if (child.material.name === materialName) {
+                  // Alternar entre duas posições de textura após 5 segundos
+                  setInterval(function () {
+                      child.material.map.offset.set(offsetX2, offsetY2);
+                      child.material.needsUpdate = true; // Atualizar o material
+
+                      // Aguardar meio segundo e retornar à posição original da textura
+                      setTimeout(function () {
+                          child.material.map.offset.set(offsetX1, offsetY1);
+                          child.material.needsUpdate = true; // Atualizar o material
+                      }, 500); // 500 milissegundos = 0.5 segundos ; tempo que dura a "piscada"
+                  }, 5000); // 5000 milissegundos = 5 segundos ; tempo entre as "piscadas"
               }
           }
       });
@@ -423,7 +426,7 @@ function carregarModelos(){
       eeveeModel.position.set(0, -9, 0);
       modelosLista.push(eeveeModel);
 
-      toggleTextureOffset(0.5, 0.25, eeveeModel, 'Material_13');
+      toggleTextureOffset(0, 0, 0.5, 0.25, eeveeModel, 'Material_13');
     });
 
     const Espeon = new GLTFLoader(loadingManager);
@@ -436,7 +439,7 @@ function carregarModelos(){
       console.log(espeonModel)
       modelosLista.push(espeonModel);
 
-      toggleTextureOffset(0.5, 0.75, espeonModel, 'Material_106');
+      toggleTextureOffset(0, 0, 0.5, 0.75, espeonModel, 'Material_106');
     });
 
     const Flareon = new GLTFLoader(loadingManager);
@@ -448,7 +451,7 @@ function carregarModelos(){
       flareonModel.position.set(25, 0, 0);
       modelosLista.push(flareonModel);
 
-      toggleTextureOffset(0.5, 0.75, espeonModel, 'Material_10');
+      toggleTextureOffset(0, 0, 0.5, 0.75, flareonModel, 'Material_12');
     });
 
     const Glaceon = new GLTFLoader(loadingManager);
@@ -459,6 +462,8 @@ function carregarModelos(){
       glaceonModel = glaceon.scene;
       glaceonModel.position.set(25, 0, 0);
       modelosLista.push(glaceonModel);
+
+      toggleTextureOffset(0, 0, 0.5, 0.75, glaceonModel, 'Material_26');
     });
 
     const Jolteon = new GLTFLoader(loadingManager);
@@ -469,6 +474,8 @@ function carregarModelos(){
       jolteonModel = jolteon.scene;
       jolteonModel.position.set(-25, 0, 0);
       modelosLista.push(jolteonModel);
+
+      toggleTextureOffset(0, 0, 0.5, 0.75, jolteonModel, 'Material_11');
     });
 
     const Leafeon = new GLTFLoader(loadingManager);
@@ -479,11 +486,13 @@ function carregarModelos(){
       leafeonModel = leafeon.scene;
       leafeonModel.position.set(-25, 0, 0);
       modelosLista.push(leafeonModel);
+
+      toggleTextureOffset(0, 0, 0.5, 0.75, leafeonModel, 'Material_13');
     });
   
 
     const Sylveon = new GLTFLoader(loadingManager);
-    Sylveon.load('/assets/SYLVEON/scene.gltf', (sylveon) => {
+    Sylveon.load('/assets/sylveon/scene.gltf', (sylveon) => {
       sylveon.scene.scale.set(2,2,2);
       scene.add(sylveon.scene);
       sylveon.scene.castShadow = true
@@ -491,7 +500,7 @@ function carregarModelos(){
       sylveonModel.position.set(-25, 0, 0);
       modelosLista.push(sylveonModel);
 
-      toggleTextureOffset(0.5, 0.25, sylveonModel, 'Material_10');
+      toggleTextureOffset(0, 0, 0.5, 0.75, sylveonModel, 'Material__10');
     });
   
 
@@ -503,6 +512,8 @@ function carregarModelos(){
       umbreonModel = umbreon.scene;
       umbreonModel.position.set(25, 0, 0);
       modelosLista.push(umbreonModel);
+
+      toggleTextureOffset(0, 0, 0.5, 0.75, umbreonModel, 'Material_93');
     });
 
     const Vaporeon = new GLTFLoader(loadingManager);
@@ -513,6 +524,8 @@ function carregarModelos(){
       vaporeonModel = vaporeon.scene;
       vaporeonModel.position.set(25, 0, 0);
       modelosLista.push(vaporeonModel);
+
+      toggleTextureOffset(0, 0, 0.5, 0.75, vaporeonModel, 'Material_11');
     });
 }
 
