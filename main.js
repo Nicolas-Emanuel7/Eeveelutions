@@ -96,20 +96,13 @@ const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
 // Adiciona a sobreposição à cena
 scene.add(overlay)
 
-// SOMS DOS EEVEES ////////
-let somEevee = 'assets/sounds/eeveesound.mp3';
-let somEspeon ='assets/sounds/espeonsound.mp3';
-let somFlareon = 'assets/sounds/flareonsound.mp3';
-let somGlaceon = 'assets/sounds/glaceonsound.mp3';
-let somJolteon = 'assets/sounds/jolteonsound.mp3';
-let somLeafeon = 'assets/sounds/leafeonsound.mp3';
-let somUmbreon = 'assets/sounds/umbreonsound.mp3';
-let somVaporeon = 'assets/sounds/vaporeonsound.mp3';
-let somSylveon = 'assets/sounds/sylveonsound.mp3';
+
+let secaoAtual = 0;
 
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
   0: () => {
+    secaoAtual = 0;
       // Ação para a seção 0
       cartasLista.forEach(carta => {
         moverModelo(carta, 10, 1, 10); // FAZ TODAS AS CARTAS IREM PRO MESMO LUGAR
@@ -138,6 +131,7 @@ const sectionActions = {
       body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
   },
   1: () => {
+    secaoAtual = 1;
       // Ação para a seção 1   
       movimentarEsferas(1);
       animarFundo(1);
@@ -160,12 +154,11 @@ const sectionActions = {
 
       moverModelo(eeveeModel, 0, 0, 0) // EEVEE NORMAL
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
-
-      playSound(somEevee)
-
+      
       body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
   },
   2: () => {
+    secaoAtual = 2;
       // Ação para a seção 2
       moverModelo(cartasLista[0], 10, 1, 10) // CARTA EEVEE
       moverModelo(cartasLista[7], 6, 1, 1.5) // CARTA VAPOREON
@@ -174,12 +167,11 @@ const sectionActions = {
       moverModelo(eeveeModel, -25, 0, 0) // EEVEE NORMAL
       moverModelo(vaporeonModel, 0, 0, 0); // VAPOREON
       moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
-
-      playSound(somVaporeon)
       
       body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
   },
   3: () => {
+    secaoAtual = 3;
       // Ação para a seção 3
       moverModelo(cartasLista[7], 10, 1, 10) // CARTA VAPOREON
       moverModelo(cartasLista[4], 6, 1, 1.5) // CARTA JOLTEON
@@ -189,11 +181,10 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
       moverModelo(flareonModel, 25, 0, 0); // FLAREON
 
-      playSound(somJolteon)
-
       body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
   },
   4: () => {
+    secaoAtual = 4;
       // Ação para a seção 4
       moverModelo(cartasLista[4], 10, 1, 10) // CARTA JOLTEON
       moverModelo(cartasLista[2], 6, 1, 1.5) // CARTA FLAREON
@@ -203,11 +194,10 @@ const sectionActions = {
       moverModelo(flareonModel, 0, 0.15, 0) // FLAREON
       moverModelo(espeonModel, -25, 0, 0); // ESPEON
 
-      playSound(somFlareon)
-     
       body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
   },
   5: () => {
+    secaoAtual = 5;
       // Ação para a seção 5
       moverModelo(cartasLista[2], 10, 1, 10) // CARTA FLAREON
       moverModelo(cartasLista[1], 6, 1, 1.5) // CARTA ESPEON
@@ -217,11 +207,10 @@ const sectionActions = {
       moverModelo(espeonModel, 0, 0.05, 0) // ESPEON
       moverModelo(umbreonModel, 25, 0, 0); // UMBREON
 
-      playSound(somEspeon)
-
       body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
   },
   6: () => {
+    secaoAtual = 6;
       // Ação para a seção 6
       moverModelo(cartasLista[1], 10, 1, 10) // CARTA ESPEON
       moverModelo(cartasLista[6], 6, 1, 1.5) // CARTA UMBREON
@@ -229,13 +218,12 @@ const sectionActions = {
 
       moverModelo(espeonModel, -25, 0, 0) // ESPEON
       moverModelo(umbreonModel, 0, 0, 0) // UMBREON
-      moverModelo(leafeonModel, -25, 0, 0);  // LEAFEON
-
-      playSound(somUmbreon)
+      moverModelo(leafeonModel, -25, 0, 0);  // LEAFEON 
 
       body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
   },
   7: () => {
+    secaoAtual = 7;
       // Ação para a seção 7
       moverModelo(cartasLista[6], 10, 1, 10) // CARTA UMBREON
       moverModelo(cartasLista[5], 6, 1, 1.5) // CARTA LEAFEON
@@ -245,11 +233,10 @@ const sectionActions = {
       moverModelo(leafeonModel, 0, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 25, 0, 0); // GLACEON
 
-      playSound(somLeafeon)
-
       body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
   },
   8: () => {
+    secaoAtual = 8;
       // Ação para a seção 8
       moverModelo(cartasLista[5], 10, 1, 10) // CARTA LEAFEON
       moverModelo(cartasLista[3], 6, 1, 1.5) // CARTA GLACEON
@@ -258,20 +245,17 @@ const sectionActions = {
       moverModelo(leafeonModel, -25, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 0, 0, 0) // GLACEON
       moverModelo(sylveonModel, -25, 0, 0); // SYLVEON
-
-      playSound(somGlaceon)
      
       body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
   },
   9: () => {
+    secaoAtual = 9;
       // Ação para a seção 9
       moverModelo(cartasLista[3], 10, 1, 10) // CARTA GLACEON
       moverModelo(cartasLista[8], 6, 1, 1.5) // CARTA SYLVEON
 
       moverModelo(glaceonModel, 25, 0, 0) // GLACEON
       moverModelo(sylveonModel, 0, 0, 0) // SYLVEON
-
-      playSound(somSylveon)
 
       moverModelo(chaoLista[0], 0, -0.1, 0) // CHÃO
       moverModelo(chaoLista[1], 0, -0.2, 0) // CHÃO 2
@@ -283,6 +267,7 @@ const sectionActions = {
       body.style.background = 'linear-gradient(90deg,#ffdae3,#d1fffc,#a0f2ed,#d1fffc,#a0f2ed,#ffa1bd)';
   },
   10: () => {
+    secaoAtual = 10;
       // Ação para a seção 10
       moverModelo(cartasLista[8], 10, 1, 10) // CARTA SYLVEON
 
@@ -389,24 +374,36 @@ function moverModelo(modelo, positionX, positionY, positionZ) {
 };
 
 // Função para alternar a textura dos olhos entre duas posições diferentes
-function toggleTextureOffset(offsetX1, offsetY1, offsetX2, offsetY2, model, materialName) {
+function toggleTextureOffset(offsetX1, offsetY1, offsetX2, offsetY2, model, materialName, tempo, loop) {
   // Verificar se o modelo foi carregado corretamente
   if (model) {
       model.traverse(function (child) {
           if (child.isMesh) {
               // Supondo que os olhos estão em um material específico no modelo
               if (child.material.name === materialName) {
-                  // Alternar entre duas posições de textura após 5 segundos
-                  setInterval(function () {
+                  // Se loop for verdadeiro, alternar entre as posições de textura repetidamente
+                  if (loop) {
+                      setInterval(function () {
+                          child.material.map.offset.set(offsetX2, offsetY2);
+                          child.material.needsUpdate = true; // Atualizar o material
+
+                          // Aguardar meio segundo e retornar à posição original da textura
+                          setTimeout(function () {
+                              child.material.map.offset.set(offsetX1, offsetY1);
+                              child.material.needsUpdate = true; // Atualizar o material
+                          }, tempo); // Tempo que dura a "piscada"
+                      }, 5000); // Tempo entre as "piscadas"
+                  } else {
+                      // Se loop for falso, apenas alternar a textura uma vez
                       child.material.map.offset.set(offsetX2, offsetY2);
                       child.material.needsUpdate = true; // Atualizar o material
 
-                      // Aguardar meio segundo e retornar à posição original da textura
+                      // Aguardar o tempo especificado e retornar à posição original da textura
                       setTimeout(function () {
                           child.material.map.offset.set(offsetX1, offsetY1);
                           child.material.needsUpdate = true; // Atualizar o material
-                      }, 500); // 500 milissegundos = 0.5 segundos ; tempo que dura a "piscada"
-                  }, 5000); // 5000 milissegundos = 5 segundos ; tempo entre as "piscadas"
+                      }, tempo); // Tempo que dura a "piscada"
+                  }
               }
           }
       });
@@ -426,7 +423,7 @@ function carregarModelos(){
       eeveeModel.position.set(0, -9, 0);
       modelosLista.push(eeveeModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.25, eeveeModel, 'Material_13');
+      toggleTextureOffset(0, 0, 0.5, 0.25, eeveeModel, 'Material_13', 500, true);
     });
 
     const Espeon = new GLTFLoader(loadingManager);
@@ -439,7 +436,7 @@ function carregarModelos(){
       console.log(espeonModel)
       modelosLista.push(espeonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, espeonModel, 'Material_106');
+      toggleTextureOffset(0, 0, 0.5, 0.75, espeonModel, 'Material_106', 500, true);
     });
 
     const Flareon = new GLTFLoader(loadingManager);
@@ -451,7 +448,7 @@ function carregarModelos(){
       flareonModel.position.set(25, 0, 0);
       modelosLista.push(flareonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, flareonModel, 'Material_12');
+      toggleTextureOffset(0, 0, 0.5, 0.75, flareonModel, 'Material_12', 500, true);
     });
 
     const Glaceon = new GLTFLoader(loadingManager);
@@ -463,7 +460,7 @@ function carregarModelos(){
       glaceonModel.position.set(25, 0, 0);
       modelosLista.push(glaceonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, glaceonModel, 'Material_26');
+      toggleTextureOffset(0, 0, 0.5, 0.75, glaceonModel, 'Material_26', 500, true);
     });
 
     const Jolteon = new GLTFLoader(loadingManager);
@@ -475,7 +472,7 @@ function carregarModelos(){
       jolteonModel.position.set(-25, 0, 0);
       modelosLista.push(jolteonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, jolteonModel, 'Material_11');
+      toggleTextureOffset(0, 0, 0.5, 0.75, jolteonModel, 'Material_11', 500, true);
     });
 
     const Leafeon = new GLTFLoader(loadingManager);
@@ -487,7 +484,7 @@ function carregarModelos(){
       leafeonModel.position.set(-25, 0, 0);
       modelosLista.push(leafeonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, leafeonModel, 'Material_13');
+      toggleTextureOffset(0, 0, 0.5, 0.75, leafeonModel, 'Material_13', 500, true);
     });
   
 
@@ -500,7 +497,7 @@ function carregarModelos(){
       sylveonModel.position.set(-25, 0, 0);
       modelosLista.push(sylveonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, sylveonModel, 'Material__10');
+      toggleTextureOffset(0, 0, 0.5, 0.75, sylveonModel, 'Material__10', 500, true);
     });
   
 
@@ -513,7 +510,7 @@ function carregarModelos(){
       umbreonModel.position.set(25, 0, 0);
       modelosLista.push(umbreonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, umbreonModel, 'Material_93');
+      toggleTextureOffset(0, 0, 0.5, 0.75, umbreonModel, 'Material_93', 500, true);
     });
 
     const Vaporeon = new GLTFLoader(loadingManager);
@@ -525,7 +522,7 @@ function carregarModelos(){
       vaporeonModel.position.set(25, 0, 0);
       modelosLista.push(vaporeonModel);
 
-      toggleTextureOffset(0, 0, 0.5, 0.75, vaporeonModel, 'Material_11');
+      toggleTextureOffset(0, 0, 0.5, 0.75, vaporeonModel, 'Material_11', 500, true);
     });
 }
 
@@ -644,6 +641,52 @@ function movimentarEsferas(opcao) {
   requestAnimationFrame(movimentarEsferas);
 }
 
+// SOMS DOS EEVEES ////////
+let somEevee = 'assets/sounds/eeveesound.mp3';
+let somEspeon ='assets/sounds/espeonsound.mp3';
+let somFlareon = 'assets/sounds/flareonsound.mp3';
+let somGlaceon = 'assets/sounds/glaceonsound.mp3';
+let somJolteon = 'assets/sounds/jolteonsound.mp3';
+let somLeafeon = 'assets/sounds/leafeonsound.mp3';
+let somUmbreon = 'assets/sounds/umbreonsound.mp3';
+let somVaporeon = 'assets/sounds/vaporeonsound.mp3';
+let somSylveon = 'assets/sounds/sylveonsound.mp3';
+
+function bocaAnimacao(secao){
+  console.log('Função de animar a boca')
+  if(secao === 1){
+    console.log('animando boca do eevee')
+    playSound(somEevee)
+    toggleTextureOffset(0, 0, 0, 0.5, eeveeModel, 'Material_14', 600, false);
+  }else if(secao === 2){
+    playSound(somVaporeon)
+    toggleTextureOffset(0, 0, 0, 0.5, vaporeonModel, 'Material_12', 900, false);
+  }else if(secao === 3){
+    playSound(somJolteon)
+    // JOLTEON NÃO ANIMA A BOCA
+  }else if(secao === 4){
+    playSound(somFlareon)
+    toggleTextureOffset(0, 0, 0.5, 0, flareonModel, 'Material_13', 800, false);
+  }else if(secao === 5){
+    playSound(somEspeon)
+    toggleTextureOffset(0, 0, 0.5, 0, espeonModel, 'Material_107', 900, false);
+  }else if(secao === 6){
+    playSound(somUmbreon)
+    toggleTextureOffset(0, 0, 0, 0.75, umbreonModel, 'Material_94', 800, false);
+  }else if(secao === 7){
+    playSound(somLeafeon)
+    toggleTextureOffset(0, 0, 0, 0.75, leafeonModel, 'Material_11', 1000, false);
+  }else if(secao === 8){
+    playSound(somGlaceon)
+    toggleTextureOffset(0, 0, 0, 0.75, glaceonModel, 'Material_24', 1200, false);
+  }else if(secao === 9){
+    playSound(somSylveon)
+    toggleTextureOffset(0, 0, 0.5, 0, sylveonModel, 'Material__12', 1200, false);
+  }else{
+    console.log('nada')
+  }
+}
+
 // rotaciona o modelo e a carta para esquerda ou direirta
 document.addEventListener('keydown', (event) => {
   console.log(event)
@@ -674,6 +717,9 @@ document.addEventListener('keydown', (event) => {
   }
   if(event.key === 'p' || event.key === 'P'){
     playBackgroundSound(2)   
+  }
+  if(event.key === 'a' || event.key === 'A'){
+    bocaAnimacao(secaoAtual)   
   }
   
 });
