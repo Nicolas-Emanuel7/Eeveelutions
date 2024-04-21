@@ -160,7 +160,7 @@ const sectionActions = {
       moverModelo(eeveeModel, 0, 0, 0) // EEVEE NORMAL
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
       
-      body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
+      
   },
   2: () => {
     secaoAtual = 2;
@@ -173,7 +173,6 @@ const sectionActions = {
       moverModelo(vaporeonModel, 0, 0, 0); // VAPOREON
       moverModelo(jolteonModel, -25, 0, 0); // JOLTEON
       
-      body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
   },
   3: () => {
     secaoAtual = 3;
@@ -186,7 +185,6 @@ const sectionActions = {
       moverModelo(vaporeonModel, 25, 0, 0); // VAPOREON
       moverModelo(flareonModel, 25, 0, 0); // FLAREON
 
-      body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
   },
   4: () => {
     secaoAtual = 4;
@@ -199,7 +197,7 @@ const sectionActions = {
       moverModelo(flareonModel, 0, 0.15, 0) // FLAREON
       moverModelo(espeonModel, -25, 0, 0); // ESPEON
 
-      body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
+      
   },
   5: () => {
     secaoAtual = 5;
@@ -212,7 +210,7 @@ const sectionActions = {
       moverModelo(espeonModel, 0, 0.05, 0) // ESPEON
       moverModelo(umbreonModel, 25, 0, 0); // UMBREON
 
-      body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
+     
   },
   6: () => {
     secaoAtual = 6;
@@ -225,7 +223,7 @@ const sectionActions = {
       moverModelo(umbreonModel, 0, 0, 0) // UMBREON
       moverModelo(leafeonModel, -25, 0, 0);  // LEAFEON 
 
-      body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
+      
   },
   7: () => {
     secaoAtual = 7;
@@ -238,7 +236,7 @@ const sectionActions = {
       moverModelo(leafeonModel, 0, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 25, 0, 0); // GLACEON
 
-      body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
+  
   },
   8: () => {
     secaoAtual = 8;
@@ -250,8 +248,7 @@ const sectionActions = {
       moverModelo(leafeonModel, -25, 0, 0) // LEAFEON
       moverModelo(glaceonModel, 0, 0, 0) // GLACEON
       moverModelo(sylveonModel, -25, 0, 0); // SYLVEON
-     
-      body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
+    
   },
   9: () => {
     secaoAtual = 9;
@@ -546,13 +543,13 @@ scene.add(chaoLista[0])
 scene.add(chaoLista[1])
 
 scene.add(solExport)
-solExport.position.set(-27,10,-40)
+solExport.position.set(-40,10,-50)
 if(solExport){
   console.log('sol')
 }
 
 scene.add(luaExport)
-luaExport.position.set(-27,10,-40)
+luaExport.position.set(-40,10,-50)
 if(luaExport){
   console.log('lua')
 }
@@ -659,11 +656,11 @@ function movimentarEsferas(opcao) {
 }
 
 let anguloSol = 0;
-let velocidadeSol = 0.001; // Velocidade inicial do sol
+let velocidadeSol = 0.0100; // Velocidade inicial do sol
 let raioSol = 40;
 
 // Coordenadas do ponto em torno do qual o sol deve girar
-let centroX = -55; // Altere para a coordenada X desejada
+let centroX = -65; // Altere para a coordenada X desejada
 let centroY = 18; // Altere para a coordenada Y desejada
 
 // Ângulo inicial da lua em relação ao sol (em radianos)
@@ -675,7 +672,7 @@ function movimentarSol() {
      // Verifica se a velocidade atual é menor que o limite
      if (velocidadeSol < limiteVelocidadeSol) {
          // Incrementa a velocidade
-         velocidadeSol += 0.001;
+         velocidadeSol += 0.0100;
      }
      // Atualiza o ângulo com base na velocidade
      anguloSol += velocidadeSol;
@@ -699,6 +696,80 @@ function movimentarSol() {
       } else if (solExport.position.y < 5) {
         console.log('DIA')
         body.style.background = 'linear-gradient(90deg, #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
+      } 
+    }
+    if(secaoAtual === 1){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(90deg, #EEE1BC,rgb(185, 116, 52),#EEE1BC,rgb(185, 116, 52))';
+      } 
+    }
+    if(secaoAtual === 2){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(90deg,  #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
+      } 
+    }
+    if(secaoAtual === 3){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+       
+        body.style.background = 'linear-gradient(90deg, #f7f7df,#ffff71,#f7f7df,#ffff71)';
+      } 
+    }
+    if(secaoAtual === 4){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(-45deg,#F7E8A1,#ff8f5c,#ffdc5e,#F7E8A1,#ff5100,#F7E8A1,#ffdc5e,#ff8f5c,#F7E8A1,#ff5100)';
+      } 
+    }
+    if(secaoAtual === 5){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(95deg, #ffadad, #e8b7ed,#ffadad,#e8b7ed,#a073de)';
+      } 
+    }
+    if(secaoAtual === 6){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(-45deg, #4d61ab,#43e0ff, #d13434,#eafa57, #6bb0ff, #9bff19,#d13434)';
+      } 
+    }
+    if(secaoAtual === 7){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(90deg, #f9ffa5, #d0e384,#43e0ff,#f9ffa5, #43e0ff)';
+      } 
+    }
+    if(secaoAtual === 8){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+       
+        body.style.background = 'linear-gradient(90deg, #b4e1f0,#7dc2ff,#DFF6F0,#7dc2ff )';
       } 
     }
     renderer.render(scene, camera);
