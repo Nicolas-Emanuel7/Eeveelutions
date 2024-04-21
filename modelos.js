@@ -73,30 +73,40 @@ export function carregarNuvem(scene, loadingManager) {
     });
 }
 
-// esferas
 class Esfera extends THREE.Mesh {
-    constructor(raio = 1, segmentos = 32, cor = 0xffffff) {
+    constructor(raio = 1, segmentos = 32, cor = 0xffffff, textura = null) {
+        let material;
+        if (textura) {
+            material = new THREE.MeshStandardMaterial({ map: textura });
+        } else {
+            // Usar uma cor sólida se não houver uma textura
+            material = new THREE.MeshBasicMaterial({ color: cor });
+        }
+
         // Chame o construtor da classe pai (THREE.Mesh) usando super()
-        super(new THREE.SphereGeometry(raio, segmentos, segmentos), new THREE.MeshBasicMaterial({ color: cor }));
+        super(new THREE.SphereGeometry(raio, segmentos, segmentos), material);
     }
+
     girarEmTornoDoEixoY(velocidade) {
         this.rotation.y += velocidade;
     }
-    // Método para mudar a cor da esfera
-    mudarCor(novaCor) {
-      if (this.material instanceof THREE.MeshBasicMaterial) {
-          // Define a nova cor para o material da esfera
-          this.material.color.set(novaCor);
-      } 
-    }
-  }
+}
+
+export const vagalumeLista = [];
+
+// Criar esferas com cor
+const esfera1 = new Esfera(0.03, 32, 'yellow');
+vagalumeLista.push(esfera1);
+
+const esfera2 = new Esfera(0.03, 32, 'yellow');
+vagalumeLista.push(esfera2);
+
+// Criar o sol com cor
+const sol = new Esfera(3, 32, 'yellow');
+export const solExport = sol;
+
+// Criar a lua com textura
+const texturaLua = new THREE.TextureLoader().load('assets/CARTAS/luaTextura.jpg');
+const lua = new Esfera(3, 32, null, texturaLua);
+export const luaExport = lua;
   
-  export const vagalumeLista = []
-  
-  const esfera1 = new Esfera(0.03, 32, 0xff0000);
-  esfera1.mudarCor('yellow');
-  vagalumeLista.push(esfera1)
-  
-  const esfera2 = new Esfera(0.03, 32, 0xff0000);
-  esfera2.mudarCor('yellow');
-  vagalumeLista.push(esfera2)

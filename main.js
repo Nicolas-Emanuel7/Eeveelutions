@@ -2,7 +2,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, vagalumeLista, chaoLista } from './modelos.js';
+import { carregarCenario, cenarioLista, carregarNuvem, nuvensLista, vagalumeLista, chaoLista, solExport, luaExport } from './modelos.js';
 
 // CENA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('canvas.webgl')
@@ -96,8 +96,12 @@ const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
 // Adiciona a sobreposição à cena
 scene.add(overlay)
 
-
 let secaoAtual = 0;
+
+let corFundoInicial = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
+
+
+
 
 // Objeto que mapeia o número da seção para a função que será executada
 const sectionActions = {
@@ -127,8 +131,18 @@ const sectionActions = {
       funcaoParticulas.mudarOpacidade(1)
 
       animarFundo(2);
+
+      if(solExport.position.y === 20 && solExport.position.x > -54){
+        console.log('sol mudou de lugar')
+        corFundoInicial = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
+      }
+      if(luaExport.position.y === 20 && luaExport.position.x < -56){
+          console.log('sol mudou de lugar denovo')
+          corFundoInicial = 'blue';
+      }
       
-      body.style.background = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
+      body.style.background = corFundoInicial;
+       
   },
   1: () => {
     secaoAtual = 1;
@@ -540,6 +554,18 @@ scene.add(vagalumeLista[1])
 scene.add(chaoLista[0])
 scene.add(chaoLista[1])
 
+scene.add(solExport)
+solExport.position.set(-27,10,-40)
+if(solExport){
+  console.log('sol')
+}
+
+scene.add(luaExport)
+luaExport.position.set(-27,10,-40)
+if(luaExport){
+  console.log('lua')
+}
+
 const textureLoader = new THREE.TextureLoader();
 // Criar geometria da carta
 const geometryCarta = new THREE.BoxGeometry(2.5, 3.7, 0.01);
@@ -640,6 +666,46 @@ function movimentarEsferas(opcao) {
   renderer.render(scene, camera);
   requestAnimationFrame(movimentarEsferas);
 }
+
+let anguloSol = 0;
+let velocidadeSol = 0.1; // Velocidade inicial do sol
+let raioSol = 40;
+
+// Coordenadas do ponto em torno do qual o sol deve girar
+let centroX = -55; // Altere para a coordenada X desejada
+let centroY = 18; // Altere para a coordenada Y desejada
+
+// Ângulo inicial da lua em relação ao sol (em radianos)
+let anguloInicialLua = Math.PI; // Começa do lado oposto do sol
+
+function movimentarSol() {
+     // Define um limite de velocidade
+     const limiteVelocidadeSol = 0.002;
+     // Verifica se a velocidade atual é menor que o limite
+     if (velocidadeSol < limiteVelocidadeSol) {
+         // Incrementa a velocidade
+         velocidadeSol += 0.001;
+     }
+     // Atualiza o ângulo com base na velocidade
+     anguloSol += velocidadeSol;
+
+    // Calcula a posição do sol em torno do ponto central
+    solExport.position.x = centroX + raioSol * Math.cos(anguloSol);
+    solExport.position.y = centroY + raioSol * Math.sin(anguloSol);
+
+    // Incrementa o ângulo da lua
+    anguloInicialLua += velocidadeSol;
+
+    // Calcula a posição da lua em torno do ponto central
+    luaExport.position.x = centroX + raioSol * Math.cos(anguloInicialLua);
+    luaExport.position.y = centroY + raioSol * Math.sin(anguloInicialLua);
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(movimentarSol);
+}
+
+// Inicia a animação
+movimentarSol();
 
 // SOMS DOS EEVEES ////////
 let somEevee = 'assets/sounds/eeveesound.mp3';
