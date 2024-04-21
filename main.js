@@ -98,7 +98,7 @@ scene.add(overlay)
 
 let secaoAtual = 0;
 
-let corFundoInicial = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
+let corFundoInicial = '';
 
 
 
@@ -132,15 +132,6 @@ const sectionActions = {
 
       animarFundo(2);
 
-      if(solExport.position.y === 20 && solExport.position.x > -54){
-        console.log('sol mudou de lugar')
-        corFundoInicial = 'linear-gradient(45deg, #f9ffa5, #43e0ff, #eafa57, #6bb0ff, #9bff19)';
-      }
-      if(luaExport.position.y === 20 && luaExport.position.x < -56){
-          console.log('sol mudou de lugar denovo')
-          corFundoInicial = 'blue';
-      }
-      
       body.style.background = corFundoInicial;
        
   },
@@ -338,7 +329,7 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 
-const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.5)
+const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.2)
 scene.add(luzAmbiente)
 
 class MinhaLuz extends THREE.Object3D {
@@ -668,7 +659,7 @@ function movimentarEsferas(opcao) {
 }
 
 let anguloSol = 0;
-let velocidadeSol = 0.1; // Velocidade inicial do sol
+let velocidadeSol = 0.001; // Velocidade inicial do sol
 let raioSol = 40;
 
 // Coordenadas do ponto em torno do qual o sol deve girar
@@ -700,6 +691,16 @@ function movimentarSol() {
     luaExport.position.x = centroX + raioSol * Math.cos(anguloInicialLua);
     luaExport.position.y = centroY + raioSol * Math.sin(anguloInicialLua);
 
+    // muda o background da primeira tela baseado na posição do sol e da lua
+    if(secaoAtual === 0){
+      if (solExport.position.y > 35) {
+        console.log('NOITE')
+        body.style.background = 'linear-gradient(90deg, rgba(96,93,139,1) 0%, rgba(47,47,139,1) 48%, rgba(0,147,177,1) 100%)';
+      } else if (solExport.position.y < 5) {
+        console.log('DIA')
+        body.style.background = 'linear-gradient(90deg, #50c8c6, #f1eba0,#50c8c6, #f1eba0)';
+      } 
+    }
     renderer.render(scene, camera);
     requestAnimationFrame(movimentarSol);
 }
